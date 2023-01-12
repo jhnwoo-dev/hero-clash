@@ -1,3 +1,75 @@
-body {
-background: rgb(199, 67, 67);
+*{
+    color: aliceblue;
 }
+
+body {
+    background: rgb(199, 67, 67);
+}
+
+#title-button{
+    max-width: 10vh;
+    max-height: 5vh;
+    
+}
+
+.titlecontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.landing-imgbtn{
+    justify-content: center;
+}
+
+.cave-bg3{
+    background-image:url("./Assets/Images/Backgrounds/well-lit-room.png");
+    background-size: cover;
+    
+}
+
+.cave-bg2{
+    background-image:url("./Assets/Images/Backgrounds/room-started-flooding.png");
+    background-size: cover;
+   
+}
+
+
+
+.cave-bg1{
+    background-image:url("./Assets/Images/Backgrounds/no-rest.png");
+    background-size: cover;
+
+}
+
+
+
+
+ .forest-bg{
+    background-image:url("./Assets/Images/Backgrounds/landing-page-1.png");
+    background-size: cover;
+
+}
+ 
+/* .title-bg{
+    background-image:url("./Assets/Images/Backgrounds/title-page.png");
+    background-size: cover;
+    
+} */
+
+/* .character-select-container {
+    display: none;
+}
+
+.pre-story {
+    display: none;
+}
+
+.main-game {
+    display: none;
+}
+
+.fight-scene {
+    display: none;
+} */
