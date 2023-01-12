@@ -8,80 +8,84 @@
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/luxonauta/luxa@1.1/dist/expanded/luxa.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/luxonauta/luxa@1.1/dist/compressed/luxa.css">
 
-    <script src="https://cdn.tailwindcss.com/%22%3E"> </script>
+    <!-- <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> -->
 
     <title>Hero Clash</title>
 </head>
 
-<body>
-
-    <section class="title-page-container">
-        <div class="title-bg">
-            <h1 id="title">HERO CLASH</h1>
-            <div>
-                <button id="title-button" type="button" class="nes-btn is-error">Enter (if you
-                    dare...)</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="character-select-container">
-        <div class="forest-bg">
-            <h1 id="title">HERO CLASH</h1>
-            <div class="nes-container is-rounded">
+<body class="lx-container-90 cave-bg3 cave-bg2 title-bg cave-bg1 forest-bg ">
+    
+        <!-- <section class="title-page-container titlecontainer">
+                <h1 id="title" class="lx-row">HERO CLASH</h1>
+                
                 <div>
-                    <p id="instructions-text">Instructions</p>
-                    <input type="text" id="charName" placeholder="Character Name">
-                    <button id="randomize" type="button" class="nes-btn is-error">Randomize</button>
+                    <button id="title-button" type="button" class="nes-btn is-error lx-row">Enter (if you dare...)</button>
                 </div>
-
-                <div id="class-dropdown" class="nes-container is-rounded">
-                    <div class="nes-select">
-                        <select required id="default_select">
-                            <option value="" disabled selected hidden>Select your class...</option>
-                            <option value="0">Wizard</option>
-                            <option value="1">Fighter</option>
-                            <option value="2">Rogue</option>
-                            <option value="3">Paladin</option>
-                        </select>
+                
+        </section> -->
+    
+    <section class="character-select-container">
+        <div class="lx-container-80">
+            <h1 id="title" class="lx-row">HERO CLASH</h1>
+            
+                <div class="nes-container is-rounded lx-column">
+                    <div>
+                        <p id="instructions-text">Instructions</p>
+                        <input type="text" id="charName" placeholder="Character Name">
+                        <button id="randomize" type="button" class="nes-btn is-error">Randomize</button>
                     </div>
 
+                    <div id="class-dropdown" class="nes-container is-rounded">
+                        <div class="nes-select">
+                            <select required id="default_select">
+                                <option value="" disabled selected hidden>Select your class...</option>
+                                <option value="0">Wizard</option>
+                                <option value="1">Fighter</option>
+                                <option value="2">Rogue</option>
+                                <option value="3">Paladin</option>
+                            </select>
+                        </div>
 
+
+                    </div>
+
+                    <div id="stat-container" class="nes-container is-rounded">
+                        <p>Good morning. Thou hast had a good night's sleep, I hope.</p>
+                        <div id="life-container" class="nes-container is-rounded">
+                            <p>HP</p>
+                        </div>
+                        <div id="life-container" class="nes-container is-rounded">
+                            <p>HP</p>
+                        </div>
+                        <div id="life-container" class="nes-container is-rounded">
+                            <p>HP</p>
+                        </div>
+                        <div id="life-container" class="nes-container is-rounded">
+                            <p>HP</p>
+                        </div>
+                        <div id="life-container" class="nes-container is-rounded">
+                            <p>HP</p>
+                        </div>
+                        <div id="life-container" class="nes-container is-rounded">
+                            <p>HP</p>
+                        </div>
+                        <div id="life-container" class="nes-container is-rounded">
+                            <p>HP</p>
+                        </div>
+                    </div>
                 </div>
-
-                <div id="stat-container" class="nes-container is-rounded">
-                    <p>Good morning. Thou hast had a good night's sleep, I hope.</p>
-                    <div id="life-container" class="nes-container is-rounded">
-                        <p>HP</p>
-                    </div>
-                    <div id="life-container" class="nes-container is-rounded">
-                        <p>HP</p>
-                    </div>
-                    <div id="life-container" class="nes-container is-rounded">
-                        <p>HP</p>
-                    </div>
-                    <div id="life-container" class="nes-container is-rounded">
-                        <p>HP</p>
-                    </div>
-                    <div id="life-container" class="nes-container is-rounded">
-                        <p>HP</p>
-                    </div>
-                    <div id="life-container" class="nes-container is-rounded">
-                        <p>HP</p>
-                    </div>
-                    <div id="life-container" class="nes-container is-rounded">
-                        <p>HP</p>
-                    </div>
-                </div>
-
-            </div>
-            <img class="heroIMGFV" src="./Assets/Images/Frontview/1.png" alt="default character">
-            <a class="nes-btn" href="#">Begin Adventure!</a>
+            
+                <div class="lx-column landing-imgbtn">
+                    <img class="heroIMGFV " src="./Assets/Images/Character/Frontview/Paladin.png" alt="default character">
+                    <a class="nes-btn " href="#">Begin Adventure!</a>
+                </div>    
         </div>
     </section>
 
-    <section class="pre-story">
+    <!-- <section class="pre-story">
         <div class="forest-bg">
             <div class="story-text" class="nes-container is-rounded">
                 <section class="nes-container is-dark">
@@ -101,9 +105,9 @@
                 <a id="continue-button" class="nes-btn" href="#">Normal</a>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="main-game">
+    <!-- <section class="main-game">
         <div class="forest-bg cave-bg1 cave-bg2 cave-bg3">
 
             <div class="story-text" class="nes-container is-rounded">
@@ -128,9 +132,9 @@
                 <a id="sneak-button" class="nes-btn" href="#">Sneak by</a>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="fight-scene">
+    <!-- <section class="fight-scene">
         <div class="forest-bg cave-bg1 cave-bg2 cave-bg3">
 
             <div class="story-text" class="nes-container is-rounded">
@@ -159,10 +163,10 @@
                 <a id="attack-button" class="nes-btn" href="#">Attack</a>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./script.js"></script>
 </body>
 
-</html>
+</html> 
