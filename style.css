@@ -1,3 +1,37 @@
-* {
-background: red;
+body {
+background: rgb(199, 67, 67);
 }
+#container {
+    margin: 20px auto;
+    height: 800px;
+    width: 1000px;
+    position: relative;
+    background-color: aliceblue;
+}
+#startPage {
+    background-image: url(./Assets/Images/Backgrounds/Cave_Structure_w_Torches.png);
+    height: 800px;
+    
+    
+    
+}
+
+#enter{
+    font-size: 1.5em;
+    font-weight: bolder;
+    word-break: break-all;
+    width:300px;
+    height:50px;
+    border : 5px solid rgb(214, 166, 7);
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    left: 350px;
+    top:600px;
+    color : rgb(53, 41, 3);
+    background-color: burlywood;
+    
+}
+#enter:hover{
+    border: 5px solid white;
+    color : whitesmoke;
