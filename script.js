@@ -537,4 +537,36 @@ var modifiedLifeWizard = baseModdedLifeWizard * 10
 console.log(modifiedLifeBarbarian)
 //Display stats in stat windows in battle/creation/comparison page
 
+
 //
+const titleButton = document.getElementById("title-button");
+const titlePage = document.getElementById("title-page"); // needs id in title page section (use "title-page")
+const charSelect = document.getElementById("char-sel"); // needs id for character select section (use "char-sel")
+const beginAd = document.getElementById("beginAd"); // needs id for begin adventure button (use "beginAd")
+const continue = document.getElementById("consinutBtn"); // needs id for character select section (use "char-sel")
+const classCompare = document.getElementById("class-compare"); // needs id for character select section (use "char-sel")
+const goBack = document.getElementById("return-button");
+
+titleButton.addEventListener("click",startGame);
+
+// start game go to character select
+function startGame(){
+    titleButton.style.display = "none";
+    charSelect.style.display = "block"; // add "style='display: none'" to character-select-container section
+}    
+beginAd.addEventListener("click",adventureStart);
+
+// go to character comparison
+function adventureStart(){
+    beginAd.style.display = "none";
+    classCompare.style.display = "block"; // add "style='display: none'" to class-compare section
+}   
+//create event listener for go back button
+goBack.addEventListener("click", returnBack);
+
+//send user back one page
+function returnBack(){
+    goBack.style.display = "none";
+    charSelect.style.display = "block"
+
+}
