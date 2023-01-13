@@ -9,8 +9,8 @@ body {
 #title-button{
     max-width: 400px;
     max-height: 50px;
-    bottom: -400px;
-    left: -250px;
+    bottom: -40vh;
+    left: -25vh;
 }
 
 .titlecontainer{
@@ -21,7 +21,7 @@ body {
 }
 #title-hero{
     bottom: -10vh;
-    right: -200px;
+    right: -20vh;
 }
 
 .landing-imgbtn{
@@ -54,13 +54,13 @@ body {
     animation: myfirst 5s ease-in-out;
 }
 @keyframes myfirst {
-    from  {left:-600px}
+    from  {left:-60vh}
     to {left:0px}
 }
 
 .heroIMGOTpre{
    transform: rotate(90deg); 
-   left: 500px;
+   left: 50vh;
    position: relative;
    animation: mysecond 5s ease-in-out;
 }
@@ -82,7 +82,7 @@ body {
 }
 
 .hero-location-battle{
-    top: 300px;
+    top: 30vh;
     position: relative;
    animation: mythird 2s ease-in-out, shake 2s;
 }
