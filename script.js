@@ -7,4 +7,3 @@ fetch(requestURL)
         })
 
 
-// a bunch of awesome code
