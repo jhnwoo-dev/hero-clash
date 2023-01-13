@@ -18,34 +18,50 @@
 <!-- append and remove background classes on listen event to button -->
 <!-- fight page background randomizes through all backgrounds-->
 <!-- set backgrounds in array and have it randomize -->
+
 <body class="lx-container-90 cave-bg3 cave-bg2 title-bg cave-bg1 forest-bg ">
 
-Title Page
-    <section id="title-page"  class="title-page-container titlecontainer none">
-                <h1 id="title" class="lx-row">HERO CLASH</h1>
-                
-                <div>
-                    <button id="title-button" type="button" class="nes-btn is-error lx-row">Enter (if you dare...)</button>
-                </div>
-                
-        </section> -->
 
-<!-- Character Select -->
+
+<!-- Title Page -->
+    <section id="title-page" class="title-page-container titlecontainer justify-center ">
+            <div class="lx-row">
+                <!-- <div class="lx-column"> -->
+                    <h1 id="title-hero" class="ps-relative">HERO CLASH</h1>
+
+                
+                    <div class=>
+                        <button id="title-button" type="button" class="nes-btn is-error ps-relative">Enter (if you dare...)</button>
+                    </div>
+                <!-- </div> -->
+            </div>    
+        </section>
+
+
+        <div>
+            <button id="title-button " type="button" class="nes-btn is-error lx-row">Enter (if you dare...)</button>
+        </div>
+
+    </section>
+
+    <!-- Character Select -->
     <section id="char-sel" class="character-select-container" style="display: none">
+
         <div class="lx-container-80">
             <h1 id="title">HERO CLASH</h1>
             <div class="lx-row">
                 <div class="nes-container is-rounded lx-column">
                     <div>
                         <p id="instructions-text">Instructions</p>
-                        <input type="text" id="charName" placeholder="Character Name">
+                        <input type="text" id="charName" class="blacktext" placeholder="Character Name">
                         <button id="randomize" type="button" class="nes-btn is-error">Randomize</button>
                     </div>
 
-                    <div id="class-dropdown" class="nes-container is-rounded">
-                        <div class="nes-select">
+                    <div id="class-dropdown" class="nes-container is-rounded blacktext">
+                        <div class="nes-select is-dark">
                             <select required id="default_select">
-                                <option value="" disabled selected hidden>Select your class...</option>
+                                <option class="blacktext" value="" disabled selected hidden>Select your class...
+                                </option>
                                 <option value="Wizard">Wizard</option>
                                 <option value="Fighter">Fighter</option>
                                 <option value="Rogue">Rogue</option>
@@ -65,32 +81,33 @@ Title Page
                     </div>
 
                     <div id="stat-container" class="nes-container is-rounded">
-                        <p>Good morning. Thou hast had a good night's sleep, I hope.</p>
+                        <p>Character Stats</p>
                         <div id="life-container" class="nes-container is-rounded">
                             <p>HP</p>
                         </div>
-                        <div id="life-container" class="nes-container is-rounded">
-                            <p>HP</p>
+                        <div id="str-container" class="nes-container is-rounded">
+                            <p>STR</p>
                         </div>
-                        <div id="life-container" class="nes-container is-rounded">
-                            <p>HP</p>
+                        <div id="dex-container" class="nes-container is-rounded">
+                            <p>DEX</p>
                         </div>
-                        <div id="life-container" class="nes-container is-rounded">
-                            <p>HP</p>
+                        <div id="con-container" class="nes-container is-rounded">
+                            <p>CON</p>
                         </div>
-                        <div id="life-container" class="nes-container is-rounded">
-                            <p>HP</p>
+                        <div id="cha-container" class="nes-container is-rounded">
+                            <p>CHA</p>
                         </div>
-                        <div id="life-container" class="nes-container is-rounded">
-                            <p>HP</p>
+                        <div id="int-container" class="nes-container is-rounded">
+                            <p>INT</p>
                         </div>
-                        <div id="life-container" class="nes-container is-rounded">
-                            <p>HP</p>
+                        <div id="wis-container" class="nes-container is-rounded">
+                            <p>WIS</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="lx-column landing-imgbtn">
+                    <a class="nes-btn lx-row" href="#">Class Comparison</a>
                     <img class="heroIMGFV lx-row" src="./Assets/Images/Character/Frontview/Paladin.png"
                         alt="default character">
                     <a id="beginAd" class="nes-btn lx-row" href="#">Begin Adventure!</a>
@@ -98,19 +115,19 @@ Title Page
             </div>
         </div>
 
-    </section>
+    </section> -->
 
 
 
-<!-- Prestory -->
-    <!-- <section class="pre-story">
+    <!-- Prestory -->
+    <section class="pre-story">
         <div>
             <div class="story-text " class="nes-container is-rounded">
                 <section class="nes-container is-dark">
                     <section class="message -left">
                         <i class="nes-bcrikko"></i>
                         <div class="nes-balloon from-left is-dark">
-                            <p>You are being chased by an owl bear</p>
+                            <p>You are being chased by a(n) ___!</p>
                         </div>
                     </section>
                 </section>
@@ -123,55 +140,74 @@ Title Page
                 <a id="continueBtnPre" class="nes-btn" href="#">Continue</a>
             </div>
         </div>
-    </section> -->
+    </section>
 
 
 
-<!-- Comparison Page -->
-<!-- add draggable=true to make draggable -->
-    <section id="class-compare" style="display: none;" class="class-comparison">
+    <!-- Comparison Page -->
+    <!-- add draggable=true to make draggable -->
+    <section class="class-comparison">
+
         <div class="">
 
             <div class="lx-container-100">
                 <h1 id="title">Class Comparison</h1>
                 <div class="lx-row">
-                    <img class="heroCompare lx-column"  src="./Assets/Images/Character/Frontview/Paladin.png"alt="default character">
-                    <img class="heroCompare lx-column"  src="./Assets/Images/Character/Frontview/Barbarian.png"alt="default character">
-                    <img class="heroCompare lx-column"  src="./Assets/Images/Character/Frontview/Bard.png"alt="default character">
-                    <img class="heroCompare lx-column"  src="./Assets/Images/Character/Frontview/Cleric.png"alt="default character">
-                    <img class="heroCompare lx-column"  src="./Assets/Images/Character/Frontview/Druid.png"alt="default character">
-                    <img class="heroCompare lx-column"  src="./Assets/Images/Character/Frontview/Fighter.png"alt="default character">
-                    <img class="heroCompare lx-column"  src="./Assets/Images/Character/Frontview/Monk.PNG"alt="default character">
-                    <img class="heroCompare lx-column"  src="./Assets/Images/Character/Frontview/Ranger.png"alt="default character">
-                    <img class="heroCompare lx-column"  src="./Assets/Images/Character/Frontview/Rogue.png"alt="default character">
-                    <img class="heroCompare lx-column"  src="./Assets/Images/Character/Frontview/Sorcerer.png"alt="default character">
-                    <img class="heroCompare lx-column"  src="./Assets/Images/Character/Frontview/Warlock.png"alt="default character">
-                    <img class="heroCompare lx-column"  src="./Assets/Images/Character/Frontview/Wizard.png"alt="default character">
+                    <img class="heroCompare lx-column" src="./Assets/Images/Character/Frontview/Paladin.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="./Assets/Images/Character/Frontview/Barbarian.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="./Assets/Images/Character/Frontview/Bard.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="./Assets/Images/Character/Frontview/Cleric.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="./Assets/Images/Character/Frontview/Druid.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="./Assets/Images/Character/Frontview/Fighter.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="./Assets/Images/Character/Frontview/Monk.PNG"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="./Assets/Images/Character/Frontview/Ranger.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="./Assets/Images/Character/Frontview/Rogue.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="./Assets/Images/Character/Frontview/Sorcerer.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="./Assets/Images/Character/Frontview/Warlock.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="./Assets/Images/Character/Frontview/Wizard.png"
+                        alt="default character">
                 </div>
                 <div class="lx-row">
                     <div class="nes-container is-rounded lx-column">
 
                         <div id="stat-container" class="nes-container is-rounded lx-container">
-                            <div class="lx-row">HP
-                                <progress class="nes-progress is-error" value="100" max="100" ></progress>
+                            <div id="selectedHeroComparisonHP" class="nes-container is-rounded">
+                                <p>HP</p>
                             </div>
                             <div class="lx-row">STR
-                                <progress class="nes-progress is-primary" value="18" max="25" ></progress>
-                            </div>    
+                                <progress id="selectedHeroComparisonSTR" class="nes-progress is-primary" value="18"
+                                    max="25"></progress>
+                            </div>
                             <div class="lx-row">DEX
-                                <progress class="nes-progress is-primary" value="11" max="25" ></progress>
+                                <progress id="selectedHeroComparisonDEX" class="nes-progress is-primary" value="11"
+                                    max="25"></progress>
                             </div>
                             <div class="lx-row">CON
-                                <progress class="nes-progress is-primary" value="20" max="25" ></progress>
+                                <progress id="selectedHeroComparisonCON" class="nes-progress is-primary" value="20"
+                                    max="25"></progress>
                             </div>
                             <div class="lx-row">CHA
-                                <progress class="nes-progress is-primary" value="9" max="25" ></progress>
+                                <progress id="selectedHeroComparisonCHA" class="nes-progress is-primary" value="9"
+                                    max="25"></progress>
                             </div>
                             <div class="lx-row">INT
-                                <progress class="nes-progress is-primary" value="6" max="25" ></progress>
+                                <progress id="selectedHeroComparisonINT" class="nes-progress is-primary" value="6"
+                                    max="25"></progress>
                             </div>
                             <div class="lx-row">WIS
-                                <progress class="nes-progress is-primary" value="8" max="25" ></progress>
+                                <progress id="selectedHeroComparisonWIS" class="nes-progress is-primary" value="8"
+                                    max="25"></progress>
                             </div>
                         </div>
                     </div>
@@ -181,8 +217,8 @@ Title Page
                         <img class="heroIMGFV lx-row" src="./Assets/Images/Character/Frontview/Paladin.png"
                             alt="default character">
                     </div>
-                
-                
+
+
                     <div class="lx-column landing-imgbtn">
                         <img class="heroCompareBig lx-row" src="./Assets/Images/Character/Frontview/Paladin.png"
                             alt="default character">
@@ -190,61 +226,68 @@ Title Page
                     <div class="nes-container is-rounded lx-column blacktext">
 
                         <div id="class-dropdown2 " class="nes-container is-rounded ">
-                            <div class="nes-select ">
+                            <div class="nes-select is-dark">
                                 <select required id="default_select" class="">
-                                    <option value="" disabled selected hidden>Select your class...</option>
-                                    <option class= "blacktext" value="Wizard">Wizard</option>
-                                    <option class= "blacktext" value="Fighter">Fighter</option>
-                                    <option class= "blacktext" value="Rogue">Rogue</option>
-                                    <option class= "blacktext" value="Paladin">Paladin</option>
-                                    <option class= "blacktext" value="Barbarian">Barbarian</option>
-                                    <option class= "blacktext" value="Bard">Bard</option>
-                                    <option class= "blacktext" value="Cleric">Cleric</option>
-                                    <option class= "blacktext" value="Druid">Druid</option>
-                                    <option class= "blacktext" value="Monk">Monk</option>
-                                    <option class= "blacktext" value="Ranger">Ranger</option>
-                                    <option class= "blacktext" value="Sorcerer">Sorcerer</option>
-                                    <option class= "blacktext" value="Warlock">Warlock</option>
+                                    <option value="" disabled selected hidden>Select class...</option>
+                                    <option value="Wizard">Wizard</option>
+                                    <option value="Fighter">Fighter</option>
+                                    <option value="Rogue">Rogue</option>
+                                    <option value="Paladin">Paladin</option>
+                                    <option value="Barbarian">Barbarian</option>
+                                    <option value="Bard">Bard</option>
+                                    <option value="Cleric">Cleric</option>
+                                    <option value="Druid">Druid</option>
+                                    <option value="Monk">Monk</option>
+                                    <option value="Ranger">Ranger</option>
+                                    <option value="Sorcerer">Sorcerer</option>
+                                    <option value="Warlock">Warlock</option>
                                 </select>
                             </div>
                         </div>
 
                         <div id="stat-container" class="nes-container is-rounded lx-container">
-                            <div class="lx-row">HP
-                                <progress class="nes-progress is-error" value="100" max="100" ></progress>
+                            <div id="comparisonStatHP" class="nes-container is-rounded">
+                                <p>HP</p>
                             </div>
                             <div class="lx-row">STR
-                                <progress class="nes-progress is-primary" value="18" max="25" ></progress>
-                            </div>    
+                                <progress id="comparisonStatSTR" class="nes-progress is-primary" value="18"
+                                    max="25"></progress>
+                            </div>
                             <div class="lx-row">DEX
-                                <progress class="nes-progress is-primary" value="11" max="25" ></progress>
+                                <progress id="comparisonStatDEX" class="nes-progress is-primary" value="11"
+                                    max="25"></progress>
                             </div>
                             <div class="lx-row">CON
-                                <progress class="nes-progress is-primary" value="20" max="25" ></progress>
+                                <progress id="comparisonStatCON" class="nes-progress is-primary" value="20"
+                                    max="25"></progress>
                             </div>
                             <div class="lx-row">CHA
-                                <progress class="nes-progress is-primary" value="9" max="25" ></progress>
+                                <progress id="comparisonStatCHA" class="nes-progress is-primary" value="9"
+                                    max="25"></progress>
                             </div>
                             <div class="lx-row">INT
-                                <progress class="nes-progress is-primary" value="6" max="25" ></progress>
+                                <progress id="comparisonStatINT" class="nes-progress is-primary" value="6"
+                                    max="25"></progress>
                             </div>
                             <div class="lx-row">WIS
-                                <progress class="nes-progress is-primary" value="8" max="25" ></progress>
+                                <progress id="comparisonStatWIS" class="nes-progress is-primary" value="8"
+                                    max="25"></progress>
                             </div>
                         </div>
 
-                </div></div>
+                    </div>
+                </div>
             </div>
 
             <div>
                 <a id="return-button" class="nes-btn" href="#">Go Back</a>
             </div>
         </div>
-    </section> -->
+    </section>
 
 
-<!-- Monster Fight Page -->
-    <!-- <section class="fight-scene">
+    <!-- Monster Fight Page -->
+    <section class="fight-scene">
         <div class="lx-container-90">
 
             <div class="story-text" class="nes-container is-rounded lx-row">
@@ -252,7 +295,7 @@ Title Page
                     <section class="message -left">
                         <i class="nes-bcrikko"></i>
                         <div class="nes-balloon from-left is-dark">
-                            <p>You have encountered ___. Fight to continue your adventure!</p>
+                            <p>You have encountered a(n) ___. Fight to continue your adventure!</p>
                         </div>
                     </section>
                 </section>
@@ -260,23 +303,26 @@ Title Page
             <div class="lx-row justify-start">
                 <div class="hero-location-battle">
                     <progress class="nes-progress is-error" value="100" max="100"></progress>
-                    <img class="heroIMGFVbattle" src="./Assets/Images/Character/Frontview/Paladin.png" alt="default character">
+                    <img class="heroIMGFVbattle" src="./Assets/Images/Character/Frontview/Paladin.png"
+                        alt="default character">
                 </div>
             </div>
             <div class="lx-row justify-end">
                 <div class="enemy-location-battle">
                     <progress class="nes-progress is-success" value="100" max="100"></progress>
-                    <img class="enemyIMGbattle" src="./Assets/Images/Monsters/Ankylosaurus.png" alt="enemy image">
+                    <img class="enemyIMGbattle" src="./Assets/Images/Monsters/ape.png" alt="enemy image">
                 </div>
             </div>
-            <div class="lx-row">    
-                <div>
-                    <a id="continue-button" class="nes-btn" href="#">Continue</a>
-                    <a id="attack-button" class="nes-btn" href="#">Attack</a>
-                </div>
+            <div class="lx-row justify-between">
+                <!-- Returns User to Character Select -->
+                <a id="goback-button" class="nes-btn" href="#">Go Back</a>
+                <!-- Reloads page to simulate random fight with same character -->
+                <a id="again-button" class="nes-btn" href="#">Fight Again?</a>
+                <!-- Activates movement and runs function to simulate attack -->
+                <a id="attack-button" class="nes-btn" href="#">Attack</a>
             </div>
         </div>
-    </section> -->
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./script.js"></script>
