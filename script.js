@@ -562,6 +562,7 @@ function adventureStart(){
     beginAd.style.display = "none";
     classCompare.style.display = "block"; // add "style='display: none'" to class-compare section
     charSelect.style.display = "none"
+    goBack.style.display = "block";
 }   
 //create event listener for go back button
 goBack.addEventListener("click", returnBack);
@@ -571,6 +572,6 @@ function returnBack(){
     goBack.style.display = "none";
     charSelect.style.display = "block";
     classCompare.style.display = "none";
-    beginAd.style.display ="block"
-
+    beginAd.style.display ="block";
+    
 }
