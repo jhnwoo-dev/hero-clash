@@ -2,7 +2,7 @@ var userCharacter;
 var comparisonCharacter;
 var userClass = "paladin";
 var comparisonClass = "barbarian";
-var btn = document.querySelector("#test-button");
+var btn = $("#test-button");
 
 var classesAPI = `https://www.dnd5eapi.co/api/classes/`;
 fetch(classesAPI)

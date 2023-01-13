@@ -1,4 +1,7 @@
 var userCharacter = localStorage.getItem("savedUser");
+if (!userCharacter) {
+    // userCharacter = default stats
+}
 var comparisonCharacter;
 var comparisonClass = "barbarian";
 

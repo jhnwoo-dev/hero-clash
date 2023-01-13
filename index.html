@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/luxonauta/luxa@1.1/dist/expanded/luxa.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/luxonauta/luxa@1.1/dist/compressed/luxa.css">
+    <link rel="stylesheet" href="./Assets/css/style.css">
 
     <!-- <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> -->
 
@@ -44,7 +44,6 @@
                     <div>
                         <p id="instructions-text">Instructions</p>
                         <input type="text" id="charName" class="blacktext" placeholder="Character Name">
-                        <button id="randomize" type="button" class="nes-btn is-error">Randomize</button>
                     </div>
 
                     <div id="class-dropdown" class="nes-container is-rounded blacktext">
@@ -66,6 +65,7 @@
                                 <option value="Warlock">Warlock</option>
                             </select>
                         </div>
+                        <button id="submit" type="button" class="nes-btn is-error">Submit</button>
 
 
                     </div>
@@ -97,7 +97,7 @@
                 </div>
 
                 <div class="lx-column landing-imgbtn">
-                    <a class="nes-btn lx-row" href="comparison.html">Class Comparison</a>
+                    <a class="nes-btn lx-row" href="./Assets/html/comparison.html">Class Comparison</a>
                     <img class="heroIMGFV lx-row" src="./Assets/Images/Character/Frontview/Paladin.png"
                         alt="default character">
                     <button id="test-button" class="nes-btn lx-row">Test</button>
@@ -114,7 +114,7 @@
 
     <!-- Comparison Page -->
     <!-- add draggable=true to make draggable -->
-    <section class="class-comparison">
+    <!-- <section class="class-comparison">
         <div class="">
 
             <div class="lx-container-100">
@@ -250,7 +250,7 @@
                 <a id="return-button" class="nes-btn" href="#">Go Back</a>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Prestory -->
     <!-- <section class="pre-story">
@@ -314,7 +314,7 @@
     <!-- Activates movement and runs function to simulate attack -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./script.js"></script>
+    <script src="./Assets/js/script.js"></script>
 </body>
 
 </html>
