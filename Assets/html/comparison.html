@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/luxonauta/luxa@1.1/dist/expanded/luxa.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/luxonauta/luxa@1.1/dist/compressed/luxa.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Hero Clash Comparison</title>
+</head>
+
+<body class="lx-container-90 cave-bg3">
+    <section class="class-comparison">
+        <div class="">
+
+            <div class="lx-container-100">
+                <h1 id="title">Class Comparison</h1>
+                <div class="lx-row">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Paladin.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Barbarian.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Bard.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Cleric.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Druid.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Fighter.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Monk.PNG"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Ranger.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Rogue.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Sorcerer.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Warlock.png"
+                        alt="default character">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Wizard.png"
+                        alt="default character">
+                </div>
+                <div class="lx-row">
+                    <div class="nes-container is-rounded lx-column">
+
+                        <div id="stat-container" class="nes-container is-rounded lx-container">
+                            <div id="selectedHeroComparisonHP" class="nes-container is-rounded">
+                                <p>HP</p>
+                            </div>
+                            <div class="lx-row">STR
+                                <progress id="selectedHeroComparisonSTR" class="nes-progress is-primary" value="18"
+                                    max="25"></progress>
+                            </div>
+                            <div class="lx-row">DEX
+                                <progress id="selectedHeroComparisonDEX" class="nes-progress is-primary" value="11"
+                                    max="25"></progress>
+                            </div>
+                            <div class="lx-row">CON
+                                <progress id="selectedHeroComparisonCON" class="nes-progress is-primary" value="20"
+                                    max="25"></progress>
+                            </div>
+                            <div class="lx-row">CHA
+                                <progress id="selectedHeroComparisonCHA" class="nes-progress is-primary" value="9"
+                                    max="25"></progress>
+                            </div>
+                            <div class="lx-row">INT
+                                <progress id="selectedHeroComparisonINT" class="nes-progress is-primary" value="6"
+                                    max="25"></progress>
+                            </div>
+                            <div class="lx-row">WIS
+                                <progress id="selectedHeroComparisonWIS" class="nes-progress is-primary" value="8"
+                                    max="25"></progress>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lx-column landing-imgbtn">
+                        <p class="has-dflex-center">YourHero</p>
+                        <img class="heroIMGFV lx-row" src="../Images/Character/Frontview/Paladin.png"
+                            alt="default character">
+                    </div>
+
+
+                    <div class="lx-column landing-imgbtn">
+                        <img class="heroCompareBig lx-row" src="../Images/Character/Frontview/Paladin.png"
+                            alt="default character">
+                    </div>
+                    <div class="nes-container is-rounded lx-column blacktext">
+
+                        <div id="class-dropdown2 " class="nes-container is-rounded ">
+                            <div class="nes-select is-dark">
+                                <select required id="default_select" class="">
+                                    <option value="" disabled selected hidden>Select class...</option>
+                                    <option value="Wizard">Wizard</option>
+                                    <option value="Fighter">Fighter</option>
+                                    <option value="Rogue">Rogue</option>
+                                    <option value="Paladin">Paladin</option>
+                                    <option value="Barbarian">Barbarian</option>
+                                    <option value="Bard">Bard</option>
+                                    <option value="Cleric">Cleric</option>
+                                    <option value="Druid">Druid</option>
+                                    <option value="Monk">Monk</option>
+                                    <option value="Ranger">Ranger</option>
+                                    <option value="Sorcerer">Sorcerer</option>
+                                    <option value="Warlock">Warlock</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="stat-container" class="nes-container is-rounded lx-container">
+                            <div id="comparisonStatHP" class="nes-container is-rounded">
+                                <p>HP</p>
+                            </div>
+                            <div class="lx-row">STR
+                                <progress id="comparisonStatSTR" class="nes-progress is-primary" value="18"
+                                    max="25"></progress>
+                            </div>
+                            <div class="lx-row">DEX
+                                <progress id="comparisonStatDEX" class="nes-progress is-primary" value="11"
+                                    max="25"></progress>
+                            </div>
+                            <div class="lx-row">CON
+                                <progress id="comparisonStatCON" class="nes-progress is-primary" value="20"
+                                    max="25"></progress>
+                            </div>
+                            <div class="lx-row">CHA
+                                <progress id="comparisonStatCHA" class="nes-progress is-primary" value="9"
+                                    max="25"></progress>
+                            </div>
+                            <div class="lx-row">INT
+                                <progress id="comparisonStatINT" class="nes-progress is-primary" value="6"
+                                    max="25"></progress>
+                            </div>
+                            <div class="lx-row">WIS
+                                <progress id="comparisonStatWIS" class="nes-progress is-primary" value="8"
+                                    max="25"></progress>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <a id="return-button" class="nes-btn" href="../../index.html">Go Back</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../js/comparison.js"></script>
+</body>
+
+</html>

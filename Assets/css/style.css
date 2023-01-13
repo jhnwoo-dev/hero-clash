@@ -29,22 +29,13 @@ body {
 }
 
 .cave-bg3{
-    background-image:url("./Assets/Images/Backgrounds/well-lit-room.png");
+    background-image:url("../Images/Backgrounds/well-lit-room.png");
     background-size: cover;
 }
 
-.cave-bg2{
-    background-image:url("./Assets/Images/Backgrounds/room-started-flooding.png");
-    background-size: cover;
-}
-
-.cave-bg1{
-    background-image:url("./Assets/Images/Backgrounds/no-rest.png");
-    background-size: cover;
-}
 
  .forest-bg{
-    background-image:url("./Assets/Images/Backgrounds/landing-page-1.png");
+    background-image:url("../Images/Backgrounds/landing-page-1.png");
     background-size: cover;
 }
  
