@@ -52,6 +52,31 @@ body {
 
 }
  
+.owlbearpre {
+    transform: rotate(-90deg);
+    position: relative;
+    animation: myfirst 5s ease-in-out;
+}
+@keyframes myfirst {
+    from  {left:-600px}
+    to {left:0px}
+}
+
+.heroIMGOTpre{
+   transform: rotate(90deg); 
+   left: 500px;
+   position: relative;
+   animation: mysecond 5s ease-in-out;
+}
+@keyframes mysecond {
+    from  {left:-400px}
+    to {left:500px}
+}
+
+#continueBtnPre {
+    left: 90rem;
+
+}
 /* .title-bg{
     background-image:url("./Assets/Images/Backgrounds/title-page.png");
     background-size: cover;
