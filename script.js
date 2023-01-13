@@ -1,22 +1,30 @@
-// console.log("Hero Clash Time");
-// requestURL = " https://api.open5e.com/magicitems/";
-// fetch(requestURL)
-//     .then(function (response) {
-//         console.log(response);
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         console.log(data.results[14]);
-//         console.log(data.results[14].desc);
-//     });
-// var monsterAPI = "https://www.dnd5eapi.co/api/monsters/";
-// fetch(monsterAPI)
-//     .then(function (response) {
-//         console.log(response);
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//     });
+var classesAPI = `https://www.dnd5eapi.co/api/classes/`;
+fetch(classesAPI)
+    .then(function (response) {
+        console.log(response);
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+    });
+var classes2API = `https://api.open5e.com/classes/`;
+fetch(classes2API)
+    .then(function (response) {
+        console.log(response);
+        return response.json();
+    })
+    .then(function (data3) {
+        console.log(data3);
+    });
 
-document.getElementById(".owlbearpre").classList.add("visible");
+var monsterAPI = `https://api.open5e.com/monsters/`;
+fetch(monsterAPI)
+    .then(function (response) {
+        console.log(response);
+        return response.json();
+    })
+    .then(function (data2) {
+        console.log(data2);
+    });
+
+// document.getElementById(".owlbearpre").classList.add("visible");
