@@ -9,14 +9,12 @@ body {
 #title-button{
     max-width: 10vh;
     max-height: 5vh;
-    
 }
 
 .titlecontainer{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .landing-imgbtn{
@@ -26,32 +24,90 @@ body {
 .cave-bg3{
     background-image:url("./Assets/Images/Backgrounds/well-lit-room.png");
     background-size: cover;
-    
 }
 
 .cave-bg2{
     background-image:url("./Assets/Images/Backgrounds/room-started-flooding.png");
     background-size: cover;
-   
 }
-
-
 
 .cave-bg1{
     background-image:url("./Assets/Images/Backgrounds/no-rest.png");
     background-size: cover;
-
 }
-
-
-
 
  .forest-bg{
     background-image:url("./Assets/Images/Backgrounds/landing-page-1.png");
     background-size: cover;
-
 }
  
+.owlbearpre {
+    transform: rotate(-90deg);
+    position: relative;
+    animation: myfirst 5s ease-in-out;
+}
+@keyframes myfirst {
+    from  {left:-600px}
+    to {left:0px}
+}
+
+.heroIMGOTpre{
+   transform: rotate(90deg); 
+   left: 500px;
+   position: relative;
+   animation: mysecond 5s ease-in-out;
+}
+@keyframes mysecond {
+    from  {left:-400px}
+    to {left:500px}
+}
+
+#continueBtnPre {
+    left: 90rem;
+}
+
+.blacktext{
+    color: black;
+}
+.heroCompare {
+    cursor: move;
+    max-width: 8vh;
+}
+
+.hero-location-battle{
+    top: 300px;
+    position: relative;
+   animation: mythird 2s ease-in-out, shake 2s;
+}
+@keyframes mythird {
+    from  {left:0px}
+    to {left:650px; up:-50px}
+}
+.enemy-location-battle{
+    position: relative;
+   animation: myfourth 2s ease-in-out, shake 2s;
+}
+@keyframes myfourth {
+    from  {right:0px}
+    to {right:650px; up:50px}
+}
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.enemyIMGbattle{
+    max-width: 300px;
+    max-height: 300px;
+}
 /* .title-bg{
     background-image:url("./Assets/Images/Backgrounds/title-page.png");
     background-size: cover;
