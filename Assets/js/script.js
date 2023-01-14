@@ -15,7 +15,7 @@ var weaponAPI = `https://api.open5e.com/classes/`;
 
 //Event listener to set userClass to the selection of user
 submitBtn.on("click", function () {
-    userClass = $("#default_select").val();
+    userClass = $("#default_select").val().toLowerCase();
     console.log(userClass);
 });
 
@@ -27,14 +27,14 @@ function getInfo(charClass) {
             for (i = 0; i < data.starting_equipment.length; i++) {
                 console.log(data.starting_equipment[i].equipment.name);
             }
-            fetch(weaponAPI)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data2) {
-                    console.log(data2.results[0].prof_weapons);
-                    console.log(data2.results[0].prof_armor);
-                });
+            // fetch(weaponAPI)
+            //     .then(function (response) {
+            //         return response.json();
+            //     })
+            //     .then(function (data2) {
+            //         console.log(data2.results[0].prof_weapons);
+            //         console.log(data2.results[0].prof_armor);
+            //     });
         });
 }
 
@@ -223,7 +223,7 @@ function modifier(n) {
         return 6;
     }
 }
-btn.addEventListener("click", createCharacter);
+// btn.addEventListener("click", createCharacter);
 
 function createCharacter() {
     rollStats(userClass);
@@ -270,7 +270,7 @@ const beginAd = document.getElementById("beginAd"); // needs id for begin advent
 const classCompare = document.getElementById("class-compare"); // needs id for character select section (use "char-sel")
 const goBack = document.getElementById("return-button");
 
-titleButton.addEventListener("click", startGame);
+// titleButton.addEventListener("click", startGame);
 
 // start game go to character select
 function startGame() {
@@ -279,7 +279,7 @@ function startGame() {
     titlePage.style.display = "none";
 }
 
-beginAd.addEventListener("click", adventureStart);
+// beginAd.addEventListener("click", adventureStart);
 
 // go to character comparison
 function adventureStart() {
@@ -289,7 +289,7 @@ function adventureStart() {
     goBack.style.display = "block";
 }
 //create event listener for go back button
-goBack.addEventListener("click", returnBack);
+// goBack.addEventListener("click", returnBack);
 
 //send user back one page
 function returnBack() {
