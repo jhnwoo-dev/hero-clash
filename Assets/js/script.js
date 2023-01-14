@@ -14,9 +14,6 @@ var userClass = "";
 //API used to grab class weapon proficiency
 // var weaponAPI = `https://api.open5e.com/classes/${userClass}`
 
-//Event listener to set userClass to the selection of user
-
-
 //roll for stats
 function roll4d6minusLowest() {
     var roll1 = Math.floor(Math.random() * 6) + 1;
@@ -285,6 +282,18 @@ submitBtn.on("click", function () {
                     $("#int-container").text("INT: " + saveListArray[4]);
                     $("#wis-container").text("WIS: " + saveListArray[5]);
                 });
+            var saveList = JSON.parse(localStorage.getItem("savedUser"));
+            console.log(saveList);
+            var saveListArray = Object.values(saveList);
+            console.log(saveListArray);
+            console.log(saveListArray[0]);
+            $("#life-container").text("HP: " + saveListArray[6]);
+            $("#str-container").text("STR: " + saveListArray[0]);
+            $("#dex-container").text("DEX: " + saveListArray[1]);
+            $("#con-container").text("CON: " + saveListArray[2]);
+            $("#cha-container").text("CHA: " + saveListArray[3]);
+            $("#int-container").text("INT: " + saveListArray[4]);
+            $("#wis-container").text("WIS: " + saveListArray[5]);
         });
 });
 
