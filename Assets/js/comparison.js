@@ -145,3 +145,6 @@ function updateCharacter() {
 
 userChar = createChar("paladin");
 compChar = createChar("rogue");
+
+var selectedClass = $("#default_select").val();
+console.log(selectedClass);
