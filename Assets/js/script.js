@@ -14,7 +14,6 @@ var userClass = "";
 //API used to grab class weapon proficiency
 // var weaponAPI = `https://api.open5e.com/classes/${userClass}`
 
-
 //Event listener to set userClass to the selection of user
 submitBtn.on("click", function () {
     userClass = $("#default_select").val().toLowerCase();
@@ -139,7 +138,7 @@ submitBtn.on("click", function () {
             );
         }
     }
-    
+
     function modifier(n) {
         if (n >= 1 && n <= 3) {
             return -5;
@@ -196,14 +195,10 @@ submitBtn.on("click", function () {
                     localStorage.setItem(
                         "savedUser",
                         JSON.stringify(character)
-
-
-                        
                     );
                 });
         });
 });
-
 
 //roll for stats
 function roll4d6minusLowest() {
