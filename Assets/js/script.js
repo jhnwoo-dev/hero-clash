@@ -1,39 +1,65 @@
+//Global variables
 var userCharacter;
 var comparisonCharacter;
-var userClass = "paladin";
-var comparisonClass = "barbarian";
+var userClass;
+var comparisonClass;
+
+//Button Variables
 var btn = $("#test-button");
+var submitBtn = $("#submit");
 
-var classesAPI = `https://www.dnd5eapi.co/api/classes/`;
-fetch(classesAPI)
-    .then(function (response) {
-        console.log(response);
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    });
-var classes2API = `https://api.open5e.com/classes/`;
-fetch(classes2API)
-    .then(function (response) {
-        console.log(response);
-        return response.json();
-    })
-    .then(function (data3) {
-        console.log(data3);
-    });
+//API used to grab class info
+var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`;
+//API used to grab class weapon proficiency
+var weaponAPI = `https://api.open5e.com/classes/`;
 
-var monsterAPI = `https://api.open5e.com/monsters/`;
-fetch(monsterAPI)
-    .then(function (response) {
-        console.log(response);
-        return response.json();
-    })
-    .then(function (data2) {
-        console.log(data2);
-    });
+//Event listener to set userClass to the selection of user
+submitBtn.on("click", function () {
+    userClass = $("#default_select").val();
+    console.log(userClass);
+});
 
-// document.getElementById(".owlbearpre").classList.add("visible");
+//Function to get class info
+function getInfo(charClass) {
+    fetch(classesAPI, (charClass = userClass))
+        .then((res) => res.json())
+        .then(function (data) {
+            for (i = 0; i < data.starting_equipment.length; i++) {
+                console.log(data.starting_equipment[i].equipment.name);
+            }
+            fetch(weaponAPI)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data2) {
+                    console.log(data2.results[0].prof_weapons);
+                    console.log(data2.results[0].prof_armor);
+                });
+        });
+}
+
+//testing API to grab starting equipment
+// fetch(classesAPI)
+//     .then(function (response) {
+//         console.log(response);
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         for (i = 0; i < data.starting_equipment.length; i++) {
+//             console.log(data.starting_equipment[i].equipment.name);
+//         }
+//     });
+
+//testing API to grab proficient weapons and armor
+// fetch(weaponAPI)
+//     .then(function (response) {
+//         console.log(response);
+//         return response.json();
+//     })
+//     .then(function (data2) {
+//         console.log(data2.results[0].prof_weapons);
+//         console.log(data2.results[0].prof_armor);
+//     });
 
 // Background pathways
 var forestBG = "./Assets/Images/Backgrounds/landing-page-1.png";
@@ -162,14 +188,13 @@ function rollStats(charClass) {
         character.wis += 2;
         character.cha += 1;
     } else if (charClass == "Wizard") {
-        character.hp = 6 + modifier(character.con) * 10 ;
+        character.hp = 6 + modifier(character.con) * 10;
         character.int += 2;
         character.wis += 1;
     }
-    
+
     userCharacter = character;
 }
-
 
 function modifier(n) {
     if (n >= 1 && n <= 3) {
@@ -206,11 +231,11 @@ function createCharacter() {
     // getSkills("barbarian");
 }
 // function getSkills(charClass) {
-    //     fetch(kashefkd charClass = palalding)
-    //     .then(res => res.json())
-    //     .then(function(data) {
-        //         //update skills
-        //         fetch(weapons)
+//     fetch(kashefkd charClass = palalding)
+//     .then(res => res.json())
+//     .then(function(data) {
+//         //update skills
+//         fetch(weapons)
 //         .then(res => res.json())
 //         .then(function(data) {
 //             // update weapons
@@ -238,7 +263,6 @@ function createCharacter() {
 // modifierArrayBarbarian = [-4,-5,-3,-4,-1]
 //Display stats in stat windows in battle/creation/comparison page
 
-//
 const titleButton = document.getElementById("title-button");
 const titlePage = document.getElementById("title-page"); // needs id in title page section (use "title-page")
 const charSelect = document.getElementById("char-sel"); // needs id for character select section (use "char-sel")
