@@ -4,33 +4,26 @@ var userClass = "paladin";
 var comparisonClass = "barbarian";
 var btn = $("#test-button");
 
-var classesAPI = `https://www.dnd5eapi.co/api/classes/`;
-fetch(classesAPI)
-    .then(function (response) {
-        console.log(response);
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    });
-var classes2API = `https://api.open5e.com/classes/`;
-fetch(classes2API)
-    .then(function (response) {
-        console.log(response);
-        return response.json();
-    })
-    .then(function (data3) {
-        console.log(data3);
-    });
+//API used to grab class info
+// var classesAPI = `https://www.dnd5eapi.co/api/classes/`;
+// fetch(classesAPI)
+//     .then(function (response) {
+//         console.log(response);
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         console.log(data);
+//     });
 
-var monsterAPI = `https://api.open5e.com/monsters/`;
-fetch(monsterAPI)
+//API used to grab class weapon proficiency
+var weaponAPI = `https://api.open5e.com/classes/`;
+fetch(weaponAPI)
     .then(function (response) {
         console.log(response);
         return response.json();
     })
     .then(function (data2) {
-        console.log(data2);
+        console.log(data2.results[0].prof_weapons);
     });
 
 // document.getElementById(".owlbearpre").classList.add("visible");
@@ -162,14 +155,13 @@ function rollStats(charClass) {
         character.wis += 2;
         character.cha += 1;
     } else if (charClass == "Wizard") {
-        character.hp = 6 + modifier(character.con) * 10 ;
+        character.hp = 6 + modifier(character.con) * 10;
         character.int += 2;
         character.wis += 1;
     }
-    
+
     userCharacter = character;
 }
-
 
 function modifier(n) {
     if (n >= 1 && n <= 3) {
@@ -206,11 +198,11 @@ function createCharacter() {
     // getSkills("barbarian");
 }
 // function getSkills(charClass) {
-    //     fetch(kashefkd charClass = palalding)
-    //     .then(res => res.json())
-    //     .then(function(data) {
-        //         //update skills
-        //         fetch(weapons)
+//     fetch(kashefkd charClass = palalding)
+//     .then(res => res.json())
+//     .then(function(data) {
+//         //update skills
+//         fetch(weapons)
 //         .then(res => res.json())
 //         .then(function(data) {
 //             // update weapons
