@@ -1,4 +1,14 @@
 var userCharacter = JSON.parse(localStorage.getItem('savedUser'));
+$("#selectedHeroComparisonHP").html("HP: " + userCharacter.hp)
+$("#selectedHeroComparisonSTR").attr('value', userCharacter.str)
+$("#selectedHeroComparisonDEX").attr('value', userCharacter.dex)
+$("#selectedHeroComparisonCON").attr('value', userCharacter.con)
+$("#selectedHeroComparisonCHA").attr('value', userCharacter.cha)
+$("#selectedHeroComparisonINT").attr('value', userCharacter.int)
+$("#selectedHeroComparisonWIS").attr('value', userCharacter.wis)
+$("#weaponProfCompare").text(userCharacter.weapon)
+$("#armorProfUser").text(userCharacter.armor)
+$("#startingEqUser").text(userCharacter.starter)
 console.log(userCharacter);
 //Global variables
 var userCharacter = "";
@@ -28,7 +38,7 @@ submitBtn.on("click", function () {
         cha: roll4d6minusLowest(),
         int: roll4d6minusLowest(),
         wis: roll4d6minusLowest(),
-        hp: 0,
+        hp: "",
         starter: "",
         armor: "",
         weapon: "",
@@ -63,6 +73,19 @@ submitBtn.on("click", function () {
             character.armor = data2.prof_armor
             console.log(character)
             localStorage.setItem("savedCompare", JSON.stringify(character));
+            var comparedChar = JSON.parse(localStorage.getItem('savedCompare'));
+            console.log(comparedChar)
+            $("#comparisonStatHP").html("HP: " + character.hp)
+            $("#comparisonStatSTR").attr('value', character.str)
+            $("#comparisonStatDEX").attr('value', character.dex)
+            $("#comparisonStatCON").attr('value', character.con)
+            $("#comparisonStatCHA").attr('value', character.cha)
+            $("#comparisonStatINT").attr('value', character.int)
+            $("#comparisonStatWIS").attr('value', character.wis)
+            $("#weaponProfCompare").text(character.weapon)
+            $("#armorProfCompare").text(character.armor)
+            $("#startingEqCompare").text(character.starter)
+
         });
     });
     // getInfo(userClass)
@@ -252,11 +275,11 @@ var images = document.querySelectorAll("img");
 for (var i = 0; i < images.length; i++) {
     images[i].setAttribute("draggable", "true");
     images[i].addEventListener("dragstart", function(event) {
-        event.dataTransfer.setData("text", event.target.id);
+        event.dataTransfer.setData("imgCompare", event.target.id);
     });
     images[i].addEventListener("drop", function(event) {
         event.preventDefault();
-        var data = event.dataTransfer.getData("text");
+        var dragtop = event.dataTransfer.getData("imgCompare");
         event.target.appendChild(document.getElementById(dragtop));
     });
     images[i].addEventListener("dragover", function(event) {
