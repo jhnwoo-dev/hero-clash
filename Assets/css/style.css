@@ -24,7 +24,6 @@
     color: yellow;
 }
 
-
 .cave-bg1{
     background-image:url("../Images/Backgrounds/well-lit-room.png");
     background-size: cover;
@@ -46,6 +45,8 @@
     cursor: move;
     max-width: 8vh;
 }
+
+/* Code below is not needed - saved for potential future work */
 
 /* .owlbearpre {
     transform: rotate(-90deg);
