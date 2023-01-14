@@ -87,6 +87,19 @@ var userStats = console.log(statsArray);
 // Warlock    +2 Wis +1 Cha
 // Wizard     +2 Int +1 Wis
 // [str, dex, con, cha, int, wis]
+// HP base values
+// Barbarian 12
+// Bard 8
+// Cleric 8
+// Druid 8
+// Fighter 10
+// Monk 8
+// Paladin 10
+// Ranger 10
+// Rogue 8
+// Sorcerer 6
+// Warlock 8
+// Wizard 6
 function rollStats(charClass) {
     var character = {
         str: roll4d6minusLowest(),
@@ -100,121 +113,63 @@ function rollStats(charClass) {
         weapons: "",
         class: charClass,
     };
-    if (charClass == "barbarian") {
+    if (charClass == "Barbarian") {
         // buff str and con
-        character.str = character.str + 2;
-        character.con = character.con + 2;
-        character.hp = 14;
+        character.hp = 12 + modifier(character.con) * 10;
+        character.str += 2;
+        character.con += 1;
         // set hp bsaed on magic formula
-    } else if (charClass == "paladin") {
-        character.hp = 12 + 2;
+    } else if (charClass == "Bard") {
+        character.hp = 8 + modifier(character.con) * 10;
+        character.cha += 2;
+        character.dex += 1;
+    } else if (charClass == "Cleric") {
+        character.hp = 8 + modifier(character.con) * 10;
+        character.wis += 2;
+        character.cha += 1;
+    } else if (charClass == "Druid") {
+        character.hp = 8 + modifier(character.con) * 10;
+        character.int += 2;
+        character.wis += 1;
+    } else if (charClass == "Fighter") {
+        character.hp = 10 + modifier(character.con) * 10;
+        character.str += 2;
+        character.con += 1;
+    } else if (charClass == "Monk") {
+        character.hp = 8 + modifier(character.con) * 10;
+        character.str += 2;
+        character.dex += 1;
+    } else if (charClass == "Paladin") {
+        character.hp = 10 + modifier(character.con) * 10;
+        character.con += 2;
+        character.dex -= 1;
+        character.str += 1;
+        character.cha += 1;
+    } else if (charClass == "Ranger") {
+        character.hp = 10 + modifier(character.con) * 10;
+        character.str += 2;
+        character.dex += 1;
+    } else if (charClass == "Rogue") {
+        character.hp = 8 + modifier(character.con) * 10;
+        character.dex += 2;
+        character.int += 1;
+    } else if (charClass == "Sorcerer") {
+        character.hp = 6 + modifier(character.con) * 10;
+        character.con += 2;
+        character.cha += 1;
+    } else if (charClass == "Warlock") {
+        character.hp = 8 + modifier(character.con) * 10;
+        character.wis += 2;
+        character.cha += 1;
+    } else if (charClass == "Wizard") {
+        character.hp = 6 + modifier(character.con) * 10 ;
+        character.int += 2;
+        character.wis += 1;
     }
-
+    
     userCharacter = character;
 }
 
-// function getSkills(charClass) {
-//     fetch(kashefkd charClass = palalding)
-//     .then(res => res.json())
-//     .then(function(data) {
-//         //update skills
-//         fetch(weapons)
-//         .then(res => res.json())
-//         .then(function(data) {
-//             // update weapons
-//             // save localstorage
-//         })
-//     })
-// }
-
-btn.addEventListener("click", createCharacter);
-
-function createCharacter() {
-    rollStats("barbarian");
-    localStorage.setItem("savedUser", JSON.stringify(userCharacter));
-    // getSkills("barbarian");
-}
-
-var statBonusBarbarian = [2, 0, 1, 0, 0, 0];
-var statBonusBard = [0, 1, 0, 2, 0, 0];
-var statBonusCleric = [0, 0, 0, 1, 0, 2];
-var statBonusDruid = [0, 0, 0, 0, 2, 1];
-var statBonusFighter = [2, 0, 1, 0, 0, 0];
-var statBonusMonk = [2, 1, 0, 0, 0, 0];
-var statBonusPaladin = [1, -1, 2, 1, 0, 0];
-var statBonusRanger = [2, 1, 0, 0, 0, 0];
-var statBonusRogue = [0, 2, 0, 0, 1, 0];
-var statBonusSorcerer = [0, 0, 2, 1, 0, 0];
-var statBonusWarlock = [0, 0, 0, 1, 0, 2];
-var statBonusWizard = [0, 0, 0, 0, 2, 1];
-
-//change basestats to moddedStats
-var moddedStatsBarbarian = statsArray.map(function (n, i) {
-    return n + statBonusBarbarian[i];
-});
-var moddedStatsBard = statsArray.map(function (n, i) {
-    return n + statBonusBard[i];
-});
-var moddedStatsCleric = statsArray.map(function (n, i) {
-    return n + statBonusCleric[i];
-});
-var moddedStatsDruid = statsArray.map(function (n, i) {
-    return n + statBonusDruid[i];
-});
-var moddedStatsFighter = statsArray.map(function (n, i) {
-    return n + statBonusFighter[i];
-});
-var moddedStatsMonk = statsArray.map(function (n, i) {
-    return n + statBonusMonk[i];
-});
-var moddedStatsPaladin = statsArray.map(function (n, i) {
-    return n + statBonusPaladin[i];
-});
-var moddedStatsRanger = statsArray.map(function (n, i) {
-    return n + statBonusRanger[i];
-});
-var moddedStatsRogue = statsArray.map(function (n, i) {
-    return n + statBonusRogue[i];
-});
-var moddedStatsSorcerer = statsArray.map(function (n, i) {
-    return n + statBonusSorcerer[i];
-});
-var moddedStatsWarlock = statsArray.map(function (n, i) {
-    return n + statBonusWarlock[i];
-});
-var moddedStatsWizard = statsArray.map(function (n, i) {
-    return n + statBonusWizard[i];
-});
-console.log(moddedStatsBarbarian);
-console.log(moddedStatsBard);
-console.log(moddedStatsCleric);
-console.log(moddedStatsDruid);
-console.log(moddedStatsFighter);
-console.log(moddedStatsMonk);
-console.log(moddedStatsPaladin);
-console.log(moddedStatsRanger);
-console.log(moddedStatsRogue);
-console.log(moddedStatsSorcerer);
-console.log(moddedStatsWarlock);
-console.log(moddedStatsWizard);
-
-//get modifier for each stat
-// 1     = -5
-// 2-3   = -4
-// 4-5   = -3
-// 6-7   = -2
-// 8-9   = -1
-// 10-11 =  0
-// 12-13 = +1
-// 14-15 = +2
-// 16-17 = +3
-// 18-19 = +4
-// 20-21 = +5
-// 22-23 = +6
-
-// moddedStatsBarbarian = [4,2,6,7,4,1]
-// use modifier to figure out hp, add that in
-// modifierArrayBarbarian = [-4,-5,-3,-4,-1]
 
 function modifier(n) {
     if (n >= 1 && n <= 3) {
@@ -243,386 +198,44 @@ function modifier(n) {
         return 6;
     }
 }
+btn.addEventListener("click", createCharacter);
 
-var modifierArrayBarbarian = moddedStatsBarbarian.map(modifier);
+function createCharacter() {
+    rollStats(userClass);
+    localStorage.setItem("savedUser", JSON.stringify(userCharacter));
+    // getSkills("barbarian");
+}
+// function getSkills(charClass) {
+    //     fetch(kashefkd charClass = palalding)
+    //     .then(res => res.json())
+    //     .then(function(data) {
+        //         //update skills
+        //         fetch(weapons)
+//         .then(res => res.json())
+//         .then(function(data) {
+//             // update weapons
+//             // save localstorage
+//         })
+//     })
+// }
 
-var modifierArrayBard = moddedStatsBard.map(function (n) {
-    if (n >= 1 && n <= 3) {
-        return -5;
-    } else if (n >= 4 && n <= 5) {
-        return -4;
-    } else if (n >= 6 && n <= 7) {
-        return -3;
-    } else if (n >= 8 && n <= 9) {
-        return -2;
-    } else if (n >= 10 && n <= 11) {
-        return -1;
-    } else if (n >= 12 && n <= 13) {
-        return 0;
-    } else if (n >= 14 && n <= 15) {
-        return 1;
-    } else if (n >= 16 && n <= 17) {
-        return 2;
-    } else if (n >= 18 && n <= 19) {
-        return 3;
-    } else if (n >= 20 && n <= 21) {
-        return 4;
-    } else if (n >= 22 && n <= 23) {
-        return 5;
-    } else if (n >= 24) {
-        return 6;
-    }
-});
+//get modifier for each stat
+// 1     = -5
+// 2-3   = -4
+// 4-5   = -3
+// 6-7   = -2
+// 8-9   = -1
+// 10-11 =  0
+// 12-13 = +1
+// 14-15 = +2
+// 16-17 = +3
+// 18-19 = +4
+// 20-21 = +5
+// 22-23 = +6
 
-var modifierArrayCleric = moddedStatsCleric.map(function (n) {
-    if (n >= 1 && n <= 3) {
-        return -5;
-    } else if (n >= 4 && n <= 5) {
-        return -4;
-    } else if (n >= 6 && n <= 7) {
-        return -3;
-    } else if (n >= 8 && n <= 9) {
-        return -2;
-    } else if (n >= 10 && n <= 11) {
-        return -1;
-    } else if (n >= 12 && n <= 13) {
-        return 0;
-    } else if (n >= 14 && n <= 15) {
-        return 1;
-    } else if (n >= 16 && n <= 17) {
-        return 2;
-    } else if (n >= 18 && n <= 19) {
-        return 3;
-    } else if (n >= 20 && n <= 21) {
-        return 4;
-    } else if (n >= 22 && n <= 23) {
-        return 5;
-    } else if (n >= 24) {
-        return 6;
-    }
-});
-
-var modifierArrayDruid = moddedStatsDruid.map(function (n) {
-    if (n >= 1 && n <= 3) {
-        return -5;
-    } else if (n >= 4 && n <= 5) {
-        return -4;
-    } else if (n >= 6 && n <= 7) {
-        return -3;
-    } else if (n >= 8 && n <= 9) {
-        return -2;
-    } else if (n >= 10 && n <= 11) {
-        return -1;
-    } else if (n >= 12 && n <= 13) {
-        return 0;
-    } else if (n >= 14 && n <= 15) {
-        return 1;
-    } else if (n >= 16 && n <= 17) {
-        return 2;
-    } else if (n >= 18 && n <= 19) {
-        return 3;
-    } else if (n >= 20 && n <= 21) {
-        return 4;
-    } else if (n >= 22 && n <= 23) {
-        return 5;
-    } else if (n >= 24) {
-        return 6;
-    }
-});
-
-var modifierArrayFighter = moddedStatsFighter.map(function (n) {
-    if (n >= 1 && n <= 3) {
-        return -5;
-    } else if (n >= 4 && n <= 5) {
-        return -4;
-    } else if (n >= 6 && n <= 7) {
-        return -3;
-    } else if (n >= 8 && n <= 9) {
-        return -2;
-    } else if (n >= 10 && n <= 11) {
-        return -1;
-    } else if (n >= 12 && n <= 13) {
-        return 0;
-    } else if (n >= 14 && n <= 15) {
-        return 1;
-    } else if (n >= 16 && n <= 17) {
-        return 2;
-    } else if (n >= 18 && n <= 19) {
-        return 3;
-    } else if (n >= 20 && n <= 21) {
-        return 4;
-    } else if (n >= 22 && n <= 23) {
-        return 5;
-    } else if (n >= 24) {
-        return 6;
-    }
-});
-
-var modifierArrayMonk = moddedStatsMonk.map(function (n) {
-    if (n >= 1 && n <= 3) {
-        return -5;
-    } else if (n >= 4 && n <= 5) {
-        return -4;
-    } else if (n >= 6 && n <= 7) {
-        return -3;
-    } else if (n >= 8 && n <= 9) {
-        return -2;
-    } else if (n >= 10 && n <= 11) {
-        return -1;
-    } else if (n >= 12 && n <= 13) {
-        return 0;
-    } else if (n >= 14 && n <= 15) {
-        return 1;
-    } else if (n >= 16 && n <= 17) {
-        return 2;
-    } else if (n >= 18 && n <= 19) {
-        return 3;
-    } else if (n >= 20 && n <= 21) {
-        return 4;
-    } else if (n >= 22 && n <= 23) {
-        return 5;
-    } else if (n >= 24) {
-        return 6;
-    }
-});
-
-var modifierArrayPaladin = moddedStatsPaladin.map(function (n) {
-    if (n >= 1 && n <= 3) {
-        return -5;
-    } else if (n >= 4 && n <= 5) {
-        return -4;
-    } else if (n >= 6 && n <= 7) {
-        return -3;
-    } else if (n >= 8 && n <= 9) {
-        return -2;
-    } else if (n >= 10 && n <= 11) {
-        return -1;
-    } else if (n >= 12 && n <= 13) {
-        return 0;
-    } else if (n >= 14 && n <= 15) {
-        return 1;
-    } else if (n >= 16 && n <= 17) {
-        return 2;
-    } else if (n >= 18 && n <= 19) {
-        return 3;
-    } else if (n >= 20 && n <= 21) {
-        return 4;
-    } else if (n >= 22 && n <= 23) {
-        return 5;
-    } else if (n >= 24) {
-        return 6;
-    }
-});
-
-var modifierArrayRanger = moddedStatsRanger.map(function (n) {
-    if (n >= 1 && n <= 3) {
-        return -5;
-    } else if (n >= 4 && n <= 5) {
-        return -4;
-    } else if (n >= 6 && n <= 7) {
-        return -3;
-    } else if (n >= 8 && n <= 9) {
-        return -2;
-    } else if (n >= 10 && n <= 11) {
-        return -1;
-    } else if (n >= 12 && n <= 13) {
-        return 0;
-    } else if (n >= 14 && n <= 15) {
-        return 1;
-    } else if (n >= 16 && n <= 17) {
-        return 2;
-    } else if (n >= 18 && n <= 19) {
-        return 3;
-    } else if (n >= 20 && n <= 21) {
-        return 4;
-    } else if (n >= 22 && n <= 23) {
-        return 5;
-    } else if (n >= 24) {
-        return 6;
-    }
-});
-
-var modifierArrayRogue = moddedStatsRogue.map(function (n) {
-    if (n >= 1 && n <= 3) {
-        return -5;
-    } else if (n >= 4 && n <= 5) {
-        return -4;
-    } else if (n >= 6 && n <= 7) {
-        return -3;
-    } else if (n >= 8 && n <= 9) {
-        return -2;
-    } else if (n >= 10 && n <= 11) {
-        return -1;
-    } else if (n >= 12 && n <= 13) {
-        return 0;
-    } else if (n >= 14 && n <= 15) {
-        return 1;
-    } else if (n >= 16 && n <= 17) {
-        return 2;
-    } else if (n >= 18 && n <= 19) {
-        return 3;
-    } else if (n >= 20 && n <= 21) {
-        return 4;
-    } else if (n >= 22 && n <= 23) {
-        return 5;
-    } else if (n >= 24) {
-        return 6;
-    }
-});
-
-var modifierArraySorcerer = moddedStatsSorcerer.map(function (n) {
-    if (n >= 1 && n <= 3) {
-        return -5;
-    } else if (n >= 4 && n <= 5) {
-        return -4;
-    } else if (n >= 6 && n <= 7) {
-        return -3;
-    } else if (n >= 8 && n <= 9) {
-        return -2;
-    } else if (n >= 10 && n <= 11) {
-        return -1;
-    } else if (n >= 12 && n <= 13) {
-        return 0;
-    } else if (n >= 14 && n <= 15) {
-        return 1;
-    } else if (n >= 16 && n <= 17) {
-        return 2;
-    } else if (n >= 18 && n <= 19) {
-        return 3;
-    } else if (n >= 20 && n <= 21) {
-        return 4;
-    } else if (n >= 22 && n <= 23) {
-        return 5;
-    } else if (n >= 24) {
-        return 6;
-    }
-});
-
-var modifierArrayWarlock = moddedStatsWarlock.map(function (n) {
-    if (n >= 1 && n <= 3) {
-        return -5;
-    } else if (n >= 4 && n <= 5) {
-        return -4;
-    } else if (n >= 6 && n <= 7) {
-        return -3;
-    } else if (n >= 8 && n <= 9) {
-        return -2;
-    } else if (n >= 10 && n <= 11) {
-        return -1;
-    } else if (n >= 12 && n <= 13) {
-        return 0;
-    } else if (n >= 14 && n <= 15) {
-        return 1;
-    } else if (n >= 16 && n <= 17) {
-        return 2;
-    } else if (n >= 18 && n <= 19) {
-        return 3;
-    } else if (n >= 20 && n <= 21) {
-        return 4;
-    } else if (n >= 22 && n <= 23) {
-        return 5;
-    } else if (n >= 24) {
-        return 6;
-    }
-});
-
-var modifierArrayWizard = moddedStatsWizard.map(function (n) {
-    if (n >= 1 && n <= 3) {
-        return -5;
-    } else if (n >= 4 && n <= 5) {
-        return -4;
-    } else if (n >= 6 && n <= 7) {
-        return -3;
-    } else if (n >= 8 && n <= 9) {
-        return -2;
-    } else if (n >= 10 && n <= 11) {
-        return -1;
-    } else if (n >= 12 && n <= 13) {
-        return 0;
-    } else if (n >= 14 && n <= 15) {
-        return 1;
-    } else if (n >= 16 && n <= 17) {
-        return 2;
-    } else if (n >= 18 && n <= 19) {
-        return 3;
-    } else if (n >= 20 && n <= 21) {
-        return 4;
-    } else if (n >= 22 && n <= 23) {
-        return 5;
-    } else if (n >= 24) {
-        return 6;
-    }
-});
-
-console.log(modifierArrayBarbarian);
-//assign base life values for each class
-// HP base values
-// Barbarian 12
-// Bard 8
-// Cleric 8
-// Druid 8
-// Fighter 10
-// Monk 8
-// Paladin 10
-// Ranger 10
-// Rogue 8
-// Sorcerer 6
-// Warlock 8
-// Wizard 6
-
-var baseLifeBarbarian = 12;
-var baseLifeBard = 8;
-var baseLifeCleric = 8;
-var baseLifeDruid = 8;
-var baseLifeFighter = 10;
-var baseLifeMonk = 8;
-var baseLifePaladin = 10;
-var baseLifeRanger = 10;
-var baseLifeRogue = 8;
-var baseLifeSorcerer = 6;
-var baseLifeWarlock = 8;
-var baseLifeWizard = 8;
-
-//Add modifier to life stat
-var conModdifierBarbarian = modifierArrayBarbarian[2];
-var conModdifierBard = modifierArrayBard[2];
-var conModdifierCleric = modifierArrayCleric[2];
-var conModdifierDruid = modifierArrayDruid[2];
-var conModdifierFighter = modifierArrayFighter[2];
-var conModdifierMonk = modifierArrayMonk[2];
-var conModdifierPaladin = modifierArrayPaladin[2];
-var conModdifierRanger = modifierArrayRanger[2];
-var conModdifierRogue = modifierArrayRogue[2];
-var conModdifierSorcerer = modifierArraySorcerer[2];
-var conModdifierWarlock = modifierArrayWarlock[2];
-var conModdifierWizard = modifierArrayWizard[2];
-var baseModdedLifeBarbarian = baseLifeBarbarian + conModdifierBarbarian;
-var baseModdedLifeBard = baseLifeBard + conModdifierBard;
-var baseModdedLifeCleric = baseLifeCleric + conModdifierCleric;
-var baseModdedLifeDruid = baseLifeDruid + conModdifierDruid;
-var baseModdedLifeFighter = baseLifeFighter + conModdifierFighter;
-var baseModdedLifeMonk = baseLifeMonk + conModdifierMonk;
-var baseModdedLifePaladin = baseLifePaladin + conModdifierPaladin;
-var baseModdedLifeRanger = baseLifeRanger + conModdifierRanger;
-var baseModdedLifeRogue = baseLifeRogue + conModdifierRogue;
-var baseModdedLifeSorcerer = baseLifeSorcerer + conModdifierSorcerer;
-var baseModdedLifeWarlock = baseLifeWarlock + conModdifierWarlock;
-var baseModdedLifeWizard = baseLifeWizard + conModdifierWizard;
-
-//Multiply life values by 10 and display in life sections in battle/creation/comparison page
-var modifiedLifeBarbarian = baseModdedLifeBarbarian * 10;
-var modifiedLifeBard = baseModdedLifeBard * 10;
-var modifiedLifeCleric = baseModdedLifeCleric * 10;
-var modifiedLifeDruid = baseModdedLifeDruid * 10;
-var modifiedLifeFighter = baseModdedLifeFighter * 10;
-var modifiedLifeMonk = baseModdedLifeMonk * 10;
-var modifiedLifePaladin = baseModdedLifePaladin * 10;
-var modifiedLifeRanger = baseModdedLifeRanger * 10;
-var modifiedLifeRogue = baseModdedLifeRogue * 10;
-var modifiedLifeSorcerer = baseModdedLifeSorcerer * 10;
-var modifiedLifeWarlock = baseModdedLifeWarlock * 10;
-var modifiedLifeWizard = baseModdedLifeWizard * 10;
-console.log(modifiedLifeBarbarian);
+// moddedStatsBarbarian = [4,2,6,7,4,1]
+// use modifier to figure out hp, add that in
+// modifierArrayBarbarian = [-4,-5,-3,-4,-1]
 //Display stats in stat windows in battle/creation/comparison page
 
 //
