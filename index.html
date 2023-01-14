@@ -13,34 +13,36 @@
 
     <title>Hero Clash</title>
 </head>
-<!-- append and remove background classes on listen event to button -->
-<!-- fight page background randomizes through all backgrounds-->
-<!-- set backgrounds in array and have it randomize -->
-<!-- Title Page -->
+
+
 <body class="lx-container-90 forest-bg ">
 
     <!-- Title Page -->
-    <!-- <section class="title-page ">
-        <div class="lx-row titlecontainer">
 
-                <h1 id="title-hero" class="ps-relative has-dflex-center">HERO CLASH</h1>
+    
 
-                <div class=>
-                    <button id="title-button" type="button" class="nes-btn is-error ps-relative">Enter (if you dare...)</button>
-                </div>
+<section id="title-page" class="title-page-container titlecontainer justify-center ">
+    <div class="lx-row">
 
-        </div>
-</section> -->
+            <h1 id="title-hero" class="ps-relative">HERO CLASH</h1>
+
+            <div class=>
+                <button id="title-button" type="button" class="nes-btn is-error ps-relative">Enter (if you dare...)</button>
+            </div>
+
+    </div>
+</section>
 
     <!-- Character Select -->
-    <section id="char-sel" class="character-select-container" >
+    <section id="char-sel" class="character-select-container" style="display: none">
 
         <div class="lx-container-80">
-            <h1 id="title">HERO CLASH</h1>
+            <h1 id="title" class="yellowtext">HERO CLASH</h1>
             <div class="lx-row">
                 <div class="nes-container is-rounded lx-column">
                     <div>
-                        <p id="instructions-text">Instructions</p>
+                        <p class="yellowtext">Select your class and click submit to generate your stats!</p>
+                        <p class="yellowtext">When you're ready, click class comparison to compare to other classes!</p>
                     </div>
 
                     <div id="class-dropdown" class="nes-container is-rounded blacktext">
@@ -93,16 +95,15 @@
                     </div>
                 </div>
 
-                <div class="lx-column landing-imgbtn">
+                <div id="heroImgContainer" class="lx-column landing-imgbtn">
                     <a class="nes-btn lx-row" href="./Assets/html/comparison.html">Class Comparison</a>
-                    <img class="heroIMGFV lx-row" src="./Assets/Images/Character/Frontview/Paladin.png"
+                    <img id="heroIMG" class="heroIMGFV lx-row" src="./Assets/Images/Character/Frontview/Paladin.png"
                         alt="default character">
-
                 </div>
             </div>
         </div>
 
-    </section>
+    </section> -->
 
 
 
