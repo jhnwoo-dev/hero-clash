@@ -2,39 +2,51 @@
     color: whitesmoke;
 }
 
-body {
-    background: rgb(199, 67, 67);
-}
-
 #title-button{
-    max-width: 40vh;
-    max-height: 5vh;
-
+    max-width: 400px;
+    max-height: 50px;
+    bottom: -40vh;
+    left: -25vh;
 }
 
 .titlecontainer{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-
 }
-/* #title-hero{
-} */
 
 .landing-imgbtn{
     justify-content: center;
 }
+
+#title-hero{
+    bottom: -10vh;
+    color: yellow;
+}
+
+
 .cave-bg1{
     background-image:url("../Images/Backgrounds/well-lit-room.png");
     background-size: cover;
 }
-
 
 .forest-bg{
     background-image:url("../Images/Backgrounds/landing-page-1.png");
     background-size: cover;
 }
  
+.yellowtext{
+    color: yellow;
+}
+
+.blacktext{
+    color: black;
+}
+.heroCompare {
+    cursor: move;
+    max-width: 8vh;
+}
+
 /* .owlbearpre {
     transform: rotate(-90deg);
     position: relative;
@@ -59,17 +71,6 @@ body {
 /* #continueBtnPre {
     left: 90rem;
 } */
-.yellowtext{
-    color: yellow;
-}
-
-.blacktext{
-    color: black;
-}
-.heroCompare {
-    cursor: move;
-    max-width: 8vh;
-}
 
 /* .hero-location-battle{
     top: 30vh;
