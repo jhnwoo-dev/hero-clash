@@ -1,30 +1,90 @@
-var userCharacter = localStorage.getItem("savedUser");
-if (!userCharacter) {
-    // userCharacter = default stats
-}
+var userCharacter = JSON.parse(localStorage.getItem('savedUser'));
+console.log(userCharacter);
+//Global variables
+var userCharacter = "";
 var comparisonCharacter;
-var comparisonClass = "barbarian";
+var comparisonClass;
 
+//Button Variables
+var btn = $("#test-button");
+var submitBtn = $("#submit");
+var userClass = "";
+// character="a"
 //API used to grab class info
-var classesAPI = `https://www.dnd5eapi.co/api/classes/`;
-fetch(classesAPI)
+//API used to grab class weapon proficiency
+// var weaponAPI = `https://api.open5e.com/classes/${userClass}`;
+
+//Event listener to set userClass to the selection of user
+submitBtn.on("click", function () {
+    userClass = $("#default_select").val().toLowerCase();
+    console.log(userClass);
+    character = {
+        str: roll4d6minusLowest(),
+        dex: roll4d6minusLowest(),
+        con: roll4d6minusLowest(),
+        cha: roll4d6minusLowest(),
+        int: roll4d6minusLowest(),
+        wis: roll4d6minusLowest(),
+        hp: 0,
+        starter: "",
+        armor: "",
+        weapon: "",
+        class: userClass,
+    }
+    rollStats();
+    console.log(character)
+    var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`;
+    fetch(classesAPI)
+    
     .then(function (response) {
         console.log(response);
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
+        for (i = 0; i < data.starting_equipment.length; i++) {
+            console.log(data.starting_equipment[i].equipment.name);
+            character.starter = data.starting_equipment[i].equipment.name
+            console.log(character)
+        }
+        var weaponAPI = `https://api.open5e.com/classes/${userClass}`;
+        fetch(weaponAPI)
+        .then(function (response2) {
+            console.log(response2);
+            return response2.json();
+        })
+        .then(function (data2) {
+            console.log(data2);
+            console.log(data2.prof_weapons);
+            console.log(data2.prof_armor);
+            character.weapon = data2.prof_weapons
+            character.armor = data2.prof_armor
+            console.log(character)
+            localStorage.setItem("savedCompare", JSON.stringify(character));
+        });
     });
-//API used to grab class description
-var descriptionAPI = `https://api.open5e.com/classes/`;
-fetch(classes2API)
-    .then(function (response) {
-        console.log(response);
-        return response.json();
-    })
-    .then(function (data2) {
-        console.log(data2);
-    });
+    // getInfo(userClass)
+});
+
+
+
+function createCharacter() {
+    rollStats(userClass);
+    
+}
+
+// testing API to grab starting equipment
+
+//testing API to grab proficient weapons and armor
+
+
+// Background pathways
+var forestBG = "./Assets/Images/Backgrounds/landing-page-1.png";
+var titleBG = "./Assets/Images/Backgrounds/title-page.png";
+var ominousBG = "./Assets/Images/Backgrounds/no-rest.png";
+var floodBG = "./Assets/Images/Backgrounds/room-started-flooding.png";
+var campfireBG = "./Assets/Images/Backgrounds/well-lit-room.png";
+
+// forloop to change backgrounds on fight page when hitting button
 
 //roll for stats
 function roll4d6minusLowest() {
@@ -69,38 +129,105 @@ var userStats = console.log(statsArray);
 // Warlock    +2 Wis +1 Cha
 // Wizard     +2 Int +1 Wis
 // [str, dex, con, cha, int, wis]
-function createChar(charClass) {
-    var character = {
-        str: roll4d6minusLowest(),
-        dex: roll4d6minusLowest(),
-        con: roll4d6minusLowest(),
-        cha: roll4d6minusLowest(),
-        int: roll4d6minusLowest(),
-        wis: roll4d6minusLowest(),
-        hp: 0,
-        skills: "",
-        weapons: "",
-    };
-    if (charClass == barbarian) {
+// HP base values
+// Barbarian 12
+// Bard 8
+// Cleric 8
+// Druid 8
+// Fighter 10
+// Monk 8
+// Paladin 10
+// Ranger 10
+// Rogue 8
+// Sorcerer 6
+// Warlock 8
+// Wizard 6
+function rollStats(charClass) {
+
+    if (charClass == "Barbarian") {
         // buff str and con
+        character.hp = 12 + modifier(character.con);
+        character.str += 2;
+        character.con += 1;
         // set hp bsaed on magic formula
-    } else if (charClass == paladin) {
-        userStats.hp = 12 + 2;
+    } else if (charClass == "Bard") {
+        character.hp = 8 + modifier(character.con);
+        character.cha += 2;
+        character.dex += 1;
+    } else if (charClass == "Cleric") {
+        character.hp = 8 + modifier(character.con);
+        character.wis += 2;
+        character.cha += 1;
+    } else if (charClass == "Druid") {
+        character.hp = 8 + modifier(character.con);
+        character.int += 2;
+        character.wis += 1;
+    } else if (charClass == "Fighter") {
+        character.hp = 10 + modifier(character.con);
+        character.str += 2;
+        character.con += 1;
+    } else if (charClass == "Monk") {
+        character.hp = 8 + modifier(character.con);
+        character.str += 2;
+        character.dex += 1;
+    } else if (charClass == "Paladin") {
+        character.hp = 10 + modifier(character.con);
+        character.con += 2;
+        character.dex -= 1;
+        character.str += 1;
+        character.cha += 1;
+    } else if (charClass == "Ranger") {
+        character.hp = 10 + modifier(character.con);
+        character.str += 2;
+        character.dex += 1;
+    } else if (charClass == "Rogue") {
+        character.hp = 8 + modifier(character.con);
+        character.dex += 2;
+        character.int += 1;
+    } else if (charClass == "Sorcerer") {
+        character.hp = 6 + modifier(character.con);
+        character.con += 2;
+        character.cha += 1;
+    } else if (charClass == "Warlock") {
+        character.hp = 8 + modifier(character.con);
+        character.wis += 2;
+        character.cha += 1;
+    } else if (charClass == "Wizard") {
+        character.hp = 6 + modifier(character.con);
+        character.int += 2;
+        character.wis += 1;
     }
 
-    return character;
+    // userCharacter = character;
 }
 
-function getSkills(charClass) {
-    // fetch(kashefkd charClass = palalding)
-    //.then(update global variable with skills)
+function modifier(n) {
+    if (n >= 1 && n <= 3) {
+        return -5;
+    } else if (n >= 4 && n <= 5) {
+        return -4;
+    } else if (n >= 6 && n <= 7) {
+        return -3;
+    } else if (n >= 8 && n <= 9) {
+        return -2;
+    } else if (n >= 10 && n <= 11) {
+        return -1;
+    } else if (n >= 12 && n <= 13) {
+        return 0;
+    } else if (n >= 14 && n <= 15) {
+        return 1;
+    } else if (n >= 16 && n <= 17) {
+        return 2;
+    } else if (n >= 18 && n <= 19) {
+        return 3;
+    } else if (n >= 20 && n <= 21) {
+        return 4;
+    } else if (n >= 22 && n <= 23) {
+        return 5;
+    } else if (n >= 24) {
+        return 6;
+    }
 }
-
-function getWeapons(charClass) {
-    // fetch(kashefkd charClass = palalding)
-    //.then(update global variable with weapons)
-}
-
 btn.addEventlistener("click", updateCharacter);
 
 function updateCharacter() {
