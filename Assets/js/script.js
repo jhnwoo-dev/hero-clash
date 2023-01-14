@@ -115,54 +115,54 @@ function rollStats(charClass) {
     };
     if (charClass == "Barbarian") {
         // buff str and con
-        character.hp = 12 + modifier(character.con) * 10;
+        character.hp = 12 + modifier(character.con);
         character.str += 2;
         character.con += 1;
         // set hp bsaed on magic formula
     } else if (charClass == "Bard") {
-        character.hp = 8 + modifier(character.con) * 10;
+        character.hp = 8 + modifier(character.con);
         character.cha += 2;
         character.dex += 1;
     } else if (charClass == "Cleric") {
-        character.hp = 8 + modifier(character.con) * 10;
+        character.hp = 8 + modifier(character.con);
         character.wis += 2;
         character.cha += 1;
     } else if (charClass == "Druid") {
-        character.hp = 8 + modifier(character.con) * 10;
+        character.hp = 8 + modifier(character.con);
         character.int += 2;
         character.wis += 1;
     } else if (charClass == "Fighter") {
-        character.hp = 10 + modifier(character.con) * 10;
+        character.hp = 10 + modifier(character.con);
         character.str += 2;
         character.con += 1;
     } else if (charClass == "Monk") {
-        character.hp = 8 + modifier(character.con) * 10;
+        character.hp = 8 + modifier(character.con);
         character.str += 2;
         character.dex += 1;
     } else if (charClass == "Paladin") {
-        character.hp = 10 + modifier(character.con) * 10;
+        character.hp = 10 + modifier(character.con);
         character.con += 2;
         character.dex -= 1;
         character.str += 1;
         character.cha += 1;
     } else if (charClass == "Ranger") {
-        character.hp = 10 + modifier(character.con) * 10;
+        character.hp = 10 + modifier(character.con);
         character.str += 2;
         character.dex += 1;
     } else if (charClass == "Rogue") {
-        character.hp = 8 + modifier(character.con) * 10;
+        character.hp = 8 + modifier(character.con);
         character.dex += 2;
         character.int += 1;
     } else if (charClass == "Sorcerer") {
-        character.hp = 6 + modifier(character.con) * 10;
+        character.hp = 6 + modifier(character.con);
         character.con += 2;
         character.cha += 1;
     } else if (charClass == "Warlock") {
-        character.hp = 8 + modifier(character.con) * 10;
+        character.hp = 8 + modifier(character.con);
         character.wis += 2;
         character.cha += 1;
     } else if (charClass == "Wizard") {
-        character.hp = 6 + modifier(character.con) * 10 ;
+        character.hp = 6 + modifier(character.con);
         character.int += 2;
         character.wis += 1;
     }
@@ -203,7 +203,7 @@ btn.addEventListener("click", createCharacter);
 function createCharacter() {
     rollStats(userClass);
     localStorage.setItem("savedUser", JSON.stringify(userCharacter));
-    // getSkills("barbarian");
+    // getSkills(userClass);
 }
 // function getSkills(charClass) {
     //     fetch(kashefkd charClass = palalding)
@@ -274,3 +274,8 @@ function returnBack() {
     classCompare.style.display = "none";
     beginAd.style.display = "block";
 }
+$('#submit').on('click',function(){
+    var selectedClass = $("#default_select").val();
+    console.log(selectedClass);
+
+})
