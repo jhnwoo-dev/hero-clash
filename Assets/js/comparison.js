@@ -3,28 +3,62 @@ if (!userCharacter) {
     // userCharacter = default stats
 }
 var comparisonCharacter;
-var comparisonClass = "barbarian";
+var comparisonClass = "";
+
+var submitBtn = $("#submit");
 
 //API used to grab class info
-var classesAPI = `https://www.dnd5eapi.co/api/classes/`;
-fetch(classesAPI)
-    .then(function (response) {
-        console.log(response);
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    });
-//API used to grab class description
-var descriptionAPI = `https://api.open5e.com/classes/`;
-fetch(classes2API)
-    .then(function (response) {
-        console.log(response);
-        return response.json();
-    })
-    .then(function (data2) {
-        console.log(data2);
-    });
+var classesAPI = `https://www.dnd5eapi.co/api/classes/${comparisonClass}`;
+//API used to grab class weapon proficiency
+var weaponAPI = `https://api.open5e.com/classes/`;
+
+//Event listener to set userClass to the selection of user
+submitBtn.on("click", function () {
+    userClass = $("#default_select").val();
+    console.log(userClass);
+});
+
+//Function to get class info
+function getInfo(charClass) {
+    fetch(classesAPI, (charClass = userClass))
+        .then((res) => res.json())
+        .then(function (data) {
+            for (i = 0; i < data.starting_equipment.length; i++) {
+                console.log(data.starting_equipment[i].equipment.name);
+            }
+            fetch(weaponAPI)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data2) {
+                    console.log(data2.results[0].prof_weapons);
+                    console.log(data2.results[0].prof_armor);
+                });
+        });
+}
+
+//testing API to grab starting equipment
+// fetch(classesAPI)
+//     .then(function (response) {
+//         console.log(response);
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         for (i = 0; i < data.starting_equipment.length; i++) {
+//             console.log(data.starting_equipment[i].equipment.name);
+//         }
+//     });
+
+//testing API to grab proficient weapons and armor
+// fetch(weaponAPI)
+//     .then(function (response) {
+//         console.log(response);
+//         return response.json();
+//     })
+//     .then(function (data2) {
+//         console.log(data2.results[0].prof_weapons);
+//         console.log(data2.results[0].prof_armor);
+//     });
 
 //roll for stats
 function roll4d6minusLowest() {
