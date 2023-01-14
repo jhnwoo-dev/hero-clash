@@ -7,8 +7,8 @@ body {
 }
 
 #title-button{
-    max-width: 400px;
-    max-height: 50px;
+    max-width: 40vh;
+    max-height: 5vh;
     bottom: -40vh;
     left: -25vh;
 }
@@ -27,7 +27,6 @@ body {
 .landing-imgbtn{
     justify-content: center;
 }
-
 .cave-bg3{
     background-image:url("../Images/Backgrounds/well-lit-room.png");
     background-size: cover;
@@ -45,13 +44,13 @@ body {
     animation: myfirst 5s ease-in-out;
 }
 @keyframes myfirst {
-    from  {left:-600px}
+    from  {left:-60vh}
     to {left:0px}
 }
 
 .heroIMGOTpre{
    transform: rotate(90deg); 
-   left: 500px;
+   left: 50vh;
    position: relative;
    animation: mysecond 5s ease-in-out;
 }
@@ -73,7 +72,7 @@ body {
 }
 
 .hero-location-battle{
-    top: 300px;
+    top: 30vh;
     position: relative;
    animation: mythird 2s ease-in-out, shake 2s;
 }
