@@ -239,20 +239,6 @@ submitBtn.on("click", function () {
     userClass = $("#default_select").val().toLowerCase();
     $("img").remove();
     console.log(userClass);
-    // character = {
-    //     str: rolledSTR,
-    //     dex: rolledDEX,
-    //     con: rolledCON,
-    //     cha: rolledCHA,
-    //     int: rolledINT,
-    //     wis: rolledWIS,
-    //     hp: 0,
-    //     starter: "",
-    //     armor: "",
-    //     weapon: "",
-    //     class: userClass,
-    // };
-    // console.log(character);
     rollStats(userClass);
     // console.log(character);
     var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`;
@@ -284,19 +270,16 @@ submitBtn.on("click", function () {
                         "savedUser",
                         JSON.stringify(character)
                     );
+                    var userCharacter = JSON.parse(localStorage.getItem('savedUser'));
+
+                    $("#lifeDisplay").text("HP: " + userCharacter.hp);
+                    $("#strDisplay").text("STR: " + userCharacter.str);
+                    $("#dexDisplay").text("DEX: " + userCharacter.dex);
+                    $("#conDisplay").text("CON: " + userCharacter.con);
+                    $("#chaDisplay").text("CHA: " + userCharacter.cha);
+                    $("#intDisplay").text("INT: " + userCharacter.int);
+                    $("#wisDisplay").text("WIS: " + userCharacter.wis);
                 });
-            var saveList = JSON.parse(localStorage.getItem("savedUser"));
-            console.log(saveList);
-            var saveListArray = Object.values(saveList);
-            console.log(saveListArray);
-            console.log(saveListArray[0]);
-            $("#life-container").text("HP: " + saveListArray[6]);
-            $("#str-container").text("STR: " + saveListArray[0]);
-            $("#dex-container").text("DEX: " + saveListArray[1]);
-            $("#con-container").text("CON: " + saveListArray[2]);
-            $("#cha-container").text("CHA: " + saveListArray[3]);
-            $("#int-container").text("INT: " + saveListArray[4]);
-            $("#wis-container").text("WIS: " + saveListArray[5]);
         });
 });
 

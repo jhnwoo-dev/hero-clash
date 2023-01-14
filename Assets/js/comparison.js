@@ -1,4 +1,5 @@
 var userCharacter = JSON.parse(localStorage.getItem('savedUser'));
+console.log(userCharacter)
 $("#selectedHeroComparisonHP").html("HP: " + userCharacter.hp)
 $("#selectedHeroComparisonSTR").attr('value', userCharacter.str)
 $("#selectedHeroComparisonDEX").attr('value', userCharacter.dex)
@@ -6,9 +7,9 @@ $("#selectedHeroComparisonCON").attr('value', userCharacter.con)
 $("#selectedHeroComparisonCHA").attr('value', userCharacter.cha)
 $("#selectedHeroComparisonINT").attr('value', userCharacter.int)
 $("#selectedHeroComparisonWIS").attr('value', userCharacter.wis)
-$("#weaponProfCompare").text(userCharacter.weapon)
+$("#weaponProfUser").text(userCharacter.weapon)
 $("#armorProfUser").text(userCharacter.armor)
-$("#startingEqUser").text(userCharacter.starter)
+$("#startingEqProfUser").text(userCharacter.starter)
 console.log(userCharacter);
 //Global variables
 var userCharacter = "";
@@ -38,7 +39,7 @@ submitBtn.on("click", function () {
         cha: roll4d6minusLowest(),
         int: roll4d6minusLowest(),
         wis: roll4d6minusLowest(),
-        hp: "",
+        hp: roll4d6minusLowest(),
         starter: "",
         armor: "",
         weapon: "",
@@ -132,6 +133,7 @@ var rolledCON = roll4d6minusLowest();
 var rolledCHA = roll4d6minusLowest();
 var rolledINT = roll4d6minusLowest();
 var rolledWIS = roll4d6minusLowest();
+var rolledLife = roll4d6minusLowest();
 
 var statsArray = [
     rolledSTR,
@@ -140,6 +142,7 @@ var statsArray = [
     rolledCHA,
     rolledINT,
     rolledWIS,
+    rolledLife,
 ];
 var userStats = console.log(statsArray);
 // assign stat bonus to classes
@@ -169,57 +172,57 @@ var userStats = console.log(statsArray);
 // Sorcerer 6
 // Warlock 8
 // Wizard 6
-function rollStats(charClass) {
+function rollStats(userClass) {
 
-    if (charClass == "Barbarian") {
+    if (userClass == "Barbarian") {
         // buff str and con
         character.hp = 12 + modifier(character.con);
         character.str += 2;
         character.con += 1;
         // set hp bsaed on magic formula
-    } else if (charClass == "Bard") {
+    } else if (userClass == "Bard") {
         character.hp = 8 + modifier(character.con);
         character.cha += 2;
         character.dex += 1;
-    } else if (charClass == "Cleric") {
+    } else if (userClass == "Cleric") {
         character.hp = 8 + modifier(character.con);
         character.wis += 2;
         character.cha += 1;
-    } else if (charClass == "Druid") {
+    } else if (userClass == "Druid") {
         character.hp = 8 + modifier(character.con);
         character.int += 2;
         character.wis += 1;
-    } else if (charClass == "Fighter") {
+    } else if (userClass == "Fighter") {
         character.hp = 10 + modifier(character.con);
         character.str += 2;
         character.con += 1;
-    } else if (charClass == "Monk") {
+    } else if (userClass == "Monk") {
         character.hp = 8 + modifier(character.con);
         character.str += 2;
         character.dex += 1;
-    } else if (charClass == "Paladin") {
+    } else if (userClass == "Paladin") {
         character.hp = 10 + modifier(character.con);
         character.con += 2;
         character.dex -= 1;
         character.str += 1;
         character.cha += 1;
-    } else if (charClass == "Ranger") {
+    } else if (userClass == "Ranger") {
         character.hp = 10 + modifier(character.con);
         character.str += 2;
         character.dex += 1;
-    } else if (charClass == "Rogue") {
+    } else if (userClass == "Rogue") {
         character.hp = 8 + modifier(character.con);
         character.dex += 2;
         character.int += 1;
-    } else if (charClass == "Sorcerer") {
+    } else if (userClass == "Sorcerer") {
         character.hp = 6 + modifier(character.con);
         character.con += 2;
         character.cha += 1;
-    } else if (charClass == "Warlock") {
+    } else if (userClass == "Warlock") {
         character.hp = 8 + modifier(character.con);
         character.wis += 2;
         character.cha += 1;
-    } else if (charClass == "Wizard") {
+    } else if (userClass == "Wizard") {
         character.hp = 6 + modifier(character.con);
         character.int += 2;
         character.wis += 1;
