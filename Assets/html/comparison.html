@@ -19,42 +19,39 @@
 
             <div class="lx-container-100">
                 <h1 id="title">Class Comparison</h1>
-                <div class="lx-row">
-                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Paladin.png"
-                        alt="default character" draggable="true">
+                <div class="lx-row" id="dragtop">
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Barbarian.png"
-                        alt="default character" draggable="true">
+                        alt="default character" >
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Bard.png"
-                        alt="default character" draggable="true">
+                        alt="default character" >
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Cleric.png"
-                        alt="default character" draggable="true">
+                        alt="default character" >
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Druid.png"
-                        alt="default character" draggable="true">
+                        alt="default character" >
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Fighter.png"
-                        alt="default character" draggable="true">
+                        alt="default character" >
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Monk.PNG"
-                        alt="default character" draggable="true">
+                        alt="default character" >
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Ranger.png"
-                        alt="default character" draggable="true">
+                        alt="default character" >
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Rogue.png"
-                        alt="default character" draggable="true">
+                        alt="default character" >
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Sorcerer.png"
-                        alt="default character" draggable="true">
+                        alt="default character" >
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Warlock.png"
-                        alt="default character" draggable="true">
+                        alt="default character" >
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Wizard.png"
-                        alt="default character" draggable="true">
+                        alt="default character" >
                 </div>
                 <div class="lx-row">
                     <div class="nes-container is-rounded lx-column blacktext">
                         <p>Weapon proficiency</p>
-                        <div class="nes-container is-rounded lx-column">sdfgsdfgsdfg
-                        </div>
+                        <div class="nes-container is-rounded lx-column" id="weaponProfUser"></div>
                         <p>Armor proficiency</p>
-                        <div class="nes-container is-rounded lx-column">sdfgsdfgsdfg
-                        </div>
+                        <div class="nes-container is-rounded lx-column" id="armorProfUser"></div>
                         <p>Starting Equiptment</p>
-                        <div class="nes-container is-rounded lx-column">sdfgsdfgsdfg
+                        <div class="nes-container is-rounded lx-column" id="startingEqProfUser"></div>
+                            <div class="nes-container is-rounded lx-column" >
                         </div>
                     </div>
                     
@@ -98,7 +95,7 @@
                     </div>
 
 
-                    <div class="lx-column landing-imgbtn">
+                    <div class="lx-column landing-imgbtn" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <img class="heroCompareBig lx-row" src="../Images/Character/Frontview/Paladin.png"
                             alt="default character">
                     </div>
@@ -157,20 +154,20 @@
                     </div>
                     <div class="nes-container is-rounded lx-column blacktext">
                         <p>Weapon proficiency</p>
-                        <div class="nes-container is-rounded lx-column">sdfgsdfgsdfg
+                        <div class="nes-container is-rounded lx-column" id="weaponProfCompare">
                         </div>
                         <p>Armor proficiency</p>
-                        <div class="nes-container is-rounded lx-column">sdfgsdfgsdfg
+                        <div class="nes-container is-rounded lx-column" id="armorProfCompare">
                         </div>
                         <p>Starting Equiptment</p>
-                        <div class="nes-container is-rounded lx-column">sdfgsdfgsdfg
+                        <div class="nes-container is-rounded lx-column" id="startingEqCompare">
                         </div>
                     </div>
                 </div>
             </div>
 
             <div>
-                <a id="return-button" class="nes-btn" href="../../index.html">Go Back</a>
+                <a id="return-button" class="nes-btn" href="../../index.html">Restart</a>
             </div>
         </div>
     </section>
