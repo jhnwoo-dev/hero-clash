@@ -2,10 +2,6 @@
     color: whitesmoke;
 }
 
-body {
-    background: rgb(199, 67, 67);
-}
-
 #title-button{
     max-width: 400px;
     max-height: 50px;
@@ -17,15 +13,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-}
-#title-hero{
-    bottom: -10vh;
-    right: -20vh;
 }
 
 .landing-imgbtn{
     justify-content: center;
+}
+
+#title-hero{
+    bottom: -10vh;
+    color: yellow;
 }
 
 .cave-bg1{
@@ -33,12 +29,25 @@ body {
     background-size: cover;
 }
 
-
 .forest-bg{
     background-image:url("../Images/Backgrounds/landing-page-1.png");
     background-size: cover;
 }
  
+.yellowtext{
+    color: yellow;
+}
+
+.blacktext{
+    color: black;
+}
+.heroCompare {
+    cursor: move;
+    max-width: 8vh;
+}
+
+/* Code below is not needed - saved for potential future work */
+
 /* .owlbearpre {
     transform: rotate(-90deg);
     position: relative;
@@ -63,17 +72,6 @@ body {
 /* #continueBtnPre {
     left: 90rem;
 } */
-.yellowtext{
-    color: yellow;
-}
-
-.blacktext{
-    color: black;
-}
-.heroCompare {
-    cursor: move;
-    max-width: 8vh;
-}
 
 /* .hero-location-battle{
     top: 30vh;
