@@ -3,7 +3,9 @@ console.log(userCharacter);
 //Global variables
 var userCharacter = "";
 var comparisonCharacter;
+
 var comparisonClass;
+
 
 //Button Variables
 var btn = $("#test-button");
@@ -11,6 +13,7 @@ var submitBtn = $("#submit");
 var userClass = "";
 // character="a"
 //API used to grab class info
+
 //API used to grab class weapon proficiency
 // var weaponAPI = `https://api.open5e.com/classes/${userClass}`;
 
@@ -85,6 +88,7 @@ var floodBG = "./Assets/Images/Backgrounds/room-started-flooding.png";
 var campfireBG = "./Assets/Images/Backgrounds/well-lit-room.png";
 
 // forloop to change backgrounds on fight page when hitting button
+
 
 //roll for stats
 function roll4d6minusLowest() {
