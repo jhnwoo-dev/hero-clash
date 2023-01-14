@@ -27,6 +27,7 @@ body {
 .landing-imgbtn{
     justify-content: center;
 }
+
 .cave-bg1{
     background-image:url("../Images/Backgrounds/well-lit-room.png");
     background-size: cover;
