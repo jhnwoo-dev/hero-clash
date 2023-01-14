@@ -9,19 +9,19 @@ body {
 #title-button{
     max-width: 400px;
     max-height: 50px;
-    bottom: -400px;
-    left: -250px;
+    bottom: -40vh;
+    left: -25vh;
 }
 
 .titlecontainer{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 #title-hero{
     bottom: -10vh;
-    right: -200px;
+    right: -20vh;
 }
 
 .landing-imgbtn{

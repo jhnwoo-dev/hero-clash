@@ -625,7 +625,6 @@ var modifiedLifeWizard = baseModdedLifeWizard * 10;
 console.log(modifiedLifeBarbarian);
 //Display stats in stat windows in battle/creation/comparison page
 
-//
 const titleButton = document.getElementById("title-button");
 const titlePage = document.getElementById("title-page"); // needs id in title page section (use "title-page")
 const charSelect = document.getElementById("char-sel"); // needs id for character select section (use "char-sel")
