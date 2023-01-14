@@ -1,65 +1,77 @@
 //Global variables
-var userCharacter;
+var userCharacter = "";
 var comparisonCharacter;
-var userClass;
 var comparisonClass;
 
 //Button Variables
 var btn = $("#test-button");
 var submitBtn = $("#submit");
-
+var userClass = "";
+// character="a"
 //API used to grab class info
-var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`;
 //API used to grab class weapon proficiency
-var weaponAPI = `https://api.open5e.com/classes/`;
+// var weaponAPI = `https://api.open5e.com/classes/${userClass}`;
 
 //Event listener to set userClass to the selection of user
 submitBtn.on("click", function () {
     userClass = $("#default_select").val().toLowerCase();
     console.log(userClass);
-});
-
-//Function to get class info
-function getInfo(charClass) {
-    fetch(classesAPI, (charClass = userClass))
-        .then((res) => res.json())
+    character = {
+        str: roll4d6minusLowest(),
+        dex: roll4d6minusLowest(),
+        con: roll4d6minusLowest(),
+        cha: roll4d6minusLowest(),
+        int: roll4d6minusLowest(),
+        wis: roll4d6minusLowest(),
+        hp: 0,
+        starter: "",
+        armor: "",
+        weapon: "",
+        class: userClass,
+    };
+    rollStats();
+    console.log(character);
+    var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`;
+    fetch(classesAPI)
+        .then(function (response) {
+            console.log(response);
+            return response.json();
+        })
         .then(function (data) {
             for (i = 0; i < data.starting_equipment.length; i++) {
                 console.log(data.starting_equipment[i].equipment.name);
+                character.starter = data.starting_equipment[i].equipment.name;
+                console.log(character);
             }
-            // fetch(weaponAPI)
-            //     .then(function (response) {
-            //         return response.json();
-            //     })
-            //     .then(function (data2) {
-            //         console.log(data2.results[0].prof_weapons);
-            //         console.log(data2.results[0].prof_armor);
-            //     });
+            var weaponAPI = `https://api.open5e.com/classes/${userClass}`;
+            fetch(weaponAPI)
+                .then(function (response2) {
+                    console.log(response2);
+                    return response2.json();
+                })
+                .then(function (data2) {
+                    console.log(data2);
+                    console.log(data2.prof_weapons);
+                    console.log(data2.prof_armor);
+                    character.weapon = data2.prof_weapons;
+                    character.armor = data2.prof_armor;
+                    console.log(character);
+                    localStorage.setItem(
+                        "savedUser",
+                        JSON.stringify(character)
+                    );
+                });
         });
+    // getInfo(userClass)
+});
+
+function createCharacter() {
+    rollStats(userClass);
 }
 
-//testing API to grab starting equipment
-// fetch(classesAPI)
-//     .then(function (response) {
-//         console.log(response);
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         for (i = 0; i < data.starting_equipment.length; i++) {
-//             console.log(data.starting_equipment[i].equipment.name);
-//         }
-//     });
+// testing API to grab starting equipment
 
 //testing API to grab proficient weapons and armor
-// fetch(weaponAPI)
-//     .then(function (response) {
-//         console.log(response);
-//         return response.json();
-//     })
-//     .then(function (data2) {
-//         console.log(data2.results[0].prof_weapons);
-//         console.log(data2.results[0].prof_armor);
-//     });
 
 // Background pathways
 var forestBG = "./Assets/Images/Backgrounds/landing-page-1.png";
@@ -127,73 +139,61 @@ var userStats = console.log(statsArray);
 // Warlock 8
 // Wizard 6
 function rollStats(charClass) {
-    var character = {
-        str: roll4d6minusLowest(),
-        dex: roll4d6minusLowest(),
-        con: roll4d6minusLowest(),
-        cha: roll4d6minusLowest(),
-        int: roll4d6minusLowest(),
-        wis: roll4d6minusLowest(),
-        hp: 0,
-        skills: "",
-        weapons: "",
-        class: charClass,
-    };
     if (charClass == "Barbarian") {
         // buff str and con
-        character.hp = 12 + modifier(character.con) * 10;
+        character.hp = 12 + modifier(character.con);
         character.str += 2;
         character.con += 1;
         // set hp bsaed on magic formula
     } else if (charClass == "Bard") {
-        character.hp = 8 + modifier(character.con) * 10;
+        character.hp = 8 + modifier(character.con);
         character.cha += 2;
         character.dex += 1;
     } else if (charClass == "Cleric") {
-        character.hp = 8 + modifier(character.con) * 10;
+        character.hp = 8 + modifier(character.con);
         character.wis += 2;
         character.cha += 1;
     } else if (charClass == "Druid") {
-        character.hp = 8 + modifier(character.con) * 10;
+        character.hp = 8 + modifier(character.con);
         character.int += 2;
         character.wis += 1;
     } else if (charClass == "Fighter") {
-        character.hp = 10 + modifier(character.con) * 10;
+        character.hp = 10 + modifier(character.con);
         character.str += 2;
         character.con += 1;
     } else if (charClass == "Monk") {
-        character.hp = 8 + modifier(character.con) * 10;
+        character.hp = 8 + modifier(character.con);
         character.str += 2;
         character.dex += 1;
     } else if (charClass == "Paladin") {
-        character.hp = 10 + modifier(character.con) * 10;
+        character.hp = 10 + modifier(character.con);
         character.con += 2;
         character.dex -= 1;
         character.str += 1;
         character.cha += 1;
     } else if (charClass == "Ranger") {
-        character.hp = 10 + modifier(character.con) * 10;
+        character.hp = 10 + modifier(character.con);
         character.str += 2;
         character.dex += 1;
     } else if (charClass == "Rogue") {
-        character.hp = 8 + modifier(character.con) * 10;
+        character.hp = 8 + modifier(character.con);
         character.dex += 2;
         character.int += 1;
     } else if (charClass == "Sorcerer") {
-        character.hp = 6 + modifier(character.con) * 10;
+        character.hp = 6 + modifier(character.con);
         character.con += 2;
         character.cha += 1;
     } else if (charClass == "Warlock") {
-        character.hp = 8 + modifier(character.con) * 10;
+        character.hp = 8 + modifier(character.con);
         character.wis += 2;
         character.cha += 1;
     } else if (charClass == "Wizard") {
-        character.hp = 6 + modifier(character.con) * 10;
+        character.hp = 6 + modifier(character.con);
         character.int += 2;
         character.wis += 1;
     }
 
-    userCharacter = character;
+    // userCharacter = character;
 }
 
 function modifier(n) {
@@ -223,26 +223,6 @@ function modifier(n) {
         return 6;
     }
 }
-// btn.addEventListener("click", createCharacter);
-
-function createCharacter() {
-    rollStats(userClass);
-    localStorage.setItem("savedUser", JSON.stringify(userCharacter));
-    // getSkills("barbarian");
-}
-// function getSkills(charClass) {
-//     fetch(kashefkd charClass = palalding)
-//     .then(res => res.json())
-//     .then(function(data) {
-//         //update skills
-//         fetch(weapons)
-//         .then(res => res.json())
-//         .then(function(data) {
-//             // update weapons
-//             // save localstorage
-//         })
-//     })
-// }
 
 //get modifier for each stat
 // 1     = -5
@@ -258,9 +238,6 @@ function createCharacter() {
 // 20-21 = +5
 // 22-23 = +6
 
-// moddedStatsBarbarian = [4,2,6,7,4,1]
-// use modifier to figure out hp, add that in
-// modifierArrayBarbarian = [-4,-5,-3,-4,-1]
 //Display stats in stat windows in battle/creation/comparison page
 
 const titleButton = document.getElementById("title-button");
@@ -279,7 +256,7 @@ function startGame() {
     titlePage.style.display = "none";
 }
 
-// beginAd.addEventListener("click", adventureStart);
+beginAd.addEventListener("click", adventureStart);
 
 // go to character comparison
 function adventureStart() {
