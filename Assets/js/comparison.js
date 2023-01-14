@@ -232,7 +232,7 @@ function modifier(n) {
         return 6;
     }
 }
-btn.addEventlistener("click", updateCharacter);
+
 
 function updateCharacter() {
     userCharacter = createChar("mage");
@@ -240,8 +240,29 @@ function updateCharacter() {
     getWeapons("mage");
 }
 
-userChar = createChar("paladin");
-compChar = createChar("rogue");
 
 var selectedClass = $("#default_select").val();
 console.log(selectedClass);
+
+
+//grab all img tags
+var images = document.querySelectorAll("img");
+
+//for loop to make it swap on drag and drop
+for (var i = 0; i < images.length; i++) {
+    images[i].setAttribute("draggable", "true");
+    images[i].addEventListener("dragstart", function(event) {
+        event.dataTransfer.setData("text", event.target.id);
+    });
+    images[i].addEventListener("drop", function(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        event.target.appendChild(document.getElementById(dragtop));
+    });
+    images[i].addEventListener("dragover", function(event) {
+        event.preventDefault();
+    });
+    images[i].addEventListener("dragenter", function(event) {
+        event.preventDefault();
+    });
+}
