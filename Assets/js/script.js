@@ -281,14 +281,14 @@ const beginAd = document.getElementById("beginAd"); // needs id for begin advent
 const classCompare = document.getElementById("class-compare"); // needs id for character select section (use "char-sel")
 const goBack = document.getElementById("return-button");
 
-// titleButton.addEventListener("click", startGame);
+titleButton.addEventListener("click", startGame);
 
 // start game go to character select
-// function startGame() {
-//     titleButton.style.display = "none";
-//     charSelect.style.display = "block"; // add "style='display: none'" to character-select-container section
-//     titlePage.style.display = "none";
-// }
+function startGame() {
+    titleButton.style.display = "none";
+    charSelect.style.display = "block"; // add "style='display: none'" to character-select-container section
+    titlePage.style.display = "none";
+}
 
 // beginAd.addEventListener("click", adventureStart);
 
