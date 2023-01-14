@@ -256,7 +256,7 @@ for (var i = 0; i < images.length; i++) {
     });
     images[i].addEventListener("drop", function(event) {
         event.preventDefault();
-        var data = event.dataTransfer.getData("text");
+        var dragtop = event.dataTransfer.getData("text");
         event.target.appendChild(document.getElementById(dragtop));
     });
     images[i].addEventListener("dragover", function(event) {
