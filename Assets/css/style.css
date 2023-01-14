@@ -7,23 +7,27 @@ body {
 }
 
 #title-button{
-    max-width: 40vh;
-    max-height: 5vh;
-
+    max-width: 400px;
+    max-height: 50px;
+    bottom: -40vh;
+    left: -25vh;
 }
 
 .titlecontainer{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 
 }
-/* #title-hero{
-} */
+#title-hero{
+    bottom: -10vh;
+    right: -20vh;
+}
 
 .landing-imgbtn{
     justify-content: center;
 }
+
 .cave-bg1{
     background-image:url("../Images/Backgrounds/well-lit-room.png");
     background-size: cover;
