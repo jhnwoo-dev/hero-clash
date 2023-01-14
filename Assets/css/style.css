@@ -35,12 +35,12 @@ body {
     background-size: cover;
 }
  
-.owlbearpre {
+/* .owlbearpre {
     transform: rotate(-90deg);
     position: relative;
     animation: myfirst 5s ease-in-out;
-}
-@keyframes myfirst {
+} */
+/* @keyframes myfirst {
     from  {left:-60vh}
     to {left:0px}
 }
@@ -54,10 +54,13 @@ body {
 @keyframes mysecond {
     from  {left:-400px}
     to {left:500px}
-}
+} */
 
-#continueBtnPre {
+/* #continueBtnPre {
     left: 90rem;
+} */
+.yellowtext{
+    color: yellow;
 }
 
 .blacktext{
@@ -68,7 +71,7 @@ body {
     max-width: 8vh;
 }
 
-.hero-location-battle{
+/* .hero-location-battle{
     top: 30vh;
     position: relative;
    animation: mythird 2s ease-in-out, shake 2s;
@@ -101,7 +104,7 @@ body {
 .enemyIMGbattle{
     max-width: 300px;
     max-height: 300px;
-}
+} */
 /* .title-bg{
     background-image:url("./Assets/Images/Backgrounds/title-page.png");
     background-size: cover;

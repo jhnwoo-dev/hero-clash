@@ -2,19 +2,22 @@
 var userCharacter = "";
 var comparisonCharacter;
 var comparisonClass;
-
+var createImgEl = document.createElement("img");
+var imgAppend = $("#heroImgContainer");
 //Button Variables
 var btn = $("#test-button");
 var submitBtn = $("#submit");
 var userClass = "";
-// character="a"
+
 //API used to grab class info
+// var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`
 //API used to grab class weapon proficiency
-// var weaponAPI = `https://api.open5e.com/classes/${userClass}`;
+// var weaponAPI = `https://api.open5e.com/classes/${userClass}`
 
 //Event listener to set userClass to the selection of user
 submitBtn.on("click", function () {
     userClass = $("#default_select").val().toLowerCase();
+    $("img").remove();
     console.log(userClass);
     character = {
         str: roll4d6minusLowest(),
@@ -62,25 +65,7 @@ submitBtn.on("click", function () {
                     );
                 });
         });
-    // getInfo(userClass)
 });
-
-function createCharacter() {
-    rollStats(userClass);
-}
-
-// testing API to grab starting equipment
-
-//testing API to grab proficient weapons and armor
-
-// Background pathways
-var forestBG = "./Assets/Images/Backgrounds/landing-page-1.png";
-var titleBG = "./Assets/Images/Backgrounds/title-page.png";
-var ominousBG = "./Assets/Images/Backgrounds/no-rest.png";
-var floodBG = "./Assets/Images/Backgrounds/room-started-flooding.png";
-var campfireBG = "./Assets/Images/Backgrounds/well-lit-room.png";
-
-// forloop to change backgrounds on fight page when hitting button
 
 //roll for stats
 function roll4d6minusLowest() {
@@ -144,56 +129,105 @@ function rollStats(charClass) {
         character.hp = 12 + modifier(character.con);
         character.str += 2;
         character.con += 1;
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Barbarian.png"
+        );
+        imgAppend.append(createImgEl);
+        // document.getElementById("#heroIMG").src =
+        //     "./Assets/Images/Character/Frontview/Barbarian.png";
         // set hp bsaed on magic formula
     } else if (charClass == "Bard") {
         character.hp = 8 + modifier(character.con);
         character.cha += 2;
         character.dex += 1;
+        $("#heroIMG").attr(
+            "src",
+            "./Assets/Images/Character/Frontview/Bard.png"
+        );
     } else if (charClass == "Cleric") {
         character.hp = 8 + modifier(character.con);
         character.wis += 2;
         character.cha += 1;
+        $("#heroIMG").attr(
+            "src",
+            "./Assets/Images/Character/Frontview/Cleric.png"
+        );
     } else if (charClass == "Druid") {
         character.hp = 8 + modifier(character.con);
         character.int += 2;
         character.wis += 1;
+        $("#heroIMG").attr(
+            "src",
+            "./Assets/Images/Character/Frontview/Druid.png"
+        );
     } else if (charClass == "Fighter") {
         character.hp = 10 + modifier(character.con);
         character.str += 2;
         character.con += 1;
+        $("#heroIMG").attr(
+            "src",
+            "./Assets/Images/Character/Frontview/Fighter.png"
+        );
     } else if (charClass == "Monk") {
         character.hp = 8 + modifier(character.con);
         character.str += 2;
         character.dex += 1;
+        $("#heroIMG").attr(
+            "src",
+            "./Assets/Images/Character/Frontview/Monk.png"
+        );
     } else if (charClass == "Paladin") {
         character.hp = 10 + modifier(character.con);
         character.con += 2;
         character.dex -= 1;
         character.str += 1;
         character.cha += 1;
+        $("#heroIMG").attr(
+            "src",
+            "./Assets/Images/Character/Frontview/Paladin.png"
+        );
     } else if (charClass == "Ranger") {
         character.hp = 10 + modifier(character.con);
         character.str += 2;
         character.dex += 1;
+        $("#heroIMG").attr(
+            "src",
+            "./Assets/Images/Character/Frontview/Ranger.png"
+        );
     } else if (charClass == "Rogue") {
         character.hp = 8 + modifier(character.con);
         character.dex += 2;
         character.int += 1;
+        $("#heroIMG").attr(
+            "src",
+            "./Assets/Images/Character/Frontview/Rogue.png"
+        );
     } else if (charClass == "Sorcerer") {
         character.hp = 6 + modifier(character.con);
         character.con += 2;
         character.cha += 1;
+        $("#heroIMG").attr(
+            "src",
+            "./Assets/Images/Character/Frontview/Sorcerer.png"
+        );
     } else if (charClass == "Warlock") {
         character.hp = 8 + modifier(character.con);
         character.wis += 2;
         character.cha += 1;
+        $("#heroIMG").attr(
+            "src",
+            "./Assets/Images/Character/Frontview/Warlock.png"
+        );
     } else if (charClass == "Wizard") {
         character.hp = 6 + modifier(character.con);
         character.int += 2;
         character.wis += 1;
+        $("#heroIMG").attr(
+            "src",
+            "./Assets/Images/Character/Frontview/Wizard.png"
+        );
     }
-
-    // userCharacter = character;
 }
 
 function modifier(n) {
@@ -250,28 +284,28 @@ const goBack = document.getElementById("return-button");
 // titleButton.addEventListener("click", startGame);
 
 // start game go to character select
-function startGame() {
-    titleButton.style.display = "none";
-    charSelect.style.display = "block"; // add "style='display: none'" to character-select-container section
-    titlePage.style.display = "none";
-}
+// function startGame() {
+//     titleButton.style.display = "none";
+//     charSelect.style.display = "block"; // add "style='display: none'" to character-select-container section
+//     titlePage.style.display = "none";
+// }
 
-beginAd.addEventListener("click", adventureStart);
+// beginAd.addEventListener("click", adventureStart);
 
 // go to character comparison
-function adventureStart() {
-    beginAd.style.display = "none";
-    classCompare.style.display = "block"; // add "style='display: none'" to class-compare section
-    charSelect.style.display = "none";
-    goBack.style.display = "block";
-}
+// function adventureStart() {
+//     beginAd.style.display = "none";
+//     classCompare.style.display = "block"; // add "style='display: none'" to class-compare section
+//     charSelect.style.display = "none";
+//     goBack.style.display = "block";
+// }
 //create event listener for go back button
 // goBack.addEventListener("click", returnBack);
 
 //send user back one page
-function returnBack() {
-    goBack.style.display = "none";
-    charSelect.style.display = "block";
-    classCompare.style.display = "none";
-    beginAd.style.display = "block";
-}
+// function returnBack() {
+//     goBack.style.display = "none";
+//     charSelect.style.display = "block";
+//     classCompare.style.display = "none";
+//     beginAd.style.display = "block";
+// }
