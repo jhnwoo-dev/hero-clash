@@ -1,65 +1,79 @@
 //Global variables
-var userCharacter;
+var userCharacter = "";
 var comparisonCharacter;
-var userClass;
 var comparisonClass;
 
 //Button Variables
 var btn = $("#test-button");
 var submitBtn = $("#submit");
-
+var userClass = "";
+// character="a"
 //API used to grab class info
-var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`;
 //API used to grab class weapon proficiency
-var weaponAPI = `https://api.open5e.com/classes/`;
+// var weaponAPI = `https://api.open5e.com/classes/${userClass}`;
 
 //Event listener to set userClass to the selection of user
 submitBtn.on("click", function () {
-    userClass = $("#default_select").val();
+    userClass = $("#default_select").val().toLowerCase();
     console.log(userClass);
+    character = {
+        str: roll4d6minusLowest(),
+        dex: roll4d6minusLowest(),
+        con: roll4d6minusLowest(),
+        cha: roll4d6minusLowest(),
+        int: roll4d6minusLowest(),
+        wis: roll4d6minusLowest(),
+        hp: 0,
+        starter: "",
+        armor: "",
+        weapon: "",
+        class: userClass,
+    }
+    rollStats();
+    console.log(character)
+    var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`;
+    fetch(classesAPI)
+    
+    .then(function (response) {
+        console.log(response);
+        return response.json();
+    })
+    .then(function (data) {
+        for (i = 0; i < data.starting_equipment.length; i++) {
+            console.log(data.starting_equipment[i].equipment.name);
+            character.starter = data.starting_equipment[i].equipment.name
+            console.log(character)
+        }
+        var weaponAPI = `https://api.open5e.com/classes/${userClass}`;
+        fetch(weaponAPI)
+        .then(function (response2) {
+            console.log(response2);
+            return response2.json();
+        })
+        .then(function (data2) {
+            console.log(data2);
+            console.log(data2.prof_weapons);
+            console.log(data2.prof_armor);
+            character.weapon = data2.prof_weapons
+            character.armor = data2.prof_armor
+            console.log(character)
+            localStorage.setItem("savedUser", JSON.stringify(character));
+        });
+    });
+    // getInfo(userClass)
 });
 
-//Function to get class info
-function getInfo(charClass) {
-    fetch(classesAPI, (charClass = userClass))
-        .then((res) => res.json())
-        .then(function (data) {
-            for (i = 0; i < data.starting_equipment.length; i++) {
-                console.log(data.starting_equipment[i].equipment.name);
-            }
-            fetch(weaponAPI)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data2) {
-                    console.log(data2.results[0].prof_weapons);
-                    console.log(data2.results[0].prof_armor);
-                });
-        });
+
+
+function createCharacter() {
+    rollStats(userClass);
+    
 }
 
-//testing API to grab starting equipment
-// fetch(classesAPI)
-//     .then(function (response) {
-//         console.log(response);
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         for (i = 0; i < data.starting_equipment.length; i++) {
-//             console.log(data.starting_equipment[i].equipment.name);
-//         }
-//     });
+// testing API to grab starting equipment
 
 //testing API to grab proficient weapons and armor
-// fetch(weaponAPI)
-//     .then(function (response) {
-//         console.log(response);
-//         return response.json();
-//     })
-//     .then(function (data2) {
-//         console.log(data2.results[0].prof_weapons);
-//         console.log(data2.results[0].prof_armor);
-//     });
+
 
 // Background pathways
 var forestBG = "./Assets/Images/Backgrounds/landing-page-1.png";
@@ -127,18 +141,7 @@ var userStats = console.log(statsArray);
 // Warlock 8
 // Wizard 6
 function rollStats(charClass) {
-    var character = {
-        str: roll4d6minusLowest(),
-        dex: roll4d6minusLowest(),
-        con: roll4d6minusLowest(),
-        cha: roll4d6minusLowest(),
-        int: roll4d6minusLowest(),
-        wis: roll4d6minusLowest(),
-        hp: 0,
-        skills: "",
-        weapons: "",
-        class: charClass,
-    };
+
     if (charClass == "Barbarian") {
         // buff str and con
         character.hp = 12 + modifier(character.con);
@@ -193,7 +196,7 @@ function rollStats(charClass) {
         character.wis += 1;
     }
 
-    userCharacter = character;
+    // userCharacter = character;
 }
 
 function modifier(n) {
@@ -223,26 +226,6 @@ function modifier(n) {
         return 6;
     }
 }
-btn.addEventListener("click", createCharacter);
-
-function createCharacter() {
-    rollStats(userClass);
-    localStorage.setItem("savedUser", JSON.stringify(userCharacter));
-    // getSkills(userClass);
-}
-// function getSkills(charClass) {
-//     fetch(kashefkd charClass = palalding)
-//     .then(res => res.json())
-//     .then(function(data) {
-//         //update skills
-//         fetch(weapons)
-//         .then(res => res.json())
-//         .then(function(data) {
-//             // update weapons
-//             // save localstorage
-//         })
-//     })
-// }
 
 //get modifier for each stat
 // 1     = -5
@@ -258,9 +241,7 @@ function createCharacter() {
 // 20-21 = +5
 // 22-23 = +6
 
-// moddedStatsBarbarian = [4,2,6,7,4,1]
-// use modifier to figure out hp, add that in
-// modifierArrayBarbarian = [-4,-5,-3,-4,-1]
+
 //Display stats in stat windows in battle/creation/comparison page
 
 const titleButton = document.getElementById("title-button");
@@ -270,7 +251,7 @@ const beginAd = document.getElementById("beginAd"); // needs id for begin advent
 const classCompare = document.getElementById("class-compare"); // needs id for character select section (use "char-sel")
 const goBack = document.getElementById("return-button");
 
-titleButton.addEventListener("click", startGame);
+// titleButton.addEventListener("click", startGame);
 
 // start game go to character select
 function startGame() {
@@ -289,7 +270,7 @@ function adventureStart() {
     goBack.style.display = "block";
 }
 //create event listener for go back button
-goBack.addEventListener("click", returnBack);
+// goBack.addEventListener("click", returnBack);
 
 //send user back one page
 function returnBack() {
@@ -298,8 +279,4 @@ function returnBack() {
     classCompare.style.display = "none";
     beginAd.style.display = "block";
 }
-$('#submit').on('click',function(){
-    var selectedClass = $("#default_select").val();
-    console.log(selectedClass);
 
-})
