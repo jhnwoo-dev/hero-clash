@@ -1,4 +1,5 @@
 var userCharacter = JSON.parse(localStorage.getItem('savedUser'));
+var userHero = document.createElement('img')
 console.log(userCharacter)
 $("#selectedHeroComparisonHP").html("HP: " + userCharacter.hp)
 $("#selectedHeroComparisonSTR").attr('value', userCharacter.str)
@@ -10,7 +11,11 @@ $("#selectedHeroComparisonWIS").attr('value', userCharacter.wis)
 $("#weaponProfUser").text(userCharacter.weapon)
 $("#armorProfUser").text(userCharacter.armor)
 $("#startingEqProfUser").text(userCharacter.starter)
-$("#heroIMGFV").attr('src', userCharacter.src)
+userHero;
+userHero.setAttribute("src", userCharacter.src);
+userHero.setAttribute("class", "heroIMGFV lx-row");
+userHero.setAttribute('id', 'heroIMGAppend');
+appendHeroIMG.append(userHero);
 console.log(userCharacter.src);
 //Global variables
 var userCharacter = "";
@@ -166,12 +171,12 @@ function rollStats(compClass) {
     var imgAppend = $("#heroCompareIMG");
     $("#compIMG").remove();
     character = {
-        str: rolledSTR,
-        dex: rolledDEX,
-        con: rolledCON,
-        cha: rolledCHA,
-        int: rolledINT,
-        wis: rolledWIS,
+        str: roll4d6minusLowest(),
+        dex: roll4d6minusLowest(),
+        con: roll4d6minusLowest(),
+        cha: roll4d6minusLowest(),
+        int: roll4d6minusLowest(),
+        wis: roll4d6minusLowest(),
         hp:"",
         starter: "",
         armor: "",
@@ -360,6 +365,7 @@ console.log(selectedClass);
 function dragStart(event) {
     event.dataTransfer.setData("dragsrc", event.target.src);
     event.dataTransfer.setData("class", event.target.alt)
+    $("#compIMG").remove()
   }
 
   function allowDrop(event) {
@@ -368,7 +374,7 @@ function dragStart(event) {
 
   function drop(event) {
     event.preventDefault();
-    $("#compIMG").remove()
+    
     var transfersrc = event.dataTransfer.getData("dragsrc");
     console.log(transfersrc)
     var transferclass = event.dataTransfer.getData("class")
