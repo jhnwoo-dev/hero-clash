@@ -3,7 +3,7 @@ var userCharacter = "";
 var comparisonCharacter;
 var comparisonClass;
 var createImgEl = document.createElement("img");
-var imgAppend = $("#heroImgContainer");
+
 //Button Variables
 var btn = $("#test-button");
 var submitBtn = $("#submit");
@@ -13,59 +13,6 @@ var userClass = "";
 // var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`
 //API used to grab class weapon proficiency
 // var weaponAPI = `https://api.open5e.com/classes/${userClass}`
-
-//Event listener to set userClass to the selection of user
-submitBtn.on("click", function () {
-    userClass = $("#default_select").val().toLowerCase();
-    $("img").remove();
-    console.log(userClass);
-    character = {
-        str: roll4d6minusLowest(),
-        dex: roll4d6minusLowest(),
-        con: roll4d6minusLowest(),
-        cha: roll4d6minusLowest(),
-        int: roll4d6minusLowest(),
-        wis: roll4d6minusLowest(),
-        hp: 0,
-        starter: "",
-        armor: "",
-        weapon: "",
-        class: userClass,
-    };
-    rollStats();
-    console.log(character);
-    var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`;
-    fetch(classesAPI)
-        .then(function (response) {
-            console.log(response);
-            return response.json();
-        })
-        .then(function (data) {
-            for (i = 0; i < data.starting_equipment.length; i++) {
-                console.log(data.starting_equipment[i].equipment.name);
-                character.starter = data.starting_equipment[i].equipment.name;
-                console.log(character);
-            }
-            var weaponAPI = `https://api.open5e.com/classes/${userClass}`;
-            fetch(weaponAPI)
-                .then(function (response2) {
-                    console.log(response2);
-                    return response2.json();
-                })
-                .then(function (data2) {
-                    console.log(data2);
-                    console.log(data2.prof_weapons);
-                    console.log(data2.prof_armor);
-                    character.weapon = data2.prof_weapons;
-                    character.armor = data2.prof_armor;
-                    console.log(character);
-                    localStorage.setItem(
-                        "savedUser",
-                        JSON.stringify(character)
-                    );
-                });
-        });
-});
 
 //roll for stats
 function roll4d6minusLowest() {
@@ -78,7 +25,6 @@ function roll4d6minusLowest() {
     var total = roll1 + roll2 + roll3 + roll4;
     return total - lowest;
 }
-console.log(roll4d6minusLowest());
 
 var rolledSTR = roll4d6minusLowest();
 var rolledDEX = roll4d6minusLowest();
@@ -86,6 +32,7 @@ var rolledCON = roll4d6minusLowest();
 var rolledCHA = roll4d6minusLowest();
 var rolledINT = roll4d6minusLowest();
 var rolledWIS = roll4d6minusLowest();
+var rolledHP = roll4d6minusLowest();
 
 var statsArray = [
     rolledSTR,
@@ -94,8 +41,9 @@ var statsArray = [
     rolledCHA,
     rolledINT,
     rolledWIS,
+    rolledHP,
 ];
-var userStats = console.log(statsArray);
+console.log(statsArray);
 // assign stat bonus to classes
 // Barbarian +2 Str +1 Con
 // Bard      +2 Cha +1 Dex
@@ -123,112 +71,167 @@ var userStats = console.log(statsArray);
 // Sorcerer 6
 // Warlock 8
 // Wizard 6
-function rollStats(charClass) {
-    if (charClass == "Barbarian") {
-        // buff str and con
+
+function rollStats(userClass) {
+    var createImgEl = document.createElement("img");
+    var imgAppend = $("#heroImgContainer");
+    character = {
+        str: rolledSTR,
+        dex: rolledDEX,
+        con: rolledCON,
+        cha: rolledCHA,
+        int: rolledINT,
+        wis: rolledWIS,
+        hp: rolledHP,
+        starter: "",
+        armor: "",
+        weapon: "",
+        class: userClass,
+        src: ""
+    };
+    if (userClass == "barbarian") {
         character.hp = 12 + modifier(character.con);
         character.str += 2;
         character.con += 1;
-        createImgEl.setAttribute(
-            "src",
-            "./Assets/Images/Character/Frontview/Barbarian.png"
-        );
+        createImgEl;
+        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Barbarian.png");
+        createImgEl.setAttribute("class", "heroIMGFV lx-row");
+        createImgEl.setAttribute('id', 'heroIMG');
         imgAppend.append(createImgEl);
+        character.src = "'../Images/Character/Frontview/Barbarian.png'"
         // document.getElementById("#heroIMG").src =
         //     "./Assets/Images/Character/Frontview/Barbarian.png";
         // set hp bsaed on magic formula
-    } else if (charClass == "Bard") {
+    } else if (userClass == "bard") {
         character.hp = 8 + modifier(character.con);
         character.cha += 2;
         character.dex += 1;
-        $("#heroIMG").attr(
-            "src",
-            "./Assets/Images/Character/Frontview/Bard.png"
-        );
-    } else if (charClass == "Cleric") {
+        createImgEl;
+        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Bard.png");
+        createImgEl.setAttribute("class", "heroIMGFV lx-row");
+        createImgEl.setAttribute('id', 'heroIMG');
+        imgAppend.append(createImgEl);
+        character.src = "../Images/Character/Frontview/Bard.png"
+    } else if (userClass == "cleric") {
         character.hp = 8 + modifier(character.con);
         character.wis += 2;
         character.cha += 1;
-        $("#heroIMG").attr(
-            "src",
-            "./Assets/Images/Character/Frontview/Cleric.png"
-        );
-    } else if (charClass == "Druid") {
+        createImgEl;
+        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Cleric.png");
+        createImgEl.setAttribute("class", "heroIMGFV lx-row");
+        createImgEl.setAttribute('id', 'heroIMG');
+        imgAppend.append(createImgEl);
+        character.src = "../Images/Character/Frontview/Cleric.png"
+    } else if (userClass == "druid") {
         character.hp = 8 + modifier(character.con);
         character.int += 2;
         character.wis += 1;
-        $("#heroIMG").attr(
-            "src",
-            "./Assets/Images/Character/Frontview/Druid.png"
-        );
-    } else if (charClass == "Fighter") {
+        createImgEl;
+        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Druid.png");
+        createImgEl.setAttribute("class", "heroIMGFV lx-row");
+        createImgEl.setAttribute('id', 'heroIMG');
+        imgAppend.append(createImgEl);
+        character.src = "../Images/Character/Frontview/Druid.png"
+    } else if (userClass == "fighter") {
         character.hp = 10 + modifier(character.con);
         character.str += 2;
         character.con += 1;
-        $("#heroIMG").attr(
-            "src",
-            "./Assets/Images/Character/Frontview/Fighter.png"
-        );
-    } else if (charClass == "Monk") {
+        createImgEl;
+        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Fighter.png");
+        createImgEl.setAttribute("class", "heroIMGFV lx-row");
+        createImgEl.setAttribute('id', 'heroIMG');
+        imgAppend.append(createImgEl);
+        character.src = "../Images/Character/Frontview/Fighter.png"
+    } else if (userClass == "monk") {
         character.hp = 8 + modifier(character.con);
         character.str += 2;
         character.dex += 1;
-        $("#heroIMG").attr(
-            "src",
-            "./Assets/Images/Character/Frontview/Monk.png"
-        );
-    } else if (charClass == "Paladin") {
+        createImgEl;
+        createImgEl;
+        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Monk.png");
+        createImgEl.setAttribute("class", "heroIMGFV lx-row");
+        createImgEl.setAttribute('id', 'heroIMG');
+        imgAppend.append(createImgEl);
+        character.src = "../Images/Character/Frontview/Monk.png"
+    } else if (userClass == "paladin") {
         character.hp = 10 + modifier(character.con);
         character.con += 2;
         character.dex -= 1;
         character.str += 1;
         character.cha += 1;
-        $("#heroIMG").attr(
-            "src",
-            "./Assets/Images/Character/Frontview/Paladin.png"
-        );
-    } else if (charClass == "Ranger") {
+        createImgEl;
+        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Paladin.png");
+        createImgEl.setAttribute("class", "heroIMGFV lx-row");
+        createImgEl.setAttribute('id', 'heroIMG');
+        imgAppend.append(createImgEl);
+        character.src = "../Images/Character/Frontview/Paladin.png"
+    } else if (userClass == "ranger") {
         character.hp = 10 + modifier(character.con);
         character.str += 2;
         character.dex += 1;
-        $("#heroIMG").attr(
-            "src",
-            "./Assets/Images/Character/Frontview/Ranger.png"
-        );
-    } else if (charClass == "Rogue") {
+        createImgEl;
+        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Ranger.png");
+        createImgEl.setAttribute("class", "heroIMGFV lx-row");
+        createImgEl.setAttribute('id', 'heroIMG');
+        imgAppend.append(createImgEl);
+        character.src = "../Images/Character/Frontview/Ranger.png"
+    } else if (userClass == "rogue") {
         character.hp = 8 + modifier(character.con);
         character.dex += 2;
         character.int += 1;
-        $("#heroIMG").attr(
-            "src",
-            "./Assets/Images/Character/Frontview/Rogue.png"
-        );
-    } else if (charClass == "Sorcerer") {
+        createImgEl;
+        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Rogue.png");
+        createImgEl.setAttribute("class", "heroIMGFV lx-row");
+        createImgEl.setAttribute('id', 'heroIMG');
+        imgAppend.append(createImgEl);
+        character.src = "../Images/Character/Frontview/Rogue.png"
+    } else if (userClass == "sorcerer") {
         character.hp = 6 + modifier(character.con);
         character.con += 2;
         character.cha += 1;
-        $("#heroIMG").attr(
-            "src",
-            "./Assets/Images/Character/Frontview/Sorcerer.png"
-        );
-    } else if (charClass == "Warlock") {
+        createImgEl;
+        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Sorcerer.png");
+        createImgEl.setAttribute("class", "heroIMGFV lx-row");
+        createImgEl.setAttribute('id', 'heroIMG');
+        imgAppend.append(createImgEl);
+        character.src = "../Images/Character/Frontview/Sorcerer.png"
+    } else if (userClass == "warlock") {
         character.hp = 8 + modifier(character.con);
         character.wis += 2;
         character.cha += 1;
-        $("#heroIMG").attr(
-            "src",
-            "./Assets/Images/Character/Frontview/Warlock.png"
-        );
-    } else if (charClass == "Wizard") {
+        createImgEl;
+        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Warlock.png");
+        createImgEl.setAttribute("class", "heroIMGFV lx-row");
+        createImgEl.setAttribute('id', 'heroIMG');
+        imgAppend.append(createImgEl);
+        character.src = "../Images/Character/Frontview/Warlock.png"
+    } else if (userClass == "wizard") {
         character.hp = 6 + modifier(character.con);
         character.int += 2;
         character.wis += 1;
-        $("#heroIMG").attr(
-            "src",
-            "./Assets/Images/Character/Frontview/Wizard.png"
-        );
+        createImgEl;
+        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Wizard.png");
+        createImgEl.setAttribute("class", "heroIMGFV lx-row");
+        createImgEl.setAttribute('id', 'heroIMG');
+        imgAppend.append(createImgEl);
+        character.src = "../Images/Character/Frontview/Wizard.png"
     }
+    console.log(character);
 }
+
+//get modifier for each stat
+// 1     = -5
+// 2-3   = -4
+// 4-5   = -3
+// 6-7   = -2
+// 8-9   = -1
+// 10-11 =  0
+// 12-13 = +1
+// 14-15 = +2
+// 16-17 = +3
+// 18-19 = +4
+// 20-21 = +5
+// 22-23 = +6
 
 function modifier(n) {
     if (n >= 1 && n <= 3) {
@@ -257,20 +260,54 @@ function modifier(n) {
         return 6;
     }
 }
+//Event listener to set userClass to the selection of user
+submitBtn.on("click", function () {
+    userClass = $("#default_select").val().toLowerCase();
+    $("img").remove();
+    console.log(userClass);
+    rollStats(userClass);
+    // console.log(character);
+    var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`;
+    fetch(classesAPI)
+        .then(function (response) {
+            console.log(response);
+            return response.json();
+        })
+        .then(function (data) {
+            for (i = 0; i < data.starting_equipment.length; i++) {
+                console.log(data.starting_equipment[i].equipment.name);
+                character.starter = data.starting_equipment[i].equipment.name;
+                // console.log(character);
+            }
+            var weaponAPI = `https://api.open5e.com/classes/${userClass}`;
+            fetch(weaponAPI)
+                .then(function (response2) {
+                    console.log(response2);
+                    return response2.json();
+                })
+                .then(function (data2) {
+                    console.log(data2);
+                    console.log(data2.prof_weapons);
+                    console.log(data2.prof_armor);
+                    character.weapon = data2.prof_weapons;
+                    character.armor = data2.prof_armor;
+                    console.log(character);
+                    localStorage.setItem(
+                        "savedUser",
+                        JSON.stringify(character)
+                    );
+                    var userCharacter = JSON.parse(localStorage.getItem('savedUser'));
 
-//get modifier for each stat
-// 1     = -5
-// 2-3   = -4
-// 4-5   = -3
-// 6-7   = -2
-// 8-9   = -1
-// 10-11 =  0
-// 12-13 = +1
-// 14-15 = +2
-// 16-17 = +3
-// 18-19 = +4
-// 20-21 = +5
-// 22-23 = +6
+                    $("#lifeDisplay").text("HP: " + userCharacter.hp);
+                    $("#strDisplay").text("STR: " + userCharacter.str);
+                    $("#dexDisplay").text("DEX: " + userCharacter.dex);
+                    $("#conDisplay").text("CON: " + userCharacter.con);
+                    $("#chaDisplay").text("CHA: " + userCharacter.cha);
+                    $("#intDisplay").text("INT: " + userCharacter.int);
+                    $("#wisDisplay").text("WIS: " + userCharacter.wis);
+                });
+        });
+});
 
 //Display stats in stat windows in battle/creation/comparison page
 
