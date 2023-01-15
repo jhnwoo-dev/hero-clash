@@ -32,20 +32,9 @@ var userClass = "";
 submitBtn.on("click", function () {
     userClass = $("#default_select").val().toLowerCase();
     console.log(userClass);
-    character = {
-        str: roll4d6minusLowest(),
-        dex: roll4d6minusLowest(),
-        con: roll4d6minusLowest(),
-        cha: roll4d6minusLowest(),
-        int: roll4d6minusLowest(),
-        wis: roll4d6minusLowest(),
-        hp: roll4d6minusLowest(),
-        starter: "",
-        armor: "",
-        weapon: "",
-        class: userClass,
-    }
-    rollStats();
+
+    
+    rollStats(userClass);
     console.log(character)
     var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`;
     fetch(classesAPI)
@@ -133,7 +122,7 @@ var rolledCON = roll4d6minusLowest();
 var rolledCHA = roll4d6minusLowest();
 var rolledINT = roll4d6minusLowest();
 var rolledWIS = roll4d6minusLowest();
-var rolledLife = roll4d6minusLowest();
+// var rolledLife = roll4d6minusLowest();
 
 var statsArray = [
     rolledSTR,
@@ -142,7 +131,6 @@ var statsArray = [
     rolledCHA,
     rolledINT,
     rolledWIS,
-    rolledLife,
 ];
 var userStats = console.log(statsArray);
 // assign stat bonus to classes
@@ -173,56 +161,69 @@ var userStats = console.log(statsArray);
 // Warlock 8
 // Wizard 6
 function rollStats(userClass) {
+    character = {
+        str: rolledSTR,
+        dex: rolledDEX,
+        con: rolledCON,
+        cha: rolledCHA,
+        int: rolledINT,
+        wis: rolledWIS,
+        hp: "",
+        starter: "",
+        armor: "",
+        weapon: "",
+        class: userClass,
+    }
 
-    if (userClass == "Barbarian") {
+    if (userClass == "barbarian") {
         // buff str and con
         character.hp = 12 + modifier(character.con);
         character.str += 2;
         character.con += 1;
         // set hp bsaed on magic formula
-    } else if (userClass == "Bard") {
+    } else if (userClass == "bard") {
         character.hp = 8 + modifier(character.con);
         character.cha += 2;
         character.dex += 1;
-    } else if (userClass == "Cleric") {
+    } else if (userClass == "cleric") {
         character.hp = 8 + modifier(character.con);
         character.wis += 2;
         character.cha += 1;
-    } else if (userClass == "Druid") {
+    } else if (userClass == "druid") {
         character.hp = 8 + modifier(character.con);
         character.int += 2;
         character.wis += 1;
-    } else if (userClass == "Fighter") {
+    } else if (userClass == "fighter") {
         character.hp = 10 + modifier(character.con);
         character.str += 2;
         character.con += 1;
-    } else if (userClass == "Monk") {
+    } else if (userClass == "monk") {
         character.hp = 8 + modifier(character.con);
         character.str += 2;
         character.dex += 1;
-    } else if (userClass == "Paladin") {
+    } else if (userClass == "paladin") {
         character.hp = 10 + modifier(character.con);
         character.con += 2;
         character.dex -= 1;
         character.str += 1;
         character.cha += 1;
-    } else if (userClass == "Ranger") {
+    } else if (userClass == "ranger") {
         character.hp = 10 + modifier(character.con);
         character.str += 2;
         character.dex += 1;
-    } else if (userClass == "Rogue") {
+    } else if (userClass == "rogue") {
         character.hp = 8 + modifier(character.con);
         character.dex += 2;
         character.int += 1;
-    } else if (userClass == "Sorcerer") {
+    } else if (userClass == "sorcerer") {
         character.hp = 6 + modifier(character.con);
         character.con += 2;
         character.cha += 1;
-    } else if (userClass == "Warlock") {
+    } else if (userClass == "warlock") {
         character.hp = 8 + modifier(character.con);
         character.wis += 2;
         character.cha += 1;
-    } else if (userClass == "Wizard") {
+    } else if (userClass == "wizard") {
         character.hp = 6 + modifier(character.con);
         character.int += 2;
         character.wis += 1;
