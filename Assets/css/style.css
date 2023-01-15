@@ -51,6 +51,14 @@
     max-width: 8vh;
 }
 
+#heroCompareIMGContainer{
+    height: 250px;
+    text-align: center;
+    
+}
+.dragdropcontainer {
+    height: 200px;
+}
 /* Code below is not needed - saved for potential future work */
 
 /* .owlbearpre {
