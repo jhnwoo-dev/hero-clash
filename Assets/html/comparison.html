@@ -19,29 +19,31 @@
 
             <div class="lx-container-100">
                 <h1 id="title">Class Comparison</h1>
-                <div class="lx-row" id="dragtop">
+                <div class="lx-row" id="dragtop source-container">
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Barbarian.png"
-                        alt="default character">
+                    alt="barbarian" draggable="true" ondragstart="dragStart(event)">
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Bard.png"
-                        alt="default character">
+                    alt="bard" draggable="true" ondragstart="dragStart(event)">
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Cleric.png"
-                        alt="default character">
+                    alt="cleric" draggable="true" ondragstart="dragStart(event)">
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Druid.png"
-                        alt="default character">
+                    alt="druid" draggable="true" ondragstart="dragStart(event)">
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Fighter.png"
-                        alt="default character">
+                    alt="fighter" draggable="true" ondragstart="dragStart(event)">
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Monk.PNG"
-                        alt="default character">
+                    alt="monk" draggable="true" ondragstart="dragStart(event)">
+                    <img class="heroCompare lx-column" src="../Images/Character/Frontview/Paladin.png"
+                        alt="paladin" draggable="true" ondragstart="dragStart(event)">
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Ranger.png"
-                        alt="default character">
+                        alt="ranger" draggable="true" ondragstart="dragStart(event)">
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Rogue.png"
-                        alt="default character">
+                        alt="rogue" draggable="true" ondragstart="dragStart(event)">
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Sorcerer.png"
-                        alt="default character">
+                        alt="sorcerer" draggable="true" ondragstart="dragStart(event)">
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Warlock.png"
-                        alt="default character">
+                        alt="warlock" draggable="true" ondragstart="dragStart(event)">
                     <img class="heroCompare lx-column" src="../Images/Character/Frontview/Wizard.png"
-                        alt="default character">
+                        alt="wizard" draggable="true" ondragstart="dragStart(event)">
                 </div>
                 <div class="lx-row">
                     <div class="nes-container is-rounded lx-column blacktext">
@@ -87,15 +89,16 @@
                         </div>
                     </div>
 
-                    <div class="lx-column landing-imgbtn">
-                        <img class="heroIMGFV lx-row" src="../Images/Character/Frontview/Paladin.png"
-                            alt="default character">
+                    <div class="lx-column landing-imgbtn nes-container is-rounded">
+                        <img class="heroIMGFV lx-row" src="../Images/Character/Frontview/Paladin.png" alt="default character">
                     </div>
 
 
-                    <div class="lx-column landing-imgbtn" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <img class="heroCompareBig lx-row" src="../Images/Character/Frontview/Paladin.png"
-                            alt="default character">
+                    <div id="heroCompareIMG target-container" 
+                    ondragover="allowDrop(event)" 
+                    ondrop="drop(event)" 
+                    class="lx-column landing-imgbtn nes-container is-rounded">
+                        
                     </div>
                     <div class="nes-container is-rounded lx-column blacktext">
 
