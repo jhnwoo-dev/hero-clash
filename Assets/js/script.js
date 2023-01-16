@@ -94,11 +94,14 @@ function rollStats(userClass) {
         character.str += 2;
         character.con += 1;
         createImgEl;
-        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Barbarian.png");
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Barbarian.png"
+        );
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
-        createImgEl.setAttribute('id', 'heroIMG');
+        createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "'../Images/Character/Frontview/Barbarian.png'"
+        character.src = "'../Images/Character/Frontview/Barbarian.png'";
         // document.getElementById("#heroIMG").src =
         //     "./Assets/Images/Character/Frontview/Barbarian.png";
         // set hp bsaed on magic formula
@@ -108,55 +111,70 @@ function rollStats(userClass) {
         character.cha += 2;
         character.dex += 1;
         createImgEl;
-        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Bard.png");
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Bard.png"
+        );
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
-        createImgEl.setAttribute('id', 'heroIMG');
+        createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "../Images/Character/Frontview/Bard.png"
+        character.src = "../Images/Character/Frontview/Bard.png";
     } else if (userClass == "cleric") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
         character.wis += 2;
         character.cha += 1;
         createImgEl;
-        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Cleric.png");
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Cleric.png"
+        );
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
-        createImgEl.setAttribute('id', 'heroIMG');
+        createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "../Images/Character/Frontview/Cleric.png"
+        character.src = "../Images/Character/Frontview/Cleric.png";
     } else if (userClass == "druid") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
         character.int += 2;
         character.wis += 1;
         createImgEl;
-        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Druid.png");
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Druid.png"
+        );
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
-        createImgEl.setAttribute('id', 'heroIMG');
+        createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "../Images/Character/Frontview/Druid.png"
+        character.src = "../Images/Character/Frontview/Druid.png";
     } else if (userClass == "fighter") {
         character.hp = 10 + modifier(character.con);
         character.hp *= 10;
         character.str += 2;
         character.con += 1;
         createImgEl;
-        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Fighter.png");
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Fighter.png"
+        );
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
-        createImgEl.setAttribute('id', 'heroIMG');
+        createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "../Images/Character/Frontview/Fighter.png"
+        character.src = "../Images/Character/Frontview/Fighter.png";
     } else if (userClass == "monk") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
         character.str += 2;
         character.dex += 1;
         createImgEl;
-        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Monk.png");
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Monk.png"
+        );
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
-        createImgEl.setAttribute('id', 'heroIMG');
+        createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "../Images/Character/Frontview/Monk.png"
+        character.src = "../Images/Character/Frontview/Monk.png";
     } else if (userClass == "paladin") {
         character.hp = 10 + modifier(character.con);
         character.hp *= 10;
@@ -165,66 +183,84 @@ function rollStats(userClass) {
         character.str += 1;
         character.cha += 1;
         createImgEl;
-        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Paladin.png");
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Paladin.png"
+        );
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
-        createImgEl.setAttribute('id', 'heroIMG');
+        createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "../Images/Character/Frontview/Paladin.png"
+        character.src = "../Images/Character/Frontview/Paladin.png";
     } else if (userClass == "ranger") {
         character.hp = 10 + modifier(character.con);
         character.hp *= 10;
         character.str += 2;
         character.dex += 1;
         createImgEl;
-        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Ranger.png");
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Ranger.png"
+        );
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
-        createImgEl.setAttribute('id', 'heroIMG');
+        createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "../Images/Character/Frontview/Ranger.png"
+        character.src = "../Images/Character/Frontview/Ranger.png";
     } else if (userClass == "rogue") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
         character.dex += 2;
         character.int += 1;
         createImgEl;
-        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Rogue.png");
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Rogue.png"
+        );
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
-        createImgEl.setAttribute('id', 'heroIMG');
+        createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "../Images/Character/Frontview/Rogue.png"
+        character.src = "../Images/Character/Frontview/Rogue.png";
     } else if (userClass == "sorcerer") {
         character.hp = 6 + modifier(character.con);
         character.hp *= 10;
         character.con += 2;
         character.cha += 1;
         createImgEl;
-        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Sorcerer.png");
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Sorcerer.png"
+        );
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
-        createImgEl.setAttribute('id', 'heroIMG');
+        createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "../Images/Character/Frontview/Sorcerer.png"
+        character.src = "../Images/Character/Frontview/Sorcerer.png";
     } else if (userClass == "warlock") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
         character.wis += 2;
         character.cha += 1;
         createImgEl;
-        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Warlock.png");
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Warlock.png"
+        );
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
-        createImgEl.setAttribute('id', 'heroIMG');
+        createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "../Images/Character/Frontview/Warlock.png"
+        character.src = "../Images/Character/Frontview/Warlock.png";
     } else if (userClass == "wizard") {
         character.hp = 6 + modifier(character.con);
         character.hp *= 10;
         character.int += 2;
         character.wis += 1;
         createImgEl;
-        createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Wizard.png");
+        createImgEl.setAttribute(
+            "src",
+            "./Assets/Images/Character/Frontview/Wizard.png"
+        );
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
-        createImgEl.setAttribute('id', 'heroIMG');
+        createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "../Images/Character/Frontview/Wizard.png"
+        character.src = "../Images/Character/Frontview/Wizard.png";
     }
     console.log(character);
 }
@@ -306,7 +342,9 @@ submitBtn.on("click", function () {
                         "savedUser",
                         JSON.stringify(character)
                     );
-                    var userCharacter = JSON.parse(localStorage.getItem('savedUser'));
+                    var userCharacter = JSON.parse(
+                        localStorage.getItem("savedUser")
+                    );
 
                     $("#lifeDisplay").text("HP: " + userCharacter.hp);
                     $("#strDisplay").text("STR: " + userCharacter.str);
@@ -336,4 +374,3 @@ function startGame() {
     charSelect.style.display = "block"; // add "style='display: none'" to character-select-container section
     titlePage.style.display = "none";
 }
-
