@@ -1,4 +1,5 @@
 var userCharacter = JSON.parse(localStorage.getItem("savedUser"));
+var userHero = document.createElement("img");
 console.log(userCharacter);
 $("#selectedHeroComparisonHP").html("HP: " + userCharacter.hp);
 $("#selectedHeroComparisonSTR").attr("value", userCharacter.str);
@@ -10,7 +11,12 @@ $("#selectedHeroComparisonWIS").attr("value", userCharacter.wis);
 $("#weaponProfUser").text(userCharacter.weapon);
 $("#armorProfUser").text(userCharacter.armor);
 $("#startingEqProfUser").text(userCharacter.starter);
-console.log(userCharacter);
+userHero;
+userHero.setAttribute("src", userCharacter.src);
+userHero.setAttribute("class", "heroIMGFV lx-row");
+userHero.setAttribute("id", "heroIMGAppend");
+appendHeroIMG.append(userHero);
+console.log(userCharacter.src);
 //Global variables
 var userCharacter = "";
 var comparisonCharacter;
@@ -20,7 +26,7 @@ var comparisonClass;
 //Button Variables
 var btn = $("#test-button");
 var submitBtn = $("#submit");
-var userClass = "";
+var compClass = "";
 // character="a"
 //API used to grab class info
 
@@ -29,12 +35,12 @@ var userClass = "";
 
 //Event listener to set userClass to the selection of user
 submitBtn.on("click", function () {
-    userClass = $("#default_select").val().toLowerCase();
-    console.log(userClass);
+    compClass = $("#default_select").val().toLowerCase();
+    console.log(compClass);
 
-    rollStats(userClass);
+    rollStats(compClass);
     console.log(character);
-    var classesAPI = `https://www.dnd5eapi.co/api/classes/${userClass}`;
+    var classesAPI = `https://www.dnd5eapi.co/api/classes/${compClass}`;
     fetch(classesAPI)
         .then(function (response) {
             console.log(response);
@@ -46,7 +52,7 @@ submitBtn.on("click", function () {
                 character.starter = data.starting_equipment[i].equipment.name;
                 console.log(character);
             }
-            var weaponAPI = `https://api.open5e.com/classes/${userClass}`;
+            var weaponAPI = `https://api.open5e.com/classes/${compClass}`;
             fetch(weaponAPI)
                 .then(function (response2) {
                     console.log(response2);
@@ -67,6 +73,7 @@ submitBtn.on("click", function () {
                         localStorage.getItem("savedCompare")
                     );
                     console.log(comparedChar);
+                    character.hp *= 10;
                     $("#comparisonStatHP").html("HP: " + character.hp);
                     $("#comparisonStatSTR").attr("value", character.str);
                     $("#comparisonStatDEX").attr("value", character.dex);
@@ -83,7 +90,7 @@ submitBtn.on("click", function () {
 });
 
 function createCharacter() {
-    rollStats(userClass);
+    rollStats(compClass);
 }
 
 // testing API to grab starting equipment
@@ -156,7 +163,10 @@ var userStats = console.log(statsArray);
 // Sorcerer 6
 // Warlock 8
 // Wizard 6
-function rollStats(userClass) {
+function rollStats(compClass) {
+    var createImgElComp = document.createElement("img");
+    var imgAppend = $("#heroCompareIMG");
+    $("#compIMG").remove();
     character = {
         str: roll4d6minusLowest(),
         dex: roll4d6minusLowest(),
@@ -168,66 +178,173 @@ function rollStats(userClass) {
         starter: "",
         armor: "",
         weapon: "",
-        class: userClass,
+        class: compClass,
+        src: "",
     };
-    if (userClass == "barbarian") {
-        // buff str and con
+    if (compClass == "barbarian") {
         character.hp = 12 + modifier(character.con);
+        character.hp *= 10;
         character.str += 2;
         character.con += 1;
-        $("#testid").attr("src", "../Images/Character/Frontview/Bard.png");
-        // set hp bsaed on magic formula
-    } else if (userClass == "bard") {
+        createImgElComp;
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Barbarian.png"
+        );
+        createImgElComp.setAttribute("class", "heroCompareBig lx-row");
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
+    } else if (compClass == "bard") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.cha += 2;
         character.dex += 1;
-    } else if (userClass == "cleric") {
+        createImgElComp;
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Bard.png"
+        );
+        createImgElComp.setAttribute("class", "heroCompareBig lx-row");
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
+    } else if (compClass == "cleric") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.wis += 2;
         character.cha += 1;
-    } else if (userClass == "druid") {
+        createImgElComp;
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Cleric.png"
+        );
+        createImgElComp.setAttribute("class", "heroCompareBig lx-row");
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
+    } else if (compClass == "druid") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.int += 2;
         character.wis += 1;
-    } else if (userClass == "fighter") {
+        createImgElComp;
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Druid.png"
+        );
+        createImgElComp.setAttribute("class", "heroCompareBig lx-row");
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
+    } else if (compClass == "fighter") {
         character.hp = 10 + modifier(character.con);
+        character.hp *= 10;
         character.str += 2;
         character.con += 1;
-    } else if (userClass == "monk") {
+        createImgElComp;
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Fighter.png"
+        );
+        createImgElComp.setAttribute("class", "heroCompareBig lx-row");
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
+    } else if (compClass == "monk") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.str += 2;
         character.dex += 1;
-    } else if (userClass == "paladin") {
+
+        createImgElComp;
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Monk.png"
+        );
+        createImgElComp.setAttribute("class", "heroCompareBig lx-row");
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
+    } else if (compClass == "paladin") {
         character.hp = 10 + modifier(character.con);
+        character.hp *= 10;
         character.con += 2;
         character.dex -= 1;
         character.str += 1;
         character.cha += 1;
-    } else if (userClass == "ranger") {
+        createImgElComp;
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Paladin.png"
+        );
+        createImgElComp.setAttribute("class", "heroCompareBig lx-row");
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
+    } else if (compClass == "ranger") {
         character.hp = 10 + modifier(character.con);
+        character.hp *= 10;
         character.str += 2;
         character.dex += 1;
-    } else if (userClass == "rogue") {
+        createImgElComp;
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Ranger.png"
+        );
+        createImgElComp.setAttribute("class", "heroCompareBig lx-row");
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
+    } else if (compClass == "rogue") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.dex += 2;
         character.int += 1;
-    } else if (userClass == "sorcerer") {
+        createImgElComp;
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Rogue.png"
+        );
+        createImgElComp.setAttribute("class", "heroCompareBig lx-row");
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
+    } else if (compClass == "sorcerer") {
         character.hp = 6 + modifier(character.con);
+        character.hp *= 10;
         character.con += 2;
         character.cha += 1;
-    } else if (userClass == "warlock") {
+        createImgElComp;
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Sorcerer.png"
+        );
+        createImgElComp.setAttribute("class", "heroCompareBig lx-row");
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
+    } else if (compClass == "warlock") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.wis += 2;
         character.cha += 1;
-    } else if (userClass == "wizard") {
+        createImgElComp;
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Warlock.png"
+        );
+        createImgElComp.setAttribute("class", "heroCompareBig lx-row");
+        createImgElComp.setAttribute("id", "compIMG");
+        createImgElComp.setAttribute("draggable", "true");
+        createImgElComp.setAttribute("ondragstart", "dragStart(event)");
+        imgAppend.append(createImgElComp);
+    } else if (compClass == "wizard") {
         character.hp = 6 + modifier(character.con);
+        character.hp *= 10;
         character.int += 2;
         character.wis += 1;
+        createImgElComp;
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Wizard.png"
+        );
+        createImgElComp.setAttribute("class", "heroCompareBig lx-row");
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
     }
-
-    // userCharacter = character;
+    console.log(character);
 }
-
 function modifier(n) {
     if (n >= 1 && n <= 3) {
         return -5;
@@ -265,24 +382,100 @@ function updateCharacter() {
 var selectedClass = $("#default_select").val();
 console.log(selectedClass);
 
-//grab all img tags
-var images = document.querySelectorAll("img");
+// //grab all img tags
+// var images = document.querySelectorAll("img");
 
-//for loop to make it swap on drag and drop
-for (var i = 0; i < images.length; i++) {
-    images[i].setAttribute("draggable", "true");
-    images[i].addEventListener("dragstart", function (event) {
-        event.dataTransfer.setData("imgCompare", event.target.id);
-    });
-    images[i].addEventListener("drop", function (event) {
-        event.preventDefault();
-        var dragtop = event.dataTransfer.getData("imgCompare");
-        event.target.appendChild(document.getElementById(dragtop));
-    });
-    images[i].addEventListener("dragover", function (event) {
-        event.preventDefault();
-    });
-    images[i].addEventListener("dragenter", function (event) {
-        event.preventDefault();
-    });
+// //for loop to make it swap on drag and drop
+// for (var i = 0; i < images.length; i++) {
+//     images[i].setAttribute("draggable", "true");
+//     images[i].addEventListener("dragstart", function(event) {
+//         event.dataTransfer.setData("imgCompare", event.target.id);
+//     });
+//     images[i].addEventListener("drop", function(event) {
+//         event.preventDefault();
+//         var dragtop = event.dataTransfer.getData("imgCompare");
+//         event.target.appendChild(document.getElementById(dragtop));
+//     });
+//     images[i].addEventListener("dragover", function(event) {
+//         event.preventDefault();
+//     });
+//     images[i].addEventListener("dragenter", function(event) {
+//         event.preventDefault();
+//     });
+// }
+
+function dragStart(event) {
+    event.dataTransfer.setData("dragsrc", event.target.src);
+    event.dataTransfer.setData("class", event.target.alt);
+    $("#compIMG").remove();
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+
+    var transfersrc = event.dataTransfer.getData("dragsrc");
+    console.log(transfersrc);
+    var transferclass = event.dataTransfer.getData("class");
+    console.log(transferclass);
+    rollStats(transferclass);
+    console.log(character);
+    localStorage.setItem("savedCompareDrop", JSON.stringify(character));
+    var comparedCharDrop = JSON.parse(localStorage.getItem("savedCompareDrop"));
+    console.log(comparedCharDrop);
+    $("#comparisonStatHP").html("HP: " + character.hp);
+    $("#comparisonStatSTR").attr("value", character.str);
+    $("#comparisonStatDEX").attr("value", character.dex);
+    $("#comparisonStatCON").attr("value", character.con);
+    $("#comparisonStatCHA").attr("value", character.cha);
+    $("#comparisonStatINT").attr("value", character.int);
+    $("#comparisonStatWIS").attr("value", character.wis);
+
+    var classesAPI = `https://www.dnd5eapi.co/api/classes/${transferclass}`;
+    fetch(classesAPI)
+        .then(function (response) {
+            console.log(response);
+            return response.json();
+        })
+        .then(function (data) {
+            for (i = 0; i < data.starting_equipment.length; i++) {
+                console.log(data.starting_equipment[i].equipment.name);
+                character.starter = data.starting_equipment[i].equipment.name;
+                console.log(character);
+            }
+            var weaponAPI = `https://api.open5e.com/classes/${transferclass}`;
+            fetch(weaponAPI)
+                .then(function (response2) {
+                    console.log(response2);
+                    return response2.json();
+                })
+                .then(function (data2) {
+                    console.log(data2);
+                    console.log(data2.prof_weapons);
+                    console.log(data2.prof_armor);
+                    character.weapon = data2.prof_weapons;
+                    character.armor = data2.prof_armor;
+                    console.log(character);
+                    localStorage.setItem(
+                        "savedCompare",
+                        JSON.stringify(character)
+                    );
+                    var comparedChar = JSON.parse(
+                        localStorage.getItem("savedCompare")
+                    );
+                    console.log(comparedChar);
+                    $("#weaponProfCompare").text(character.weapon);
+                    $("#armorProfCompare").text(character.armor);
+                    $("#startingEqCompare").text(character.starter);
+                });
+        });
+    var imgDrop = document.createElement("img");
+    imgDrop.src = transfersrc;
+    imgDrop.setAttribute("class", "heroCompareBig lx-row");
+    imgDrop.setAttribute("id", "compIMG");
+    imgDrop.setAttribute("value", "compIMG");
+    event.target.appendChild(imgDrop);
 }

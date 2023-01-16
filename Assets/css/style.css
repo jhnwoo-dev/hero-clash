@@ -1,5 +1,6 @@
 *{
     color: whitesmoke;
+    
 }
 
 #title-button{
@@ -33,6 +34,14 @@
     background-image:url("../Images/Backgrounds/landing-page-1.png");
     background-size: cover;
 }
+
+.forestbgfight{
+    background-image: url('../Images/Backgrounds/prestorybg.png');
+    background-size: 100vw 100vh;
+    height: 100vh;
+    width: 100vw;
+
+}
  
 .yellowtext{
     color: yellow;
@@ -51,36 +60,52 @@
     max-width: 8vh;
 }
 
+#heroCompareIMGContainer{
+    height: 250px;
+    text-align: center;
+    
+}
+.dragdropcontainer {
+    height: 200px;
+}
 /* Code below is not needed - saved for potential future work */
 
-/* .owlbearpre {
-    transform: rotate(-90deg);
+.owlbearpre {
+    max-width: 330px;
+    max-height: 330px;
     position: relative;
     animation: myfirst 5s ease-in-out;
-} */
-/* @keyframes myfirst {
+    left: 200vh;
+
+}
+@keyframes myfirst {
     from  {left:-60vh}
-    to {left:0px}
+    to {left:200vh}
 }
 
 .heroIMGOTpre{
    transform: rotate(90deg); 
-   left: 50vh;
+   left: 150vh;
    position: relative;
    animation: mysecond 5s ease-in-out;
+   max-width: 300px;
+   max-height: 300px;
 }
 @keyframes mysecond {
     from  {left:-400px}
-    to {left:500px}
-} */
+    to {left:150vh}
+}
 
-/* #continueBtnPre {
+#continueBtnPre {
     left: 90rem;
-} */
+}
 
-/* .hero-location-battle{
+.hero-location-battle{
     top: 30vh;
     position: relative;
+
+}
+.hero-ani-battle{
    animation: mythird 2s ease-in-out, shake 2s;
 }
 @keyframes mythird {
@@ -89,7 +114,9 @@
 }
 .enemy-location-battle{
     position: relative;
-   animation: myfourth 2s ease-in-out, shake 2s;
+}
+.enemy-ani-battle{
+    animation: myfourth 2s ease-in-out, shake 2s;
 }
 @keyframes myfourth {
     from  {right:0px}
@@ -111,26 +138,22 @@
 .enemyIMGbattle{
     max-width: 300px;
     max-height: 300px;
-} */
-/* .title-bg{
+}
+.title-bg{
     background-image:url("./Assets/Images/Backgrounds/title-page.png");
     background-size: cover;
     
-} */
+}
 
-/* .character-select-container {
+.hiddenbtns{
+    display: none;
+}
+.character-select-container {
     display: none;
 }
 
-.pre-story {
-    display: none;
-}
 
-.main-game {
-    display: none;
+#fightscene {
+    height: 100vh;
 }
-
-.fight-scene {
-    display: none;
-} */
 
