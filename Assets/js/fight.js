@@ -5,6 +5,8 @@ var userFightHealthHero = document.createElement('progress');
 const appendHeroChaseIMG = document.getElementById("heroChaseAppend");
 const appendHeroFightIMG = document.getElementById("heroBattleAppend");
 const monsterHealthBar = document.createElement("progress");
+const chaseAppendText = document.getElementById('textChaseAppendText');
+const fightAppendText = document.getElementById('textFightAppendText');
 userChaseHero;
 userChaseHero.setAttribute("src", `../Images/Character/Overtop/${userCharacter.class}.png`);
 userChaseHero.setAttribute("class", "heroIMGOTpre");
@@ -85,7 +87,8 @@ var monsterAPI = `https://api.open5e.com/monsters/${randomMonster}`;
 
             var imgCreateChase = document.createElement("img");
             var imgCreateFight = document.createElement("img");
-            
+            var textChaseAppend = document.createElement("p");
+            var textBattleAppend = document.createElement("p");
             
             imgCreateChase;
             imgCreateChase.setAttribute("class", "owlbearpre")
@@ -104,6 +107,13 @@ var monsterAPI = `https://api.open5e.com/monsters/${randomMonster}`;
             imgCreateFight.setAttribute("id", "monsterFight");
             monsterFight.append(imgCreateFight);
             console.log(monsterstats)
+            textChaseAppend;
+            textChaseAppend.innerHTML = `You are being chased by a ${data3.name}!`;
+            chaseAppendText.append(textChaseAppend);
+            textBattleAppend;
+            textBattleAppend.innerHTML = `You have encountered a ${data3.name}. Fight to continue your adventure!`;
+            fightAppendText.append(textBattleAppend);
+
         }
         )
         //end of fetch^
@@ -147,16 +157,12 @@ const fightAgainEl = document.getElementById("again-button");
 const monsterFightIMG =  document.getElementById("mosterFight")
 const monsterChase = document.getElementById("monsterChaseAppend")
 const monsterFight = document.getElementById("monsterBattleAppend")
+
 //grab button id
 continueBtnEl.addEventListener("click", startFight);
 
-// start fight scene
-function startFight() {
-    continueBtnEl.style.display = "none";
-    fightPageEl.style.display = "block";
-    prestoryPageEl.style.display = "none";
-}
-                            
+
+    
 
 attackEl.addEventListener('click', attack);
 
@@ -241,7 +247,7 @@ console.log(randomMonster)
 healEl.addEventListener('click', heal);
 
 function heal(){
-    //heal based off stat?
+    //heal based off stat? right now randomized
     var roll1d25 = Math.floor(Math.random() * 25) + 1
     var damagedHP = userFightHealthHero.value
     var healedHP = damagedHP + roll1d25;
@@ -249,7 +255,7 @@ function heal(){
     localStorage.setItem("savedUser", JSON.stringify(userCharacter));
     healEl.style.display = "none";
 
-}
+}  
 
 goBackEl.addEventListener('click', goback);
 
@@ -271,4 +277,42 @@ lostEl.addEventListener('click', lost);
 function lost(){
     // go back to index html
     window.location.href = "../../index.html"
+}
+
+
+
+//set display of monster and hero to none on chase page
+function hideimage(){
+continueBtnEl.classList.toggle("hiddenbtns")
+setTimeout(function(){
+    appendHeroChaseIMG.classList.toggle("hiddenbtns")
+    monsterChase.classList.toggle("hiddenbtns")
+    continueBtnEl.classList.toggle("hiddenbtns")
+}, 5000)}
+
+hideimage()
+
+// start fight scene
+function startFight() {
+    continueBtnEl.style.display = "none";
+    fightPageEl.style.display = "block";
+    prestoryPageEl.style.display = "none";
+    const forestBG = "../Images/Backgrounds/landing-page-1.png";
+    const titleBG = "../Images/Backgrounds/title-page.png";
+    const ominousBG = "../Images/Backgrounds/no-rest.png";
+    const floodBG = "../Images/Backgrounds/room-started-flooding.png";
+    const campfireBG = "../Images/Backgrounds/well-lit-room.png";
+    
+    var randomBGNumber = Math.floor(Math.random() * 5) + 1;
+    if (randomBGNumber == 1){
+        fightPageEl.style.backgroundImage = `url(${forestBG})`
+    } else if (randomBGNumber == 2){
+        fightPageEl.style.backgroundImage = `url(${titleBG})`
+    } else if (randomBGNumber == 3){
+        fightPageEl.style.backgroundImage = `url(${ominousBG})`
+    } else if (randomBGNumber == 4){
+        fightPageEl.style.backgroundImage =`url(${floodBG})`
+    } else if (randomBGNumber == 5){
+        fightPageEl.style.backgroundImage = `url(${campfireBG})`
+    };
 }

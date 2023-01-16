@@ -1,5 +1,6 @@
 *{
     color: whitesmoke;
+    
 }
 
 #title-button{
@@ -151,8 +152,8 @@
     display: none;
 }
 
-/* 
-.fight-scene {
-    display: none;
-} */
+
+#fightscene {
+    height: 100vh;
+}
 
