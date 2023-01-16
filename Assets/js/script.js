@@ -87,10 +87,10 @@ function rollStats(userClass) {
         armor: "",
         weapon: "",
         class: userClass,
-        src: ""
     };
     if (userClass == "barbarian") {
         character.hp = 12 + modifier(character.con);
+        character.hp *= 10;
         character.str += 2;
         character.con += 1;
         createImgEl;
@@ -104,6 +104,7 @@ function rollStats(userClass) {
         // set hp bsaed on magic formula
     } else if (userClass == "bard") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.cha += 2;
         character.dex += 1;
         createImgEl;
@@ -114,6 +115,7 @@ function rollStats(userClass) {
         character.src = "../Images/Character/Frontview/Bard.png"
     } else if (userClass == "cleric") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.wis += 2;
         character.cha += 1;
         createImgEl;
@@ -124,6 +126,7 @@ function rollStats(userClass) {
         character.src = "../Images/Character/Frontview/Cleric.png"
     } else if (userClass == "druid") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.int += 2;
         character.wis += 1;
         createImgEl;
@@ -134,6 +137,7 @@ function rollStats(userClass) {
         character.src = "../Images/Character/Frontview/Druid.png"
     } else if (userClass == "fighter") {
         character.hp = 10 + modifier(character.con);
+        character.hp *= 10;
         character.str += 2;
         character.con += 1;
         createImgEl;
@@ -144,9 +148,9 @@ function rollStats(userClass) {
         character.src = "../Images/Character/Frontview/Fighter.png"
     } else if (userClass == "monk") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.str += 2;
         character.dex += 1;
-        createImgEl;
         createImgEl;
         createImgEl.setAttribute("src", "./Assets/Images/Character/Frontview/Monk.png");
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
@@ -155,6 +159,7 @@ function rollStats(userClass) {
         character.src = "../Images/Character/Frontview/Monk.png"
     } else if (userClass == "paladin") {
         character.hp = 10 + modifier(character.con);
+        character.hp *= 10;
         character.con += 2;
         character.dex -= 1;
         character.str += 1;
@@ -167,6 +172,7 @@ function rollStats(userClass) {
         character.src = "../Images/Character/Frontview/Paladin.png"
     } else if (userClass == "ranger") {
         character.hp = 10 + modifier(character.con);
+        character.hp *= 10;
         character.str += 2;
         character.dex += 1;
         createImgEl;
@@ -177,6 +183,7 @@ function rollStats(userClass) {
         character.src = "../Images/Character/Frontview/Ranger.png"
     } else if (userClass == "rogue") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.dex += 2;
         character.int += 1;
         createImgEl;
@@ -187,6 +194,7 @@ function rollStats(userClass) {
         character.src = "../Images/Character/Frontview/Rogue.png"
     } else if (userClass == "sorcerer") {
         character.hp = 6 + modifier(character.con);
+        character.hp *= 10;
         character.con += 2;
         character.cha += 1;
         createImgEl;
@@ -197,6 +205,7 @@ function rollStats(userClass) {
         character.src = "../Images/Character/Frontview/Sorcerer.png"
     } else if (userClass == "warlock") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.wis += 2;
         character.cha += 1;
         createImgEl;
@@ -207,6 +216,7 @@ function rollStats(userClass) {
         character.src = "../Images/Character/Frontview/Warlock.png"
     } else if (userClass == "wizard") {
         character.hp = 6 + modifier(character.con);
+        character.hp *= 10;
         character.int += 2;
         character.wis += 1;
         createImgEl;
@@ -327,22 +337,3 @@ function startGame() {
     titlePage.style.display = "none";
 }
 
-// beginAd.addEventListener("click", adventureStart);
-
-// go to character comparison
-// function adventureStart() {
-//     beginAd.style.display = "none";
-//     classCompare.style.display = "block"; // add "style='display: none'" to class-compare section
-//     charSelect.style.display = "none";
-//     goBack.style.display = "block";
-// }
-//create event listener for go back button
-// goBack.addEventListener("click", returnBack);
-
-//send user back one page
-// function returnBack() {
-//     goBack.style.display = "none";
-//     charSelect.style.display = "block";
-//     classCompare.style.display = "none";
-//     beginAd.style.display = "block";
-// }

@@ -71,6 +71,7 @@ submitBtn.on("click", function () {
             localStorage.setItem("savedCompare", JSON.stringify(character));
             var comparedChar = JSON.parse(localStorage.getItem('savedCompare'));
             console.log(comparedChar)
+            character.hp *= 10;
             $("#comparisonStatHP").html("HP: " + character.hp)
             $("#comparisonStatSTR").attr('value', character.str)
             $("#comparisonStatDEX").attr('value', character.dex)
@@ -186,6 +187,7 @@ function rollStats(compClass) {
     };
     if (compClass == "barbarian") {
         character.hp = 12 + modifier(character.con);
+        character.hp *= 10;
         character.str += 2;
         character.con += 1;
         createImgElComp;
@@ -195,6 +197,7 @@ function rollStats(compClass) {
         imgAppend.append(createImgElComp);
     } else if (compClass == "bard") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.cha += 2;
         character.dex += 1;
         createImgElComp;
@@ -204,6 +207,7 @@ function rollStats(compClass) {
         imgAppend.append(createImgElComp);        
     } else if (compClass == "cleric") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.wis += 2;
         character.cha += 1;
         createImgElComp;
@@ -213,6 +217,7 @@ function rollStats(compClass) {
         imgAppend.append(createImgElComp);        
     } else if (compClass == "druid") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.int += 2;
         character.wis += 1;
         createImgElComp;
@@ -222,6 +227,7 @@ function rollStats(compClass) {
         imgAppend.append(createImgElComp);        
     } else if (compClass == "fighter") {
         character.hp = 10 + modifier(character.con);
+        character.hp *= 10;
         character.str += 2;
         character.con += 1;
         createImgElComp;
@@ -231,6 +237,7 @@ function rollStats(compClass) {
         imgAppend.append(createImgElComp);        
     } else if (compClass == "monk") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.str += 2;
         character.dex += 1;
         
@@ -241,6 +248,7 @@ function rollStats(compClass) {
         imgAppend.append(createImgElComp);        
     } else if (compClass == "paladin") {
         character.hp = 10 + modifier(character.con);
+        character.hp *= 10;
         character.con += 2;
         character.dex -= 1;
         character.str += 1;
@@ -252,6 +260,7 @@ function rollStats(compClass) {
         imgAppend.append(createImgElComp);        
     } else if (compClass == "ranger") {
         character.hp = 10 + modifier(character.con);
+        character.hp *= 10;
         character.str += 2;
         character.dex += 1;
         createImgElComp;
@@ -261,6 +270,7 @@ function rollStats(compClass) {
         imgAppend.append(createImgElComp);        
     } else if (compClass == "rogue") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.dex += 2;
         character.int += 1;
         createImgElComp;
@@ -270,6 +280,7 @@ function rollStats(compClass) {
         imgAppend.append(createImgElComp);        
     } else if (compClass == "sorcerer") {
         character.hp = 6 + modifier(character.con);
+        character.hp *= 10;
         character.con += 2;
         character.cha += 1;
         createImgElComp;
@@ -279,6 +290,7 @@ function rollStats(compClass) {
         imgAppend.append(createImgElComp);        
     } else if (compClass == "warlock") {
         character.hp = 8 + modifier(character.con);
+        character.hp *= 10;
         character.wis += 2;
         character.cha += 1;
         createImgElComp;
@@ -290,6 +302,7 @@ function rollStats(compClass) {
         imgAppend.append(createImgElComp);        
     } else if (compClass == "wizard") {
         character.hp = 6 + modifier(character.con);
+        character.hp *= 10;
         character.int += 2;
         character.wis += 1;
         createImgElComp;
