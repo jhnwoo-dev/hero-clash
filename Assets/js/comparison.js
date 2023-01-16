@@ -1,20 +1,20 @@
-var userCharacter = JSON.parse(localStorage.getItem('savedUser'));
-var userHero = document.createElement('img')
-console.log(userCharacter)
-$("#selectedHeroComparisonHP").html("HP: " + userCharacter.hp)
-$("#selectedHeroComparisonSTR").attr('value', userCharacter.str)
-$("#selectedHeroComparisonDEX").attr('value', userCharacter.dex)
-$("#selectedHeroComparisonCON").attr('value', userCharacter.con)
-$("#selectedHeroComparisonCHA").attr('value', userCharacter.cha)
-$("#selectedHeroComparisonINT").attr('value', userCharacter.int)
-$("#selectedHeroComparisonWIS").attr('value', userCharacter.wis)
-$("#weaponProfUser").text(userCharacter.weapon)
-$("#armorProfUser").text(userCharacter.armor)
-$("#startingEqProfUser").text(userCharacter.starter)
+var userCharacter = JSON.parse(localStorage.getItem("savedUser"));
+var userHero = document.createElement("img");
+console.log(userCharacter);
+$("#selectedHeroComparisonHP").html("HP: " + userCharacter.hp);
+$("#selectedHeroComparisonSTR").attr("value", userCharacter.str);
+$("#selectedHeroComparisonDEX").attr("value", userCharacter.dex);
+$("#selectedHeroComparisonCON").attr("value", userCharacter.con);
+$("#selectedHeroComparisonCHA").attr("value", userCharacter.cha);
+$("#selectedHeroComparisonINT").attr("value", userCharacter.int);
+$("#selectedHeroComparisonWIS").attr("value", userCharacter.wis);
+$("#weaponProfUser").text(userCharacter.weapon);
+$("#armorProfUser").text(userCharacter.armor);
+$("#startingEqProfUser").text(userCharacter.starter);
 userHero;
 userHero.setAttribute("src", userCharacter.src);
 userHero.setAttribute("class", "heroIMGFV lx-row");
-userHero.setAttribute('id', 'heroIMGAppend');
+userHero.setAttribute("id", "heroIMGAppend");
 appendHeroIMG.append(userHero);
 console.log(userCharacter.src);
 //Global variables
@@ -22,7 +22,6 @@ var userCharacter = "";
 var comparisonCharacter;
 
 var comparisonClass;
-
 
 //Button Variables
 var btn = $("#test-button");
@@ -39,66 +38,64 @@ submitBtn.on("click", function () {
     compClass = $("#default_select").val().toLowerCase();
     console.log(compClass);
 
-    
     rollStats(compClass);
-    console.log(character)
+    console.log(character);
     var classesAPI = `https://www.dnd5eapi.co/api/classes/${compClass}`;
     fetch(classesAPI)
-    
-    .then(function (response) {
-        console.log(response);
-        return response.json();
-    })
-    .then(function (data) {
-        for (i = 0; i < data.starting_equipment.length; i++) {
-            console.log(data.starting_equipment[i].equipment.name);
-            character.starter = data.starting_equipment[i].equipment.name
-            console.log(character)
-        }
-        var weaponAPI = `https://api.open5e.com/classes/${compClass}`;
-        fetch(weaponAPI)
-        .then(function (response2) {
-            console.log(response2);
-            return response2.json();
+        .then(function (response) {
+            console.log(response);
+            return response.json();
         })
-        .then(function (data2) {
-            console.log(data2);
-            console.log(data2.prof_weapons);
-            console.log(data2.prof_armor);
-            character.weapon = data2.prof_weapons
-            character.armor = data2.prof_armor
-            console.log(character)
-            localStorage.setItem("savedCompare", JSON.stringify(character));
-            var comparedChar = JSON.parse(localStorage.getItem('savedCompare'));
-            console.log(comparedChar)
-            character.hp *= 10;
-            $("#comparisonStatHP").html("HP: " + character.hp)
-            $("#comparisonStatSTR").attr('value', character.str)
-            $("#comparisonStatDEX").attr('value', character.dex)
-            $("#comparisonStatCON").attr('value', character.con)
-            $("#comparisonStatCHA").attr('value', character.cha)
-            $("#comparisonStatINT").attr('value', character.int)
-            $("#comparisonStatWIS").attr('value', character.wis)
-            $("#weaponProfCompare").text(character.weapon)
-            $("#armorProfCompare").text(character.armor)
-            $("#startingEqCompare").text(character.starter)
-
+        .then(function (data) {
+            for (i = 0; i < data.starting_equipment.length; i++) {
+                console.log(data.starting_equipment[i].equipment.name);
+                character.starter = data.starting_equipment[i].equipment.name;
+                console.log(character);
+            }
+            var weaponAPI = `https://api.open5e.com/classes/${compClass}`;
+            fetch(weaponAPI)
+                .then(function (response2) {
+                    console.log(response2);
+                    return response2.json();
+                })
+                .then(function (data2) {
+                    console.log(data2);
+                    console.log(data2.prof_weapons);
+                    console.log(data2.prof_armor);
+                    character.weapon = data2.prof_weapons;
+                    character.armor = data2.prof_armor;
+                    console.log(character);
+                    localStorage.setItem(
+                        "savedCompare",
+                        JSON.stringify(character)
+                    );
+                    var comparedChar = JSON.parse(
+                        localStorage.getItem("savedCompare")
+                    );
+                    console.log(comparedChar);
+                    character.hp *= 10;
+                    $("#comparisonStatHP").html("HP: " + character.hp);
+                    $("#comparisonStatSTR").attr("value", character.str);
+                    $("#comparisonStatDEX").attr("value", character.dex);
+                    $("#comparisonStatCON").attr("value", character.con);
+                    $("#comparisonStatCHA").attr("value", character.cha);
+                    $("#comparisonStatINT").attr("value", character.int);
+                    $("#comparisonStatWIS").attr("value", character.wis);
+                    $("#weaponProfCompare").text(character.weapon);
+                    $("#armorProfCompare").text(character.armor);
+                    $("#startingEqCompare").text(character.starter);
+                });
         });
-    });
     // getInfo(userClass)
 });
 
-
-
 function createCharacter() {
     rollStats(compClass);
-    
 }
 
 // testing API to grab starting equipment
 
 //testing API to grab proficient weapons and armor
-
 
 // Background pathways
 var forestBG = "./Assets/Images/Backgrounds/landing-page-1.png";
@@ -108,7 +105,6 @@ var floodBG = "./Assets/Images/Backgrounds/room-started-flooding.png";
 var campfireBG = "./Assets/Images/Backgrounds/well-lit-room.png";
 
 // forloop to change backgrounds on fight page when hitting button
-
 
 //roll for stats
 function roll4d6minusLowest() {
@@ -178,12 +174,12 @@ function rollStats(compClass) {
         cha: roll4d6minusLowest(),
         int: roll4d6minusLowest(),
         wis: roll4d6minusLowest(),
-        hp:"",
+        hp: "",
         starter: "",
         armor: "",
         weapon: "",
         class: compClass,
-        src: ""
+        src: "",
     };
     if (compClass == "barbarian") {
         character.hp = 12 + modifier(character.con);
@@ -191,9 +187,12 @@ function rollStats(compClass) {
         character.str += 2;
         character.con += 1;
         createImgElComp;
-        createImgElComp.setAttribute("src", "../Images/Character/Frontview/Barbarian.png");
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Barbarian.png"
+        );
         createImgElComp.setAttribute("class", "heroCompareBig lx-row");
-        createImgElComp.setAttribute('id', 'compIMG');
+        createImgElComp.setAttribute("id", "compIMG");
         imgAppend.append(createImgElComp);
     } else if (compClass == "bard") {
         character.hp = 8 + modifier(character.con);
@@ -201,51 +200,66 @@ function rollStats(compClass) {
         character.cha += 2;
         character.dex += 1;
         createImgElComp;
-        createImgElComp.setAttribute("src", "../Images/Character/Frontview/Bard.png");
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Bard.png"
+        );
         createImgElComp.setAttribute("class", "heroCompareBig lx-row");
-        createImgElComp.setAttribute('id', 'compIMG');
-        imgAppend.append(createImgElComp);        
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
     } else if (compClass == "cleric") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
         character.wis += 2;
         character.cha += 1;
         createImgElComp;
-        createImgElComp.setAttribute("src", "../Images/Character/Frontview/Cleric.png");
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Cleric.png"
+        );
         createImgElComp.setAttribute("class", "heroCompareBig lx-row");
-        createImgElComp.setAttribute('id', 'compIMG');
-        imgAppend.append(createImgElComp);        
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
     } else if (compClass == "druid") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
         character.int += 2;
         character.wis += 1;
         createImgElComp;
-        createImgElComp.setAttribute("src", "../Images/Character/Frontview/Druid.png");
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Druid.png"
+        );
         createImgElComp.setAttribute("class", "heroCompareBig lx-row");
-        createImgElComp.setAttribute('id', 'compIMG');
-        imgAppend.append(createImgElComp);        
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
     } else if (compClass == "fighter") {
         character.hp = 10 + modifier(character.con);
         character.hp *= 10;
         character.str += 2;
         character.con += 1;
         createImgElComp;
-        createImgElComp.setAttribute("src", "../Images/Character/Frontview/Fighter.png");
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Fighter.png"
+        );
         createImgElComp.setAttribute("class", "heroCompareBig lx-row");
-        createImgElComp.setAttribute('id', 'compIMG');
-        imgAppend.append(createImgElComp);        
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
     } else if (compClass == "monk") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
         character.str += 2;
         character.dex += 1;
-        
+
         createImgElComp;
-        createImgElComp.setAttribute("src", "../Images/Character/Frontview/Monk.png");
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Monk.png"
+        );
         createImgElComp.setAttribute("class", "heroCompareBig lx-row");
-        createImgElComp.setAttribute('id', 'compIMG');
-        imgAppend.append(createImgElComp);        
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
     } else if (compClass == "paladin") {
         character.hp = 10 + modifier(character.con);
         character.hp *= 10;
@@ -254,62 +268,80 @@ function rollStats(compClass) {
         character.str += 1;
         character.cha += 1;
         createImgElComp;
-        createImgElComp.setAttribute("src", "../Images/Character/Frontview/Paladin.png");
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Paladin.png"
+        );
         createImgElComp.setAttribute("class", "heroCompareBig lx-row");
-        createImgElComp.setAttribute('id', 'compIMG');
-        imgAppend.append(createImgElComp);        
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
     } else if (compClass == "ranger") {
         character.hp = 10 + modifier(character.con);
         character.hp *= 10;
         character.str += 2;
         character.dex += 1;
         createImgElComp;
-        createImgElComp.setAttribute("src", "../Images/Character/Frontview/Ranger.png");
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Ranger.png"
+        );
         createImgElComp.setAttribute("class", "heroCompareBig lx-row");
-        createImgElComp.setAttribute('id', 'compIMG');
-        imgAppend.append(createImgElComp);        
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
     } else if (compClass == "rogue") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
         character.dex += 2;
         character.int += 1;
         createImgElComp;
-        createImgElComp.setAttribute("src", "../Images/Character/Frontview/Rogue.png");
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Rogue.png"
+        );
         createImgElComp.setAttribute("class", "heroCompareBig lx-row");
-        createImgElComp.setAttribute('id', 'compIMG');
-        imgAppend.append(createImgElComp);        
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
     } else if (compClass == "sorcerer") {
         character.hp = 6 + modifier(character.con);
         character.hp *= 10;
         character.con += 2;
         character.cha += 1;
         createImgElComp;
-        createImgElComp.setAttribute("src", "../Images/Character/Frontview/Sorcerer.png");
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Sorcerer.png"
+        );
         createImgElComp.setAttribute("class", "heroCompareBig lx-row");
-        createImgElComp.setAttribute('id', 'compIMG');
-        imgAppend.append(createImgElComp);        
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
     } else if (compClass == "warlock") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
         character.wis += 2;
         character.cha += 1;
         createImgElComp;
-        createImgElComp.setAttribute("src", "../Images/Character/Frontview/Warlock.png");
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Warlock.png"
+        );
         createImgElComp.setAttribute("class", "heroCompareBig lx-row");
-        createImgElComp.setAttribute('id', 'compIMG');
-        createImgElComp.setAttribute('draggable', 'true')
-        createImgElComp.setAttribute('ondragstart', 'dragStart(event)')
-        imgAppend.append(createImgElComp);        
+        createImgElComp.setAttribute("id", "compIMG");
+        createImgElComp.setAttribute("draggable", "true");
+        createImgElComp.setAttribute("ondragstart", "dragStart(event)");
+        imgAppend.append(createImgElComp);
     } else if (compClass == "wizard") {
         character.hp = 6 + modifier(character.con);
         character.hp *= 10;
         character.int += 2;
         character.wis += 1;
         createImgElComp;
-        createImgElComp.setAttribute("src", "../Images/Character/Frontview/Wizard.png");
+        createImgElComp.setAttribute(
+            "src",
+            "../Images/Character/Frontview/Wizard.png"
+        );
         createImgElComp.setAttribute("class", "heroCompareBig lx-row");
-        createImgElComp.setAttribute('id', 'compIMG');
-        imgAppend.append(createImgElComp);       
+        createImgElComp.setAttribute("id", "compIMG");
+        imgAppend.append(createImgElComp);
     }
     console.log(character);
 }
@@ -341,17 +373,14 @@ function modifier(n) {
     }
 }
 
-
 function updateCharacter() {
     userCharacter = createChar("mage");
     userCharacter.skills = getSkills("mage");
     getWeapons("mage");
 }
 
-
 var selectedClass = $("#default_select").val();
 console.log(selectedClass);
-
 
 // //grab all img tags
 // var images = document.querySelectorAll("img");
@@ -377,70 +406,76 @@ console.log(selectedClass);
 
 function dragStart(event) {
     event.dataTransfer.setData("dragsrc", event.target.src);
-    event.dataTransfer.setData("class", event.target.alt)
-    $("#compIMG").remove()
-  }
+    event.dataTransfer.setData("class", event.target.alt);
+    $("#compIMG").remove();
+}
 
-  function allowDrop(event) {
+function allowDrop(event) {
     event.preventDefault();
-  }
+}
 
-  function drop(event) {
+function drop(event) {
     event.preventDefault();
-    
+
     var transfersrc = event.dataTransfer.getData("dragsrc");
-    console.log(transfersrc)
-    var transferclass = event.dataTransfer.getData("class")
-    console.log(transferclass)
-    rollStats(transferclass)
-    console.log(character)
+    console.log(transfersrc);
+    var transferclass = event.dataTransfer.getData("class");
+    console.log(transferclass);
+    rollStats(transferclass);
+    console.log(character);
     localStorage.setItem("savedCompareDrop", JSON.stringify(character));
-    var comparedCharDrop = JSON.parse(localStorage.getItem('savedCompareDrop'));
-    console.log(comparedCharDrop)
-    $("#comparisonStatHP").html("HP: " + character.hp)
-    $("#comparisonStatSTR").attr('value', character.str)
-    $("#comparisonStatDEX").attr('value', character.dex)
-    $("#comparisonStatCON").attr('value', character.con)
-    $("#comparisonStatCHA").attr('value', character.cha)
-    $("#comparisonStatINT").attr('value', character.int)
-    $("#comparisonStatWIS").attr('value', character.wis)
-    
+    var comparedCharDrop = JSON.parse(localStorage.getItem("savedCompareDrop"));
+    console.log(comparedCharDrop);
+    $("#comparisonStatHP").html("HP: " + character.hp);
+    $("#comparisonStatSTR").attr("value", character.str);
+    $("#comparisonStatDEX").attr("value", character.dex);
+    $("#comparisonStatCON").attr("value", character.con);
+    $("#comparisonStatCHA").attr("value", character.cha);
+    $("#comparisonStatINT").attr("value", character.int);
+    $("#comparisonStatWIS").attr("value", character.wis);
+
     var classesAPI = `https://www.dnd5eapi.co/api/classes/${transferclass}`;
     fetch(classesAPI)
-    
-    .then(function (response) {
-        console.log(response);
-        return response.json();
-    })
-    .then(function (data) {
-        for (i = 0; i < data.starting_equipment.length; i++) {
-            console.log(data.starting_equipment[i].equipment.name);
-            character.starter = data.starting_equipment[i].equipment.name
-            console.log(character)
-        }
-        var weaponAPI = `https://api.open5e.com/classes/${transferclass}`;
-        fetch(weaponAPI)
-        .then(function (response2) {
-            console.log(response2);
-            return response2.json();
+        .then(function (response) {
+            console.log(response);
+            return response.json();
         })
-        .then(function (data2) {
-            console.log(data2);
-            console.log(data2.prof_weapons);
-            console.log(data2.prof_armor);
-            character.weapon = data2.prof_weapons
-            character.armor = data2.prof_armor
-            console.log(character)
-            localStorage.setItem("savedCompare", JSON.stringify(character));
-            var comparedChar = JSON.parse(localStorage.getItem('savedCompare'));
-            console.log(comparedChar)
-            $("#weaponProfCompare").text(character.weapon)
-            $("#armorProfCompare").text(character.armor)
-            $("#startingEqCompare").text(character.starter)})})
+        .then(function (data) {
+            for (i = 0; i < data.starting_equipment.length; i++) {
+                console.log(data.starting_equipment[i].equipment.name);
+                character.starter = data.starting_equipment[i].equipment.name;
+                console.log(character);
+            }
+            var weaponAPI = `https://api.open5e.com/classes/${transferclass}`;
+            fetch(weaponAPI)
+                .then(function (response2) {
+                    console.log(response2);
+                    return response2.json();
+                })
+                .then(function (data2) {
+                    console.log(data2);
+                    console.log(data2.prof_weapons);
+                    console.log(data2.prof_armor);
+                    character.weapon = data2.prof_weapons;
+                    character.armor = data2.prof_armor;
+                    console.log(character);
+                    localStorage.setItem(
+                        "savedCompare",
+                        JSON.stringify(character)
+                    );
+                    var comparedChar = JSON.parse(
+                        localStorage.getItem("savedCompare")
+                    );
+                    console.log(comparedChar);
+                    $("#weaponProfCompare").text(character.weapon);
+                    $("#armorProfCompare").text(character.armor);
+                    $("#startingEqCompare").text(character.starter);
+                });
+        });
     var imgDrop = document.createElement("img");
     imgDrop.src = transfersrc;
     imgDrop.setAttribute("class", "heroCompareBig lx-row");
-    imgDrop.setAttribute('id', 'compIMG');
-    imgDrop.setAttribute('value', 'compIMG');
+    imgDrop.setAttribute("id", "compIMG");
+    imgDrop.setAttribute("value", "compIMG");
     event.target.appendChild(imgDrop);
-  }
+}
