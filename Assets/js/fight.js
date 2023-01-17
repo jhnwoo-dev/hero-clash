@@ -8,7 +8,7 @@ const monsterHealthBar = document.createElement("progress");
 const chaseAppendText = document.getElementById('textChaseAppendText');
 const fightAppendText = document.getElementById('textFightAppendText');
 userChaseHero;
-userChaseHero.setAttribute("src", `../Images/Character/Overtop/${userCharacter.class}.png`);
+userChaseHero.setAttribute("src", `../Character/Overtop/${userCharacter.class}.png`);
 userChaseHero.setAttribute("class", "heroIMGOTpre");
 userChaseHero.setAttribute('id', 'heroIMGAppend');
 appendHeroChaseIMG.append(userChaseHero);
@@ -22,12 +22,12 @@ appendHeroFightIMG.append(userFightHealthHero);
 
 userFightHero;
 userFightHero.setAttribute("class","heroIMGFVbattle");
-userFightHero.setAttribute("src",`../Images/Character/Frontview/${userCharacter.class}.png`);
+userFightHero.setAttribute("src",`../Character/Frontview/${userCharacter.class}.png`);
 userFightHero.setAttribute("alt", "Your Hero");
 appendHeroFightIMG.append(userFightHero);
 console.log(userCharacter.src);
 
-
+//please push
 var monsters = [
     "air-elemental",
     "ape",
@@ -183,28 +183,7 @@ function attack(){
         appendHeroFightIMG.classList.toggle("hero-ani-battle");
     }, 3000)
     setTimeout(function(){
-        if(randomMonster == "air-elemental"){
-} else if (randomMonster == "ape"){  
-} else if (randomMonster == "awakened-tree"){
-} else if (randomMonster == "bearmit-crab"){              
-} else if (randomMonster == "black-pudding"){                   
-} else if (randomMonster == "bone-collective"){                        
-} else if (randomMonster == "camel"){                           
-} else if (randomMonster == "cave-giant"){                                
-} else if (randomMonster == "corpse-worm"){                                   
-} else if (randomMonster == "deep-troll"){                                       
-} else if (randomMonster == "dretch"){                                          
-} else if (randomMonster == "dryad"){                                              
-} else if (randomMonster == "giant-badger"){                                                   
-} else if (randomMonster == "giant-boar"){                                                      
-} else if (randomMonster == "giant-frog"){   
-} else if (randomMonster == "killer-whale"){      
-} else if (randomMonster == "mold-zombie"){          
-} else if (randomMonster == "owlbear"){              
-} else if (randomMonster == "purple-slime"){                   
-} else if (randomMonster == "skeleton"){                       
-} else if (randomMonster == "skull-lantern"){                          
-};
+
 console.log(randomMonster)
         var currentHP = userFightHealthHero.value
         var dmgHP = currentHP - roll1d20;
