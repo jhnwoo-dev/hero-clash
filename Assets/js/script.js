@@ -101,7 +101,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("class", "heroIMGFV lx-row");
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
-        character.src = "'../Images/Character/Frontview/Barbarian.png'";
+        character.src = "../Images/Character/Frontview/Barbarian.png";
         character.otsrc = "../Images/Character/Overtop/Barbarian.png";
         // document.getElementById("#heroIMG").src =
         //     "./Assets/Images/Character/Frontview/Barbarian.png";
