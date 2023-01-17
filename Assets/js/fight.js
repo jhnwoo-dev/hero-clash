@@ -183,28 +183,28 @@ function attack(){
         appendHeroFightIMG.classList.toggle("hero-ani-battle");
     }, 3000)
     setTimeout(function(){
-        if(randomMonster == "air-elemental"){
-} else if (randomMonster == "ape"){  
-} else if (randomMonster == "awakened-tree"){
-} else if (randomMonster == "bearmit-crab"){              
-} else if (randomMonster == "black-pudding"){                   
-} else if (randomMonster == "bone-collective"){                        
-} else if (randomMonster == "camel"){                           
-} else if (randomMonster == "cave-giant"){                                
-} else if (randomMonster == "corpse-worm"){                                   
-} else if (randomMonster == "deep-troll"){                                       
-} else if (randomMonster == "dretch"){                                          
-} else if (randomMonster == "dryad"){                                              
-} else if (randomMonster == "giant-badger"){                                                   
-} else if (randomMonster == "giant-boar"){                                                      
-} else if (randomMonster == "giant-frog"){   
-} else if (randomMonster == "killer-whale"){      
-} else if (randomMonster == "mold-zombie"){          
-} else if (randomMonster == "owlbear"){              
-} else if (randomMonster == "purple-slime"){                   
-} else if (randomMonster == "skeleton"){                       
-} else if (randomMonster == "skull-lantern"){                          
-};
+//         if(randomMonster == "air-elemental"){
+// } else if (randomMonster == "ape"){  
+// } else if (randomMonster == "awakened-tree"){
+// } else if (randomMonster == "bearmit-crab"){              
+// } else if (randomMonster == "black-pudding"){                   
+// } else if (randomMonster == "bone-collective"){                        
+// } else if (randomMonster == "camel"){                           
+// } else if (randomMonster == "cave-giant"){                                
+// } else if (randomMonster == "corpse-worm"){                                   
+// } else if (randomMonster == "deep-troll"){                                       
+// } else if (randomMonster == "dretch"){                                          
+// } else if (randomMonster == "dryad"){                                              
+// } else if (randomMonster == "giant-badger"){                                                   
+// } else if (randomMonster == "giant-boar"){                                                      
+// } else if (randomMonster == "giant-frog"){   
+// } else if (randomMonster == "killer-whale"){      
+// } else if (randomMonster == "mold-zombie"){          
+// } else if (randomMonster == "owlbear"){              
+// } else if (randomMonster == "purple-slime"){                   
+// } else if (randomMonster == "skeleton"){                       
+// } else if (randomMonster == "skull-lantern"){                          
+// };
 console.log(randomMonster)
         var currentHP = userFightHealthHero.value
         var dmgHP = currentHP - roll1d20;
