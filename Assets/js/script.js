@@ -102,6 +102,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
         character.src = "'../Images/Character/Frontview/Barbarian.png'";
+        character.otsrc = "../Images/Character/Overtop/Barbarian.png";
         // document.getElementById("#heroIMG").src =
         //     "./Assets/Images/Character/Frontview/Barbarian.png";
         // set hp bsaed on magic formula
@@ -119,6 +120,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
         character.src = "../Images/Character/Frontview/Bard.png";
+        character.otsrc = "../Images/Character/Overtop/Bard.png";
     } else if (userClass == "cleric") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
@@ -133,6 +135,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
         character.src = "../Images/Character/Frontview/Cleric.png";
+        character.otsrc = "../Images/Character/Overtop/Cleric.png";
     } else if (userClass == "druid") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
@@ -147,6 +150,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
         character.src = "../Images/Character/Frontview/Druid.png";
+        character.otsrc = "../Images/Character/Overtop/Druid.png";
     } else if (userClass == "fighter") {
         character.hp = 10 + modifier(character.con);
         character.hp *= 10;
@@ -161,6 +165,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
         character.src = "../Images/Character/Frontview/Fighter.png";
+        character.otsrc = "../Images/Character/Overtop/Fighter.png";
     } else if (userClass == "monk") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
@@ -175,6 +180,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
         character.src = "../Images/Character/Frontview/Monk.png";
+        character.otsrc = "../Images/Character/Overtop/Monk.png";
     } else if (userClass == "paladin") {
         character.hp = 10 + modifier(character.con);
         character.hp *= 10;
@@ -191,6 +197,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
         character.src = "../Images/Character/Frontview/Paladin.png";
+        character.otsrc = "../Images/Character/Overtop/Paladin.png";
     } else if (userClass == "ranger") {
         character.hp = 10 + modifier(character.con);
         character.hp *= 10;
@@ -205,6 +212,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
         character.src = "../Images/Character/Frontview/Ranger.png";
+        character.otsrc = "../Images/Character/Overtop/Ranger.png";
     } else if (userClass == "rogue") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
@@ -219,6 +227,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
         character.src = "../Images/Character/Frontview/Rogue.png";
+        character.otsrc = "../Images/Character/Overtop/Rogue.png";
     } else if (userClass == "sorcerer") {
         character.hp = 6 + modifier(character.con);
         character.hp *= 10;
@@ -233,6 +242,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
         character.src = "../Images/Character/Frontview/Sorcerer.png";
+        character.otsrc = "../Images/Character/Overtop/Sorcerer.png";
     } else if (userClass == "warlock") {
         character.hp = 8 + modifier(character.con);
         character.hp *= 10;
@@ -247,6 +257,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
         character.src = "../Images/Character/Frontview/Warlock.png";
+        character.otsrc = "../Images/Character/Overtop/Warlock.png";
     } else if (userClass == "wizard") {
         character.hp = 6 + modifier(character.con);
         character.hp *= 10;
@@ -261,6 +272,7 @@ function rollStats(userClass) {
         createImgEl.setAttribute("id", "heroIMG");
         imgAppend.append(createImgEl);
         character.src = "../Images/Character/Frontview/Wizard.png";
+        character.otsrc = "../Images/Character/Overtop/Wizard.png";
     }
     console.log(character);
 }
