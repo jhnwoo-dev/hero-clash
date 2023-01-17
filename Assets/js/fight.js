@@ -233,6 +233,7 @@ console.log(randomMonster)
             goBackEl.classList.toggle("hiddenbtns")
             userCharacter.hp = userFightHealthHero.value;
             localStorage.setItem("savedUser", JSON.stringify(userCharacter));
+            healEl.style.display = "none";
             
     
         }else if (userFightHealthHero.value <= 40) {
@@ -292,7 +293,7 @@ setTimeout(function(){
 
 hideimage()
 
-// start fight scene
+// start fight scene with randomized backgrounds
 function startFight() {
     continueBtnEl.style.display = "none";
     fightPageEl.style.display = "block";
